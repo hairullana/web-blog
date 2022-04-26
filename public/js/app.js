@@ -5323,7 +5323,10 @@ Vue.component('footer-component', (__webpack_require__(/*! ./components/Footer.v
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    title: 'Web Blog'
+  }
 });
 
 /***/ }),
