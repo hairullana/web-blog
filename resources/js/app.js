@@ -29,9 +29,9 @@ Vue.component('footer-component', require('./components/Footer.vue').default);
 const Home = require('./pages/Home.vue').default
 const About = require('./pages/About.vue').default
 
-const routes = [
+const r = [
     {
-        path: '/home',
+        path: '/',
         component: Home
     },
     {
@@ -42,7 +42,7 @@ const routes = [
 
 const router = new VueRouter({
     mode: 'history',
-    routes
+    routes: r
 })
 
 /**

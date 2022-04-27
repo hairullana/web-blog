@@ -22,19 +22,19 @@ use App\Http\Controllers\DashboardPostController;
 |
 */
 
-Route::get('/', function () {
+Route::any('/', function () {
   return view('home', [
     "title" => "Home",
     "active" => 'home'
   ]);
 });
 
-Route::get('/about', function () {
-  return view('about', [
-    "title" => "About",
-    "active" => 'about'
-  ]);
-});
+// Route::get('/about', function () {
+//   return view('about', [
+//     "title" => "About",
+//     "active" => 'about'
+//   ]);
+// });
 
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);
