@@ -31,7 +31,7 @@ const About = require('./pages/About.vue').default
 
 const r = [
     {
-        path: '/',
+        path: '/home',
         component: Home
     },
     {

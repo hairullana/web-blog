@@ -22,7 +22,11 @@ use App\Http\Controllers\DashboardPostController;
 |
 */
 
-Route::any('/', function () {
+Route::get('/', function() {
+  return view('welcome');
+});
+
+Route::any('/{s}', function () {
   return view('home', [
     "title" => "Home",
     "active" => 'home'

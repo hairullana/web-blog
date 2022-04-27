@@ -5329,7 +5329,7 @@ var Home = (__webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Ho
 var About = (__webpack_require__(/*! ./pages/About.vue */ "./resources/js/pages/About.vue")["default"]);
 
 var r = [{
-  path: '/',
+  path: '/home',
   component: Home
 }, {
   path: '/about',
@@ -28155,7 +28155,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "router-link",
-            { staticClass: "btn btn-primary", attrs: { to: "/" } },
+            { staticClass: "btn btn-primary", attrs: { to: "/home" } },
             [_vm._v("Home")]
           ),
           _vm._v(" "),

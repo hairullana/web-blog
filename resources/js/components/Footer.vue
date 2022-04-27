@@ -6,7 +6,7 @@
   <div class="card-body">
     <!-- <h5 class="card-title">Web Blog</h5> -->
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <router-link to="/" class="btn btn-primary">Home</router-link>
+    <router-link to="/home" class="btn btn-primary">Home</router-link>
     <router-link to="/about" class="btn btn-primary">About</router-link>
   </div>
 </div>
