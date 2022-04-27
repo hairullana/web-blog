@@ -4,13 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
+import Vue from 'vue'
+import router from './router/index'
 
 window.Vue = require('vue').default;
-
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
 
 /**
  * The following block of code may be used to automatically register your
@@ -25,30 +23,6 @@ Vue.use(VueRouter);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('footer-component', require('./components/Footer.vue').default);
-
-const Home = require('./pages/Home.vue').default
-const About = require('./pages/About.vue').default
-const NotFound = require('./pages/NotFound.vue').default
-
-const r = [
-    {
-        path: '/home',
-        component: Home
-    },
-    {
-        path: '/about',
-        component: About
-    },
-    {
-        path: '*',
-        component: NotFound
-    }
-]
-
-const router = new VueRouter({
-    mode: 'history',
-    routes: r
-})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

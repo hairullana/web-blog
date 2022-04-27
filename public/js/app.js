@@ -5298,8 +5298,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var _router_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router/index */ "./resources/js/router/index.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -5307,10 +5307,9 @@ __webpack_require__.r(__webpack_exports__);
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+
+
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
-
-
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -5321,41 +5320,20 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('footer-component', (__webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]));
-
-var Home = (__webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue")["default"]);
-
-var About = (__webpack_require__(/*! ./pages/About.vue */ "./resources/js/pages/About.vue")["default"]);
-
-var NotFound = (__webpack_require__(/*! ./pages/NotFound.vue */ "./resources/js/pages/NotFound.vue")["default"]);
-
-var r = [{
-  path: '/home',
-  component: Home
-}, {
-  path: '/about',
-  component: About
-}, {
-  path: '*',
-  component: NotFound
-}];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  mode: 'history',
-  routes: r
-});
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_1__["default"].component('footer-component', (__webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_0__["default"]({
+var app = new vue__WEBPACK_IMPORTED_MODULE_1__["default"]({
   el: '#app',
   data: {
     title: 'Web Blog'
   },
-  router: router
+  router: _router_index__WEBPACK_IMPORTED_MODULE_0__["default"]
 });
 
 /***/ }),
@@ -5393,6 +5371,46 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/router/index.js":
+/*!**************************************!*\
+  !*** ./resources/js/router/index.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/Home.vue */ "./resources/js/pages/Home.vue");
+/* harmony import */ var _pages_About_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/About.vue */ "./resources/js/pages/About.vue");
+/* harmony import */ var _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../pages/NotFound.vue */ "./resources/js/pages/NotFound.vue");
+
+
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+
+
+var routes = [{
+  path: '/home',
+  component: _pages_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+}, {
+  path: '/about',
+  component: _pages_About_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+}, {
+  path: '*',
+  component: _pages_NotFound_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+}];
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  mode: 'history',
+  routes: routes
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (router);
 
 /***/ }),
 
