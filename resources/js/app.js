@@ -26,8 +26,8 @@ Vue.use(VueRouter);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('footer-component', require('./components/Footer.vue').default);
 
-const Home = require('./pages/Home.vue')
-const About = require('./pages/About.vue')
+const Home = require('./pages/Home.vue').default
+const About = require('./pages/About.vue').default
 
 const routes = [
     {
@@ -41,6 +41,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+    mode: 'history',
     routes
 })
 

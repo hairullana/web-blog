@@ -5324,9 +5324,9 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vue_router__WEBPACK_IMPORTED_MOD
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('example-component', (__webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('footer-component', (__webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]));
 
-var Home = __webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue");
+var Home = (__webpack_require__(/*! ./pages/Home.vue */ "./resources/js/pages/Home.vue")["default"]);
 
-var About = __webpack_require__(/*! ./pages/About.vue */ "./resources/js/pages/About.vue");
+var About = (__webpack_require__(/*! ./pages/About.vue */ "./resources/js/pages/About.vue")["default"]);
 
 var routes = [{
   path: '/home',
@@ -5336,6 +5336,7 @@ var routes = [{
   component: About
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  mode: 'history',
   routes: routes
 });
 /**
@@ -28094,22 +28095,18 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card text-center", attrs: { id: "footer" } },
-      [
-        _c("div", { staticClass: "card-header fw-bold" }, [
-          _vm._v("\n    Web Blog\n  "),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
+  return _c(
+    "div",
+    { staticClass: "card text-center", attrs: { id: "footer" } },
+    [
+      _c("div", { staticClass: "card-header fw-bold" }, [
+        _vm._v("\n    Web Blog\n  "),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
           _c("p", { staticClass: "card-text" }, [
             _vm._v(
               "With supporting text below as a natural lead-in to additional content."
@@ -28117,15 +28114,17 @@ var staticRenderFns = [
           ]),
           _vm._v(" "),
           _c(
-            "a",
-            { staticClass: "btn btn-primary", attrs: { href: "#navbarNav" } },
+            "router-link",
+            { staticClass: "btn btn-primary", attrs: { to: "#navbarNav" } },
             [_vm._v("Top "), _c("i", { staticClass: "bi bi-arrow-up-circle" })]
           ),
-        ]),
-      ]
-    )
-  },
-]
+        ],
+        1
+      ),
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
