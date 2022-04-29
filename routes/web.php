@@ -29,7 +29,7 @@ Route::get('/', function() {
   ]);
 });
 
-Route::any('/{any}', function(){
+Route::get('/{any}', function(){
   return view('home', [
     "title" => "Home",
     "active" => 'home'

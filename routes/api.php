@@ -22,8 +22,8 @@ use App\Http\Controllers\PostController;
 
 // PostController
 Route::get('/posts', [PostController::class, 'index']);
-Route::get('/posts/{id}', [PostController::class, 'show']);
+Route::get('/post/{id}', [PostController::class, 'show']);
 // DasboardPostController
-Route::post('/posts/store', [DashboardPostController::class, 'store']);
-Route::post('/posts/update/{id}', [DashboardPostController::class, 'update']);
-Route::delete('/posts/{id}', [DashboardPostController::class, 'destroy']);
+Route::post('/post/store', [DashboardPostController::class, 'store']);
+Route::post('/post/update/{id}', [DashboardPostController::class, 'update']);
+Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
