@@ -24,7 +24,14 @@ use App\Http\Controllers\DashboardPostController;
 
 Route::get('/', function() {
   return view('home', [
-      "title" => "Home",
-      "active" => 'home'
-    ]);
+    "title" => "Home",
+    "active" => 'home'
+  ]);
 });
+
+Route::any('/{any}', function(){
+  return view('home', [
+    "title" => "Home",
+    "active" => 'home'
+  ]);
+})->where('any', '.*');
