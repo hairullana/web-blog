@@ -8,7 +8,7 @@
           <img src="https://source.unsplash.com/500x400?news" class="img-fluid mt-3" v-bind:alt="post.category.name">
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
-            <small class="text-muted">By <a v-bind:href="'/posts?author=' + post.author.username" class="text-decoration-none">{{ post.author.name }}</a> {{ post.created_at }}</small>
+            <small class="text-muted">By <a v-bind:href="'/posts?author=' + post.author.username" class="text-decoration-none">{{ post.author.name }}</a> {{ post.created_at | formatDate }}</small>
             <p class="card-text">{{ post.excerpt }}</p>
             <a v-bind:href="'/posts/' + post.slug" class="btn btn-primary">Readmore</a>
           </div>

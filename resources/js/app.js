@@ -15,6 +15,13 @@ import Index from './components/posts/Index.vue'
 import Create from './components/posts/Create.vue'
 import Edit from './components/posts/Edit.vue'
 
+import moment from 'moment'
+Vue.filter('formatDate', function(value) {
+  if (value) {
+    return moment(String(value)).format('MM/DD/YYYY hh:mm')
+  }
+});
+
 const routes = [
   {
     name: 'posts',
