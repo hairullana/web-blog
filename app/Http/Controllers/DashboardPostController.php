@@ -3,156 +3,122 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Category;
 use Illuminate\Http\Request;
 
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Str;
-
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class DashboardPostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('dashboard.posts.index', [
-            'posts' => Post::where('user_id', auth()->user()->id)->get()
-        ]);
+  public function store(Request $request){
+    //set validation
+    $validator = Validator::make($request->all(), [
+      'category_id' => 'required',
+      'user_id' => 'required',
+      'title'   => 'required',
+      'slug' => 'required',
+      'excerpt' => 'required',
+      'body' => 'required'
+    ]);
+    
+    //response error validation
+    if ($validator->fails()) {
+      return response()->json($validator->errors(), 400);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('dashboard.posts.create', [
-            'categories' => Category::all()
-        ]);
+    //save to database
+    $post = Post::create([
+      'category_id' => $request->category_id,
+      'user_id' => $request->user_id,
+      'title'   => $request->title,
+      'slug' => $request->slug,
+      'excerpt' => $request->excerpt,
+      'body' => $request->body
+    ]);
+
+    //success save to database
+    if($post) {
+      return response()->json([
+        'success' => true,
+        'message' => 'Post Created',
+        'data'    => $post  
+      ], 201);
+    } 
+
+    //failed save to database
+    return response()->json([
+      'success' => false,
+      'message' => 'Post Failed to Save',
+    ], 409);
+  }
+
+  public function update(Request $request, $id){
+    //set validation
+    $validator = Validator::make($request->all(), [
+      'category_id' => 'required',
+      'title'   => 'required',
+      'slug' => 'required',
+      'excerpt' => 'required',
+      'body' => 'required'
+    ]);
+    
+    //response error validation
+    if ($validator->fails()) {
+      return response()->json($validator->errors(), 400);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // ddd($request);
-        $validate = $request->validate([
-            'title' => ['required', 'max:255'],
-            'slug' => ['required', 'unique:posts'],
-            'category_id' => ['required'],
-            'image' => ['image', 'file', 'max:1024'],
-            'body' => ['required']
-        ]);
+    //find post by ID
+    $post = Post::findOrFail($id);
 
+    if($post) {
+      //update post
+      $post->update([
+        'category_id' => $request->category_id,
+        'title'   => $request->title,
+        'slug' => $request->slug,
+        'excerpt' => $request->excerpt,
+        'body' => $request->body
+      ]);
 
-        if($request->file('image')) {
-            $validate['image'] = $request->file('image')->store('posts-image');
-        }
-
-        // dd(auth()->user()->id);
-
-        $validate['user_id'] = auth()->user()->id;
-        $validate['excerpt'] = Str::limit(strip_tags($request->body, 200));
-
-        Post::create($validate);
-
-        return redirect('/dashboard/posts')->with('success', 'New post has been updated');
+      return response()->json([
+        'success' => true,
+        'message' => 'Post Updated',
+        'data'    => $post  
+      ], 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $post)
-    {
-        return view('dashboard.posts.show', [
-            'post' => $post
-        ]);
+    //data post not found
+    return response()->json([
+      'success' => false,
+      'message' => 'Post Not Found',
+    ], 404);
+
+  }
+
+  public function destroy($id){
+    //find post by ID
+    $post = Post::findOrfail($id);
+
+    if($post) {
+      //delete post
+      $post->delete();
+
+      return response()->json([
+        'success' => true,
+        'message' => 'Post Deleted',
+      ], 200);
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
-    {
-        return view('dashboard.posts.edit', [
-            'post' => $post,
-            'categories' => Category::all()
-        ]);
-    }
+    //data post not found
+    return response()->json([
+      'success' => false,
+      'message' => 'Post Not Found',
+    ], 404);
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Post $post)
-    {
-        $rules = [
-            'title' => ['required', 'max:255'],
-            'category_id' => ['required'],
-            'image' => ['image', 'file', 'max:1024'],
-            'body' => ['required']
-        ];
-
-        
-        // validate slug
-        if ($request->slug != $post->slug){
-            $rules['slug'] = 'required|unique:posts';
-        }
-        
-        $validate = $request->validate($rules);
-
-        if($request->file('image')) {
-            if($request->oldImage){
-                Storage::delete($request->oldImage);
-            }
-            $validate['image'] = $request->file('image')->store('posts-image');
-        }
-
-        $validate['user_id'] = auth()->user()->id;
-        $validate['excerpt'] = Str::limit(strip_tags($request->body, 200));
-
-        Post::where('id', $post->id)
-                    ->update($validate);
-
-        return redirect('/dashboard/posts')->with('success', 'Post has been update!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Post $post)
-    {
-        if($post->image){
-            Storage::delete($post->image);
-        }
-        Post::destroy($post->id);
-        return redirect('/dashboard/posts')->with('success', 'Post has been deleted');
-    }
-
-    public function checkSlug(Request $request){
-        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
-        return response()->json(['slug' => $slug]);
-    }
+  public function checkSlug(Request $request){
+    $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+    return response()->json(['slug' => $slug]);
+  }
 }

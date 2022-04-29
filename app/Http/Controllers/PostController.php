@@ -7,8 +7,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
 
-class PostController extends Controller
-{
+class PostController extends Controller{
   public function index() {
     $title = '';
 
@@ -22,20 +21,23 @@ class PostController extends Controller
       $title = ' by ' . $author->name;
     }
 
-    return view('posts', [
-      "title" => "All Posts" . $title, 
-      "active" => "posts",
-      // "posts" =>  Post::all()
-      // "posts" =>  Post::latest()->get()
-      "posts" =>  Post::latest()->filter(request(['search','category','author']))->paginate(7)->withQueryString()
-    ]);
+    // return json for API
+    return response()->json([
+      'success' => true,
+      'message' => 'List Data Post',
+      'data'    => Post::latest()->get()
+    ], 200);
   }
 
-  public function show(Post $post) {
-    return view('post',[
-      "title" => "Single Post",
-      "active" => "posts",
-      "post" => $post
-    ]);
+  public function show($id) {
+    // find post with id
+    $post = Post::find($id);
+
+    //make response JSON
+    return response()->json([
+        'success' => true,
+        'message' => 'Detail Data Post',
+        'data'    => $post 
+    ], 200);
   }
 }
