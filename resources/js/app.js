@@ -12,6 +12,7 @@ import App from './App.vue'
 Vue.use(VueAxios, axios)
 
 import Index from './components/posts/Index.vue'
+import Dashboard from './components/posts/Dashboard.vue'
 import Create from './components/posts/Create.vue'
 import Edit from './components/posts/Edit.vue'
 
@@ -27,6 +28,11 @@ const routes = [
     name: 'posts',
     path: '/',
     component: Index
+  },
+  {
+    name: 'dashboard',
+    path: '/dashboard',
+    component: Dashboard
   },
   {
     name: 'create',
