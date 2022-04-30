@@ -5423,6 +5423,20 @@ __webpack_require__.r(__webpack_exports__);
     this.axios.get(uri).then(function (response) {
       _this.posts = response.data.data;
     });
+  },
+  methods: {
+    PostDelete: function PostDelete(id, index) {
+      var _this2 = this;
+
+      var uri = "http://localhost:8000/api/post/".concat(id);
+      console.log(uri);
+      this.axios["delete"](uri).then(function (res) {
+        _this2.posts.splice(index, 1); // location.reload()
+
+      })["catch"](function (err) {
+        alert('system error');
+      });
+    }
   }
 });
 
@@ -50362,7 +50376,7 @@ var render = function () {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.posts, function (post) {
+          _vm._l(_vm.posts, function (post, index) {
             return _c("tr", { key: post.id }, [
               _c("td", [_vm._v(_vm._s(post.id))]),
               _vm._v(" "),
@@ -50392,10 +50406,15 @@ var render = function () {
                   ),
                   _vm._v(" "),
                   _c(
-                    "a",
+                    "button",
                     {
                       staticClass: "text-dark badge btn-danger border-0",
-                      attrs: { onclick: "return confirm('Are you sure?')" },
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.PostDelete(post.id, index)
+                        },
+                      },
                     },
                     [_vm._v("Delete")]
                   ),
