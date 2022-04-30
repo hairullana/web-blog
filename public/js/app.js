@@ -5333,16 +5333,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      post: {},
+      user_id: 1,
+      excerpt: '',
+      title: '',
+      slug: '',
+      category_id: '',
+      body: '',
       validation: []
     };
   },
@@ -5350,13 +5349,19 @@ __webpack_require__.r(__webpack_exports__);
     PostStore: function PostStore() {
       var _this = this;
 
+      console.log(this.title);
       var uri = 'http://localhost:8000/api/post/store';
-      this.axios.post(uri, this.post).then(function (response) {
+      this.axios.post(uri, {
+        user_id: this.user_id,
+        excerpt: this.title,
+        title: this.title,
+        slug: this.slug,
+        category_id: this.category_id,
+        body: this.body
+      }).then(function (response) {
         _this.$router.push({
           name: 'posts'
         });
-      })["catch"](function (error) {
-        _this.validation = error.response.data.data;
       });
     }
   }
@@ -50072,25 +50077,19 @@ var render = function () {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.post.title,
-                  expression: "post.title",
+                  value: _vm.title,
+                  expression: "title",
                 },
               ],
               staticClass: "form-control",
-              attrs: {
-                type: "text",
-                id: "title",
-                name: "title",
-                required: "",
-                autofocus: "",
-              },
-              domProps: { value: _vm.post.title },
+              attrs: { type: "text", id: "title", autofocus: "" },
+              domProps: { value: _vm.title },
               on: {
                 input: function ($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.post, "title", $event.target.value)
+                  _vm.title = $event.target.value
                 },
               },
             }),
@@ -50118,19 +50117,19 @@ var render = function () {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.post.slug,
-                  expression: "post.slug",
+                  value: _vm.slug,
+                  expression: "slug",
                 },
               ],
               staticClass: "form-control",
-              attrs: { type: "text", id: "slug", name: "slug", required: "" },
-              domProps: { value: _vm.post.slug },
+              attrs: { type: "text", id: "slug" },
+              domProps: { value: _vm.slug },
               on: {
                 input: function ($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.post, "slug", $event.target.value)
+                  _vm.slug = $event.target.value
                 },
               },
             }),
@@ -50148,55 +50147,86 @@ var render = function () {
               : _vm._e(),
           ]),
           _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "mb-3" },
-            [
-              _c(
-                "label",
-                { staticClass: "form-label", attrs: { for: "body" } },
-                [_vm._v("Body")]
-              ),
-              _vm._v(" "),
-              _c("input", {
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "category" } },
+              [_vm._v("Category")]
+            ),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body",
+                    value: _vm.category_id,
+                    expression: "category_id",
                   },
                 ],
-                attrs: { id: "body", type: "hidden", name: "body" },
-                domProps: { value: _vm.body },
+                staticClass: "form-select",
+                attrs: { id: "category" },
                 on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.body = $event.target.value
+                  change: function ($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function (o) {
+                        return o.selected
+                      })
+                      .map(function (o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.category_id = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
                   },
                 },
-              }),
-              _vm._v(" "),
-              _c("trix-editor", { attrs: { input: "body" } }),
-              _vm._v(" "),
-              _vm.validation.body
-                ? _c("div", [
-                    _c("div", { staticClass: "invalid-feedback" }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(_vm.validation.body[0]) +
-                          "\n          "
-                      ),
-                    ]),
-                  ])
-                : _vm._e(),
-            ],
-            1
-          ),
+              },
+              [
+                _c("option", { attrs: { value: "1", selected: "" } }, [
+                  _vm._v("Example"),
+                ]),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c("label", { staticClass: "form-label" }, [_vm._v("Body")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.body,
+                  expression: "body",
+                },
+              ],
+              attrs: { type: "hidden", name: "body" },
+              domProps: { value: _vm.body },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.body = $event.target.value
+                },
+              },
+            }),
+            _vm._v(" "),
+            _vm.validation.body
+              ? _c("div", [
+                  _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n            " +
+                        _vm._s(_vm.validation.body[0]) +
+                        "\n          "
+                    ),
+                  ]),
+                ])
+              : _vm._e(),
+          ]),
           _vm._v(" "),
           _c(
             "button",
@@ -50221,29 +50251,6 @@ var staticRenderFns = [
       },
       [_c("h1", { staticClass: "h2" }, [_vm._v("Create New Post")])]
     )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3" }, [
-      _c("label", { staticClass: "form-label", attrs: { for: "category" } }, [
-        _vm._v("Category"),
-      ]),
-      _vm._v(" "),
-      _c(
-        "select",
-        {
-          staticClass: "form-select",
-          attrs: { name: "category_id", id: "category" },
-        },
-        [
-          _c("option", { attrs: { value: "1", selected: "" } }, [
-            _vm._v("Example"),
-          ]),
-        ]
-      ),
-    ])
   },
 ]
 render._withStripped = true

@@ -9,7 +9,7 @@
       <form @submit.prevent="PostStore">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" v-model="post.title" id="title" name="title" required autofocus>
+          <input type="text" class="form-control" v-model="title" id="title" autofocus>
           <div v-if="validation.title">
             <div class="invalid-feedback">
               {{ validation.title[0] }}
@@ -18,7 +18,7 @@
         </div>
         <div class="mb-3">
           <label for="slug" class="form-label">Slug</label>
-          <input type="text" class="form-control" v-model="post.slug" id="slug" name="slug" required>
+          <input type="text" class="form-control" v-model="slug" id="slug">
           <div v-if="validation.slug">
             <div class="invalid-feedback">
               {{ validation.slug[0] }}
@@ -27,19 +27,13 @@
         </div>
         <div class="mb-3">
           <label for="category" class="form-label">Category</label>
-          <select name="category_id" id="category" class="form-select">
+          <select v-model="category_id" id="category" class="form-select">
             <option value="1" selected>Example</option>
           </select>
         </div>
-        <!-- <div class="mb-3">
-          <label for="image" class="form-label">Post Image</label>
-          <img class="img-preview img-fluid mb-3 col-sm-5">
-          <input class="form-control" type="file" id="image" name="image" onchange="previewImage()">
-        </div> -->
         <div class="mb-3">
-          <label for="body" class="form-label">Body</label>
-          <input id="body" v-model="body" type="hidden" name="body">
-          <trix-editor input="body"></trix-editor>
+          <label class="form-label">Body</label>
+          <textarea v-model="body" type="hidden" name="body"></textarea>
           <div v-if="validation.body">
             <div class="invalid-feedback">
               {{ validation.body[0] }}
@@ -56,22 +50,31 @@
 export default {
   data(){
     return {
-      post: {},
+      user_id: 1,
+      excerpt: '',
+      title: '',
+      slug: '',
+      category_id: '',  
+      body: '',
       validation: []
     }
   },
   methods: {
     PostStore(){
+      console.log(this.title)
       let uri = 'http://localhost:8000/api/post/store'
-      this.axios.post(uri, this.post)
-        .then((response) => {
-          this.$router.push({
-            name: 'posts'
-          })
+      this.axios.post(uri, {
+        user_id: this.user_id,
+        excerpt: this.title,
+        title: this.title,
+        slug: this.slug,
+        category_id: this.category_id,
+        body: this.body
+      }).then((response) => {
+        this.$router.push({
+          name: 'posts'
         })
-        .catch(error => {
-          this.validation = error.response.data.data
-        })
+      })
     }
   }
 }
