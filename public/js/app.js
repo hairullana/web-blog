@@ -5289,7 +5289,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      post: {},
+      validation: []
+    };
+  },
+  methods: {
+    PostStore: function PostStore() {
+      var _this = this;
+
+      var uri = 'http://localhost:8000/api/post/store';
+      this.axios.post(uri, this.post).then(function (response) {
+        _this.$router.push({
+          name: 'posts'
+        });
+      })["catch"](function (error) {
+        _this.validation = error.response.data.data;
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -49974,9 +50045,207 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("CREATE")])
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-lg-8 mb-3" }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function ($event) {
+              $event.preventDefault()
+              return _vm.PostStore.apply(null, arguments)
+            },
+          },
+        },
+        [
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "title" } },
+              [_vm._v("Title")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.post.title,
+                  expression: "post.title",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "title",
+                name: "title",
+                required: "",
+                autofocus: "",
+              },
+              domProps: { value: _vm.post.title },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.post, "title", $event.target.value)
+                },
+              },
+            }),
+            _vm._v(" "),
+            _vm.validation.title
+              ? _c("div", [
+                  _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n            " +
+                        _vm._s(_vm.validation.title[0]) +
+                        "\n          "
+                    ),
+                  ]),
+                ])
+              : _vm._e(),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "slug" } }, [
+              _vm._v("Slug"),
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.post.slug,
+                  expression: "post.slug",
+                },
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text", id: "slug", name: "slug", required: "" },
+              domProps: { value: _vm.post.slug },
+              on: {
+                input: function ($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.post, "slug", $event.target.value)
+                },
+              },
+            }),
+            _vm._v(" "),
+            _vm.validation.slug
+              ? _c("div", [
+                  _c("div", { staticClass: "invalid-feedback" }, [
+                    _vm._v(
+                      "\n            " +
+                        _vm._s(_vm.validation.slug[0]) +
+                        "\n          "
+                    ),
+                  ]),
+                ])
+              : _vm._e(),
+          ]),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mb-3" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "body" } },
+                [_vm._v("Body")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.body,
+                    expression: "body",
+                  },
+                ],
+                attrs: { id: "body", type: "hidden", name: "body" },
+                domProps: { value: _vm.body },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.body = $event.target.value
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("trix-editor", { attrs: { input: "body" } }),
+              _vm._v(" "),
+              _vm.validation.body
+                ? _c("div", [
+                    _c("div", { staticClass: "invalid-feedback" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(_vm.validation.body[0]) +
+                          "\n          "
+                      ),
+                    ]),
+                  ])
+                : _vm._e(),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+            [_vm._v("Create Post")]
+          ),
+        ]
+      ),
+    ]),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
+      },
+      [_c("h1", { staticClass: "h2" }, [_vm._v("Create New Post")])]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-3" }, [
+      _c("label", { staticClass: "form-label", attrs: { for: "category" } }, [
+        _vm._v("Category"),
+      ]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "form-select",
+          attrs: { name: "category_id", id: "category" },
+        },
+        [
+          _c("option", { attrs: { value: "1", selected: "" } }, [
+            _vm._v("Example"),
+          ]),
+        ]
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -49999,63 +50268,68 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "table-responsive" }, [
-    _c(
-      "a",
-      {
-        staticClass: "btn btn-primary mb-3",
-        attrs: { href: "/dashboard/posts/create" },
-      },
-      [_vm._v("Create New Post")]
-    ),
-    _vm._v(" "),
-    _c("table", { staticClass: "table table-striped table-sm" }, [
-      _vm._m(0),
-      _vm._v(" "),
+  return _c(
+    "div",
+    { staticClass: "table-responsive" },
+    [
       _c(
-        "tbody",
-        _vm._l(_vm.posts, function (post) {
-          return _c("tr", { key: post.id }, [
-            _c("td", [_vm._v(_vm._s(post.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(post.title))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(post.category.name))]),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "a",
-                {
-                  staticClass: "text-dark badge btn-info",
-                  attrs: { href: "/dashboard/posts/" + post.slug },
-                },
-                [_vm._v("Detail")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "text-dark badge btn-warning",
-                  attrs: { href: "/dashboard/posts/" + post.slug + "/edit" },
-                },
-                [_vm._v("Edit")]
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "text-dark badge btn-danger border-0",
-                  attrs: { onclick: "return confirm('Are you sure?')" },
-                },
-                [_vm._v("Delete")]
-              ),
-            ]),
-          ])
-        }),
-        0
+        "router-link",
+        {
+          staticClass: "btn btn-primary mb-3",
+          attrs: { to: { name: "create" } },
+        },
+        [_vm._v("Create New Post")]
       ),
-    ]),
-  ])
+      _vm._v(" "),
+      _c("table", { staticClass: "table table-striped table-sm" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.posts, function (post) {
+            return _c("tr", { key: post.id }, [
+              _c("td", [_vm._v(_vm._s(post.id))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(post.title))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(post.category.name))]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-dark badge btn-info",
+                    attrs: { href: "/dashboard/posts/" + post.slug },
+                  },
+                  [_vm._v("Detail")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-dark badge btn-warning",
+                    attrs: { href: "/dashboard/posts/" + post.slug + "/edit" },
+                  },
+                  [_vm._v("Edit")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "text-dark badge btn-danger border-0",
+                    attrs: { onclick: "return confirm('Are you sure?')" },
+                  },
+                  [_vm._v("Delete")]
+                ),
+              ]),
+            ])
+          }),
+          0
+        ),
+      ]),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function () {
