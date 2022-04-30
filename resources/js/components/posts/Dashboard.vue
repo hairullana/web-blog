@@ -19,7 +19,7 @@
           <td>{{ post.category.name }}</td>
           <td>
             <a v-bind:href="'/dashboard/posts/' + post.slug" class="text-dark badge btn-info">Detail</a>
-            <a v-bind:href="'/dashboard/posts/' + post.slug + '/edit'" class="text-dark badge btn-warning">Edit</a>
+            <router-link :to="'/edit/' + post.id" class="text-dark badge btn-warning">Edit</router-link>
             <a class="text-dark badge btn-danger border-0" onclick="return confirm('Are you sure?')">Delete</span></a>
           </td>
         </tr>

@@ -49,18 +49,13 @@ class DashboardPostController extends Controller
 
   public function update(Request $request, $id){
     //set validation
-    $validator = Validator::make($request->all(), [
+    $this->validate($request, [
       'category_id' => 'required',
       'title'   => 'required|min:3',
       'slug' => 'required',
       'excerpt' => 'required',
       'body' => 'required'
     ]);
-    
-    //response error validation
-    if ($validator->fails()) {
-      return response()->json($validator->errors(), 400);
-    }
 
     //find post by ID
     $post = Post::findOrFail($id);
