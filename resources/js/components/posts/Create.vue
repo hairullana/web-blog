@@ -9,20 +9,16 @@
       <form @submit.prevent="PostStore">
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" v-model="title" id="title" autofocus>
-          <div v-if="validation.title">
-            <div class="invalid-feedback">
-              {{ validation.title[0] }}
-            </div>
+          <input required type="text" class="form-control" v-model="title" id="title" autofocus>
+          <div class="invalid-feedback" v-if="this.errors.title">
+            {{ this.errors.title[0] }}
           </div>
         </div>
         <div class="mb-3">
           <label for="slug" class="form-label">Slug</label>
-          <input type="text" class="form-control" v-model="slug" id="slug">
-          <div v-if="validation.slug">
-            <div class="invalid-feedback">
-              {{ validation.slug[0] }}
-            </div>
+          <input required type="text" class="form-control" v-model="slug" id="slug">
+          <div class="invalid-feedback" v-if="this.errors.slug">
+            {{ this.errors.slug[0] }}
           </div>
         </div>
         <div class="mb-3">
@@ -33,11 +29,9 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Body</label>
-          <textarea v-model="body" type="hidden" name="body"></textarea>
-          <div v-if="validation.body">
-            <div class="invalid-feedback">
-              {{ validation.body[0] }}
-            </div>
+          <textarea required v-model="body" type="hidden" name="body"></textarea>
+          <div class="invalid-feedback" v-if="this.errors.body">
+            {{ this.errors.body[0] }}
           </div>
         </div>
         <button type="submit" class="btn btn-primary">Create Post</button>
@@ -56,12 +50,12 @@ export default {
       slug: '',
       category_id: '',  
       body: '',
-      validation: []
+      errors: {}
     }
   },
   methods: {
     PostStore(){
-      console.log(this.title)
+      // console.log(this.title)
       let uri = 'http://localhost:8000/api/post/store'
       this.axios.post(uri, {
         user_id: this.user_id,
@@ -71,9 +65,15 @@ export default {
         category_id: this.category_id,
         body: this.body
       }).then((response) => {
+        // back to dashboard
         this.$router.push({
-          name: 'posts'
+          name: 'dashboard'
         })
+      }).catch(error => {
+        console.log(error.response.data.errors)
+        this.errors = error.response.data.errors
+        console.log(this.errors)
+        console.log(this.errors.title[0])
       })
     }
   }

@@ -5327,12 +5327,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5342,14 +5336,14 @@ __webpack_require__.r(__webpack_exports__);
       slug: '',
       category_id: '',
       body: '',
-      validation: []
+      errors: {}
     };
   },
   methods: {
     PostStore: function PostStore() {
       var _this = this;
 
-      console.log(this.title);
+      // console.log(this.title)
       var uri = 'http://localhost:8000/api/post/store';
       this.axios.post(uri, {
         user_id: this.user_id,
@@ -5359,9 +5353,15 @@ __webpack_require__.r(__webpack_exports__);
         category_id: this.category_id,
         body: this.body
       }).then(function (response) {
+        // back to dashboard
         _this.$router.push({
-          name: 'posts'
+          name: 'dashboard'
         });
+      })["catch"](function (error) {
+        console.log(error.response.data.errors);
+        _this.errors = error.response.data.errors;
+        console.log(_this.errors);
+        console.log(_this.errors.title[0]);
       });
     }
   }
@@ -50082,7 +50082,7 @@ var render = function () {
                 },
               ],
               staticClass: "form-control",
-              attrs: { type: "text", id: "title", autofocus: "" },
+              attrs: { required: "", type: "text", id: "title", autofocus: "" },
               domProps: { value: _vm.title },
               on: {
                 input: function ($event) {
@@ -50094,15 +50094,11 @@ var render = function () {
               },
             }),
             _vm._v(" "),
-            _vm.validation.title
-              ? _c("div", [
-                  _c("div", { staticClass: "invalid-feedback" }, [
-                    _vm._v(
-                      "\n            " +
-                        _vm._s(_vm.validation.title[0]) +
-                        "\n          "
-                    ),
-                  ]),
+            this.errors.title
+              ? _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n          " + _vm._s(this.errors.title[0]) + "\n        "
+                  ),
                 ])
               : _vm._e(),
           ]),
@@ -50122,7 +50118,7 @@ var render = function () {
                 },
               ],
               staticClass: "form-control",
-              attrs: { type: "text", id: "slug" },
+              attrs: { required: "", type: "text", id: "slug" },
               domProps: { value: _vm.slug },
               on: {
                 input: function ($event) {
@@ -50134,15 +50130,11 @@ var render = function () {
               },
             }),
             _vm._v(" "),
-            _vm.validation.slug
-              ? _c("div", [
-                  _c("div", { staticClass: "invalid-feedback" }, [
-                    _vm._v(
-                      "\n            " +
-                        _vm._s(_vm.validation.slug[0]) +
-                        "\n          "
-                    ),
-                  ]),
+            this.errors.slug
+              ? _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n          " + _vm._s(this.errors.slug[0]) + "\n        "
+                  ),
                 ])
               : _vm._e(),
           ]),
@@ -50203,7 +50195,7 @@ var render = function () {
                   expression: "body",
                 },
               ],
-              attrs: { type: "hidden", name: "body" },
+              attrs: { required: "", type: "hidden", name: "body" },
               domProps: { value: _vm.body },
               on: {
                 input: function ($event) {
@@ -50215,15 +50207,11 @@ var render = function () {
               },
             }),
             _vm._v(" "),
-            _vm.validation.body
-              ? _c("div", [
-                  _c("div", { staticClass: "invalid-feedback" }, [
-                    _vm._v(
-                      "\n            " +
-                        _vm._s(_vm.validation.body[0]) +
-                        "\n          "
-                    ),
-                  ]),
+            this.errors.body
+              ? _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n          " + _vm._s(this.errors.body[0]) + "\n        "
+                  ),
                 ])
               : _vm._e(),
           ]),

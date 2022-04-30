@@ -12,19 +12,14 @@ class DashboardPostController extends Controller
 {
   public function store(Request $request){
     //set validation
-    $validator = Validator::make($request->all(), [
+    $this->validate($request, [
       'category_id' => 'required',
       'user_id' => 'required',
-      'title'   => 'required',
+      'title'   => 'required|min:3',
       'slug' => 'required',
       'excerpt' => 'required',
       'body' => 'required'
     ]);
-    
-    //response error validation
-    if ($validator->fails()) {
-      return response()->json($validator->errors(), 400);
-    }
 
     //save to database
     $post = Post::create([
@@ -42,7 +37,7 @@ class DashboardPostController extends Controller
         'success' => true,
         'message' => 'Post Created',
         'data'    => $post  
-      ], 201);
+      ], 200);
     } 
 
     //failed save to database
@@ -56,7 +51,7 @@ class DashboardPostController extends Controller
     //set validation
     $validator = Validator::make($request->all(), [
       'category_id' => 'required',
-      'title'   => 'required',
+      'title'   => 'required|min:3',
       'slug' => 'required',
       'excerpt' => 'required',
       'body' => 'required'
