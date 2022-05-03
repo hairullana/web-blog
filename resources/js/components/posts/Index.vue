@@ -38,9 +38,9 @@
     },
     methods: {
       onChangePage(pageOfPosts) {
-            // update page of Post
-            this.pageOfPosts = pageOfPosts;
-        }
+        // update page of Post
+        this.pageOfPosts = pageOfPosts;
+      }
     }
   }
 </script>

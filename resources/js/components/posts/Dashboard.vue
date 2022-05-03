@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(post, index) in posts" :key="post.id">
+        <tr v-for="(post, index) in pageOfPosts" :key="post.id">
           <td>{{ post.id }}</td>
           <td>{{ post.title }}</td>
           <td>{{ post.category.name }}</td>
@@ -25,6 +25,11 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- paginate -->
+    <div class="card-footer pb-3 pt-3 d-flex justify-content-center">
+      <jw-pagination :pageSize=10 :items="posts" @changePage="onChangePage"></jw-pagination>
+    </div>
   </div>
 </template>
 
@@ -32,7 +37,8 @@
   export default{
     data(){
       return {
-        posts: []
+        posts: [],
+        pageOfPosts: []
       }
     },
     created(){
@@ -51,6 +57,10 @@
         }).catch(err => {
           alert('system error')
         })
+      },
+      onChangePage(pageOfPosts) {
+        // update page of Post
+        this.pageOfPosts = pageOfPosts;
       }
     }
   }

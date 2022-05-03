@@ -5410,10 +5410,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      pageOfPosts: []
     };
   },
   created: function created() {
@@ -5436,6 +5442,10 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         alert('system error');
       });
+    },
+    onChangePage: function onChangePage(pageOfPosts) {
+      // update page of Post
+      this.pageOfPosts = pageOfPosts;
     }
   }
 });
@@ -50402,7 +50412,7 @@ var render = function () {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.posts, function (post, index) {
+          _vm._l(_vm.pageOfPosts, function (post, index) {
             return _c("tr", { key: post.id }, [
               _c("td", [_vm._v(_vm._s(post.id))]),
               _vm._v(" "),
@@ -50452,6 +50462,18 @@ var render = function () {
           0
         ),
       ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-footer pb-3 pt-3 d-flex justify-content-center" },
+        [
+          _c("jw-pagination", {
+            attrs: { pageSize: 10, items: _vm.posts },
+            on: { changePage: _vm.onChangePage },
+          }),
+        ],
+        1
+      ),
     ],
     1
   )
