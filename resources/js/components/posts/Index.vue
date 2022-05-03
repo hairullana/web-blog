@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="mb-3 text-center">Blog Post</h1>
     <div class="row">
-      <div class="col-md-4 mb-3" v-for="post in posts" :key="post.id">
+      <div class="col-md-4 mb-3" v-for="post in pageOfPosts" :key="post.id">
         <div class="card">
           <div class="position-absolute px-3 py-2 text-white"><a v-bind:href="'/posts?category=' + post.category.slug" class="text-decoration-none text-white">{{ post.category.name }}</a></div>
           <img src="https://source.unsplash.com/500x400?news" class="img-fluid mt-3" v-bind:alt="post.category.name">
@@ -14,6 +14,10 @@
           </div>
         </div>
       </div>
+      <!-- paginate view -->
+      <div class="card-footer pb-3 pt-3 d-flex justify-content-center">
+        <jw-pagination :pageSize=6 :items="posts" @changePage="onChangePage"></jw-pagination>
+      </div>
     </div>
   </div>
 </template>
@@ -22,7 +26,8 @@
   export default{
     data(){
       return {
-        posts: []
+        posts: [],
+        pageOfPosts: []
       }
     },
     created(){
@@ -30,6 +35,12 @@
       this.axios.get(uri).then(response => {
         this.posts = response.data.data
       })
+    },
+    methods: {
+      onChangePage(pageOfPosts) {
+            // update page of Post
+            this.pageOfPosts = pageOfPosts;
+        }
     }
   }
 </script>

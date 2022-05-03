@@ -11,6 +11,10 @@ import App from './App.vue'
 
 Vue.use(VueAxios, axios)
 
+// JwPagination
+import JwPagination from 'jw-vue-pagination'
+Vue.component('jw-pagination', JwPagination);
+
 import Index from './components/posts/Index.vue'
 import Dashboard from './components/posts/Dashboard.vue'
 import Create from './components/posts/Create.vue'
@@ -51,4 +55,9 @@ const router = new VueRouter({
   routes: routes
 })
 
-const app = new Vue(Vue.util.extend({ router }, App)).$mount('#app')
+const app = new Vue(
+  Vue.util.extend(
+    {router},
+    App
+  )
+).$mount('#app')
