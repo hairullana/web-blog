@@ -25,13 +25,14 @@ use App\Http\Controllers\DashboardPostController;
 Route::get('/', function() {
   return view('home', [
     "title" => "Home",
-    "active" => 'home'
+    "active" => 'home',
+    "posts" => Post::latest()->paginate(6)
   ]);
 });
 
 Route::get('/{any}', function(){
-  return view('home', [
-    "title" => "Home",
-    "active" => 'home'
+  return view('app', [
+    "title" => "app",
+    "active" => 'app'
   ]);
 })->where('any', '.*');

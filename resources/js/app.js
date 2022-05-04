@@ -29,11 +29,6 @@ Vue.filter('formatDate', function(value) {
 
 const routes = [
   {
-    name: 'posts',
-    path: '/',
-    component: Index
-  },
-  {
     name: 'dashboard',
     path: '/dashboard',
     component: Dashboard
