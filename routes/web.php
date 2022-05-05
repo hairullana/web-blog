@@ -2,7 +2,7 @@
 
 use App\Models\Post;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Index
 Route::get('/', function() {
   return view('home', [
     "title" => "Home",
@@ -24,4 +25,8 @@ Route::get('/', function() {
   ]);
 });
 
+// Posts
+Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+
+// Dashboard with SPA (VueJS)
 Route::get('/{any}', [DashboardController::class, 'index'])->where('any', '.*');

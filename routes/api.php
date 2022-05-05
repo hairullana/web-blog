@@ -4,7 +4,6 @@ use App\Http\Controllers\AdminCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardPostController;
-use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +21,8 @@ use App\Http\Controllers\PostController;
 // });
 
 // Posts API
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/post/{id}', [PostController::class, 'show']);
+Route::get('/posts', [DashboardPostController::class, 'index']);
+Route::get('/post/{id}', [DashboardPostController::class, 'show']);
 Route::post('/post/store', [DashboardPostController::class, 'store']);
 Route::post('/post/update/{id}', [DashboardPostController::class, 'update']);
 Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
