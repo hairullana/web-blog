@@ -13,7 +13,7 @@
             <h5 class="card-title">{{ $post->title }}</h5>
             <small class="text-muted">By <a href="/posts?author={{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> {{ $post->created_at }}</small>
             <p class="card-text">{{ $post->excerpt }}</p>
-            <a href="/posts/{{ $post->slug }}" class="btn btn-primary">Readmore</a>
+            <a href="/post/{{ $post->slug }}" class="btn btn-primary">Readmore</a>
           </div>
         </div>
       </div>

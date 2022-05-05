@@ -18,15 +18,15 @@ use Illuminate\Support\Facades\Route;
 
 // Index
 Route::get('/', function() {
-  return view('home', [
+  return view('index', [
     "title" => "Home",
-    "active" => 'home',
-    "posts" => Post::latest()->paginate(6)
+    "active" => 'home'
   ]);
 });
 
 // Posts
-Route::get('/posts/{post:slug}', [PostController::class, 'show']);
+Route::get('/post', [PostController::class, 'index']);
+Route::get('/post/{post:slug}', [PostController::class, 'show']);
 
 // Dashboard with SPA (VueJS)
 Route::get('/{any}', [DashboardController::class, 'index'])->where('any', '.*');
