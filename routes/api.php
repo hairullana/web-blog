@@ -29,3 +29,4 @@ Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
 
 // Categories API
 Route::get('/categories', [AdminCategoryController::class, 'index']);
+Route::get('/category/{category:id}', [AdminCategoryController::class, 'show']);

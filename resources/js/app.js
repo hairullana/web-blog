@@ -15,9 +15,10 @@ Vue.use(VueAxios, axios)
 import JwPagination from 'jw-vue-pagination'
 Vue.component('jw-pagination', JwPagination);
 
-import Dashboard from './components/posts/Dashboard.vue'
-import Create from './components/posts/Create.vue'
-import Edit from './components/posts/Edit.vue'
+import Dashboard from './components/Dashboard.vue'
+import PostCreate from './components/posts/Create.vue'
+import PostEdit from './components/posts/Edit.vue'
+import CategoryEdit from './components/category/Edit.vue'
 
 import moment from 'moment'
 Vue.filter('formatDate', function(value) {
@@ -33,14 +34,19 @@ const routes = [
     component: Dashboard
   },
   {
-    name: 'create',
-    path: '/create',
-    component: Create
+    name: 'postCreate',
+    path: '/dashboard/post/create',
+    component: PostCreate
   },
   {
-    name: 'edit',
-    path: '/edit/:id',
-    component: Edit
+    name: 'postEdit',
+    path: '/dashboard/post/edit/:id',
+    component: PostEdit
+  },
+  {
+    name: 'categoryEdit',
+    path: '/dashboard/category/edit/:id',
+    component: CategoryEdit
   }
 ]
 

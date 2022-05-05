@@ -45,16 +45,14 @@ class AdminCategoryController extends Controller
 
         return redirect('/dashboard/categories')->with('success', 'Category has been added!');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\category  $category
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Category $category)
     {
-        //
+        return response()->json([
+            'success' => true,
+            'message' => 'Category Data',
+            'data'    => $category
+        ], 200);
     }
 
     /**

@@ -21,8 +21,7 @@
             <td>{{ category.name }}</td>
             <td>{{ category.slug }}</td>
             <td>
-              <a v-bind:href="'/dashboard/posts/' + category.slug" class="text-dark badge btn-info">Detail</a>
-              <router-link :to="'/edit/' + category.id" class="text-dark badge btn-warning">Edit</router-link>
+              <router-link :to="'/dashboard/category/edit/' + category.id" class="text-dark badge btn-warning">Edit</router-link>
               <button @click.prevent="PostDelete(category.id, index)" class="text-dark badge btn-danger border-0">Delete</span></button>
             </td>
           </tr>
@@ -34,7 +33,7 @@
     <div class="table-responsive">
       <h1>Manage Posts</h1>
 
-      <router-link :to="{ name: 'create' }" class="btn btn-primary mb-3">Create New Post</router-link>
+      <router-link :to="{ name: 'postCreate' }" class="btn btn-primary mb-3">Create New Post</router-link>
 
       <table class="table table-striped table-sm">
         <thead>
@@ -51,8 +50,7 @@
             <td>{{ post.title }}</td>
             <td>{{ post.category.name }}</td>
             <td>
-              <a v-bind:href="'/dashboard/posts/' + post.slug" class="text-dark badge btn-info">Detail</a>
-              <router-link :to="'/edit/' + post.id" class="text-dark badge btn-warning">Edit</router-link>
+              <router-link :to="'/dashboard/post/edit/' + post.id" class="text-dark badge btn-warning">Edit</router-link>
               <button @click.prevent="PostDelete(post.id, index)" class="text-dark badge btn-danger border-0">Delete</span></button>
             </td>
           </tr>
