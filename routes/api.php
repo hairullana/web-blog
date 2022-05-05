@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\DashboardCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardPostController;
@@ -28,5 +28,6 @@ Route::post('/post/update/{id}', [DashboardPostController::class, 'update']);
 Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
 
 // Categories API
-Route::get('/categories', [AdminCategoryController::class, 'index']);
-Route::get('/category/{category:id}', [AdminCategoryController::class, 'show']);
+Route::get('/categories', [DashboardCategoryController::class, 'index']);
+Route::get('/category/{category:id}', [DashboardCategoryController::class, 'show']);
+Route::post('/category/update/{category:id}', [DashboardCategoryController::class, 'update']);

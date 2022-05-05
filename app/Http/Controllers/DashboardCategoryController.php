@@ -7,7 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
-class AdminCategoryController extends Controller
+class DashboardCategoryController extends Controller
 {
     public function index()
     {
@@ -18,32 +18,9 @@ class AdminCategoryController extends Controller
         ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('dashboard.categories.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'name' => ['required'],
-            'slug' => ['required', 'unique:categories']
-        ]);
-
-        Category::create($validate);
-
-        return redirect('/dashboard/categories')->with('success', 'Category has been added!');
+        
     }
     
     public function show(Category $category)
@@ -68,23 +45,30 @@ class AdminCategoryController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Category $category)
     {
+        // validate
         $validate = $request->validate([
             'name' => ['required'],
             'slug' => ['required']
         ]);
 
-        Category::where('id', $category->id)->update($validate);
-        
-        return redirect('/dashboard/categories')->with('success', 'Category has been updated!');
+        if($category) {
+            //update category
+            $category->update($request->all());
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Post Updated',
+                'data'    => $category  
+            ], 200);
+        }
+
+        //data category not found
+        return response()->json([
+            'success' => false,
+            'message' => 'Post Not Found',
+        ], 404);
     }
 
     /**
