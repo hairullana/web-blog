@@ -10,16 +10,13 @@
           <a class="nav-link {{ ($active == 'home') ? 'active' : '' }}" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($active == 'categories') ? 'active' : '' }}" href="/categories">Categories</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link {{ ($active == 'dashboard') ? 'active' : '' }}" href="/dashboard">Dashboard</a>
         </li>
       </ul>
 
       <ul class="navbar-nav ms-auto">
 
-      @auth
+      {{-- @auth
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Welcome back, {{ auth()->user()->name }}
@@ -39,7 +36,7 @@
         <li class="nav-itme">
           <a href="/login" class="nav-link {{ ($active == 'log') ? 'active' : '' }}"><i class="bi bi-box-arrow-in-right"></i> Login</a>
         </li>
-      @endauth
+      @endauth --}}
 
       </ul>
 

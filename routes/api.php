@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardPostController;
@@ -20,10 +21,12 @@ use App\Http\Controllers\PostController;
 //     return $request->user();
 // });
 
-// PostController
+// Posts API
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/post/{id}', [PostController::class, 'show']);
-// DasboardPostController
 Route::post('/post/store', [DashboardPostController::class, 'store']);
 Route::post('/post/update/{id}', [DashboardPostController::class, 'update']);
 Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
+
+// Categories API
+Route::get('/categories', [AdminCategoryController::class, 'index']);

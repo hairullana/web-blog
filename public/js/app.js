@@ -5415,19 +5415,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       posts: [],
+      categories: [],
       pageOfPosts: []
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
-    var uri = 'http://localhost:8000/api/posts';
-    this.axios.get(uri).then(function (response) {
+    var postsAPI = 'http://localhost:8000/api/posts';
+    this.axios.get(postsAPI).then(function (response) {
       _this.posts = response.data.data;
+    });
+    var categoriesAPI = 'http://localhost:8000/api/categories';
+    this.axios.get(categoriesAPI).then(function (response) {
+      _this.categories = response.data.data;
     });
   },
   methods: {
@@ -5567,12 +5606,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
 /* harmony import */ var jw_vue_pagination__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! jw-vue-pagination */ "./node_modules/jw-vue-pagination/lib/JwPagination.js");
 /* harmony import */ var jw_vue_pagination__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(jw_vue_pagination__WEBPACK_IMPORTED_MODULE_4__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/posts/Index.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-/* harmony import */ var _components_posts_Dashboard_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/posts/Dashboard.vue */ "./resources/js/components/posts/Dashboard.vue");
-/* harmony import */ var _components_posts_Create_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/posts/Create.vue */ "./resources/js/components/posts/Create.vue");
-/* harmony import */ var _components_posts_Edit_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/posts/Edit.vue */ "./resources/js/components/posts/Edit.vue");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_posts_Dashboard_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/posts/Dashboard.vue */ "./resources/js/components/posts/Dashboard.vue");
+/* harmony import */ var _components_posts_Create_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/posts/Create.vue */ "./resources/js/components/posts/Create.vue");
+/* harmony import */ var _components_posts_Edit_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/posts/Edit.vue */ "./resources/js/components/posts/Edit.vue");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
@@ -5589,24 +5627,23 @@ Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_4___d
 
 
 
-
 Vue.filter('formatDate', function (value) {
   if (value) {
-    return moment__WEBPACK_IMPORTED_MODULE_9___default()(String(value)).format('MM/DD/YYYY hh:mm');
+    return moment__WEBPACK_IMPORTED_MODULE_8___default()(String(value)).format('MM/DD/YYYY hh:mm');
   }
 });
 var routes = [{
   name: 'dashboard',
   path: '/dashboard',
-  component: _components_posts_Dashboard_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
+  component: _components_posts_Dashboard_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
   name: 'create',
   path: '/create',
-  component: _components_posts_Create_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _components_posts_Create_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
   name: 'edit',
   path: '/edit/:id',
-  component: _components_posts_Edit_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
+  component: _components_posts_Edit_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
@@ -50258,31 +50295,22 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "table-responsive" },
-    [
-      _c(
-        "router-link",
-        {
-          staticClass: "btn btn-primary mb-3",
-          attrs: { to: { name: "create" } },
-        },
-        [_vm._v("Create New Post")]
-      ),
+  return _c("div", [
+    _c("div", { staticClass: "table-responsive mb-5" }, [
+      _c("h1", [_vm._v("Manage Categories")]),
       _vm._v(" "),
       _c("table", { staticClass: "table table-striped table-sm" }, [
         _vm._m(0),
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.pageOfPosts, function (post, index) {
-            return _c("tr", { key: post.id }, [
-              _c("td", [_vm._v(_vm._s(post.id))]),
+          _vm._l(_vm.categories, function (category) {
+            return _c("tr", { key: category.id }, [
+              _c("td", [_vm._v(_vm._s(category.id))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(post.title))]),
+              _c("td", [_vm._v(_vm._s(category.name))]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(post.category.name))]),
+              _c("td", [_vm._v(_vm._s(category.slug))]),
               _vm._v(" "),
               _c(
                 "td",
@@ -50291,7 +50319,7 @@ var render = function () {
                     "a",
                     {
                       staticClass: "text-dark badge btn-info",
-                      attrs: { href: "/dashboard/posts/" + post.slug },
+                      attrs: { href: "/dashboard/posts/" + category.slug },
                     },
                     [_vm._v("Detail")]
                   ),
@@ -50300,7 +50328,7 @@ var render = function () {
                     "router-link",
                     {
                       staticClass: "text-dark badge btn-warning",
-                      attrs: { to: "/edit/" + post.id },
+                      attrs: { to: "/edit/" + category.id },
                     },
                     [_vm._v("Edit")]
                   ),
@@ -50312,7 +50340,7 @@ var render = function () {
                       on: {
                         click: function ($event) {
                           $event.preventDefault()
-                          return _vm.PostDelete(post.id, index)
+                          return _vm.PostDelete(category.id, _vm.index)
                         },
                       },
                     },
@@ -50326,23 +50354,114 @@ var render = function () {
           0
         ),
       ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "card-footer pb-3 pt-3 d-flex justify-content-center" },
-        [
-          _c("jw-pagination", {
-            attrs: { pageSize: 10, items: _vm.posts },
-            on: { changePage: _vm.onChangePage },
-          }),
-        ],
-        1
-      ),
-    ],
-    1
-  )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "table-responsive" },
+      [
+        _c("h1", [_vm._v("Manage Posts")]),
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-primary mb-3",
+            attrs: { to: { name: "create" } },
+          },
+          [_vm._v("Create New Post")]
+        ),
+        _vm._v(" "),
+        _c("table", { staticClass: "table table-striped table-sm" }, [
+          _vm._m(1),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.pageOfPosts, function (post, index) {
+              return _c("tr", { key: post.id }, [
+                _c("td", [_vm._v(_vm._s(post.id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(post.title))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(post.category.name))]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "text-dark badge btn-info",
+                        attrs: { href: "/dashboard/posts/" + post.slug },
+                      },
+                      [_vm._v("Detail")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "text-dark badge btn-warning",
+                        attrs: { to: "/edit/" + post.id },
+                      },
+                      [_vm._v("Edit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "text-dark badge btn-danger border-0",
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.PostDelete(post.id, index)
+                          },
+                        },
+                      },
+                      [_vm._v("Delete")]
+                    ),
+                  ],
+                  1
+                ),
+              ])
+            }),
+            0
+          ),
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "card-footer pb-3 pt-3 d-flex justify-content-center",
+          },
+          [
+            _c("jw-pagination", {
+              attrs: { pageSize: 10, items: _vm.posts },
+              on: { changePage: _vm.onChangePage },
+            }),
+          ],
+          1
+        ),
+      ],
+      1
+    ),
+  ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Slug")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")]),
+      ]),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

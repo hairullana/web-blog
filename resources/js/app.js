@@ -15,7 +15,6 @@ Vue.use(VueAxios, axios)
 import JwPagination from 'jw-vue-pagination'
 Vue.component('jw-pagination', JwPagination);
 
-import Index from './components/posts/Index.vue'
 import Dashboard from './components/posts/Dashboard.vue'
 import Create from './components/posts/Create.vue'
 import Edit from './components/posts/Edit.vue'

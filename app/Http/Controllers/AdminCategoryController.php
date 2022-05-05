@@ -9,18 +9,13 @@ use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class AdminCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $this->authorize('admin');
-
-        return view('dashboard.categories.index', [
-            'categories' => Category::all()
-        ]);
+        return response()->json([
+            'success' => true,
+            'message' => 'Categories Data',
+            'data'    => Category::latest()->get()
+        ], 200);
     }
 
     /**
