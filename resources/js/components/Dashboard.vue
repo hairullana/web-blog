@@ -16,13 +16,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="category in categories" :key="category.id">
+          <tr v-for="(category, index) in categories" :key="category.id">
             <td>{{ category.id }}</td>
             <td>{{ category.name }}</td>
             <td>{{ category.slug }}</td>
             <td>
               <router-link :to="'/dashboard/category/edit/' + category.id" class="text-dark badge btn-warning">Edit</router-link>
-              <button @click.prevent="PostDelete(category.id, index)" class="text-dark badge btn-danger border-0">Delete</span></button>
+              <button @click.prevent="CategoryDelete(category.id, index)" class="text-dark badge btn-danger border-0">Delete</span></button>
             </td>
           </tr>
         </tbody>
@@ -87,12 +87,23 @@
     methods: {
       PostDelete(id, index){
         let uri = `http://localhost:8000/api/post/${id}`
-        console.log(uri)
+        // console.log(uri)
         this.axios.delete(uri).then(res => {
           this.posts.splice(index, 1)
           // location.reload()
         }).catch(err => {
           alert('system error')
+        })
+      },
+      CategoryDelete(id, index){
+        this.axios.delete(`http://localhost:8000/api/category/${id}`).then(res => {
+          this.categories.splice(index, 1)
+
+          this.axios.get('http://localhost:8000/api/posts').then(response => {
+            this.posts = response.data.data
+          })
+        }).catch(err => {
+          alert('System Error!')
         })
       },
       onChangePage(pageOfPosts) {

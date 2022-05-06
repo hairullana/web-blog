@@ -5376,13 +5376,26 @@ __webpack_require__.r(__webpack_exports__);
     PostDelete: function PostDelete(id, index) {
       var _this2 = this;
 
-      var uri = "http://localhost:8000/api/post/".concat(id);
-      console.log(uri);
+      var uri = "http://localhost:8000/api/post/".concat(id); // console.log(uri)
+
       this.axios["delete"](uri).then(function (res) {
         _this2.posts.splice(index, 1); // location.reload()
 
       })["catch"](function (err) {
         alert('system error');
+      });
+    },
+    CategoryDelete: function CategoryDelete(id, index) {
+      var _this3 = this;
+
+      this.axios["delete"]("http://localhost:8000/api/category/".concat(id)).then(function (res) {
+        _this3.categories.splice(index, 1);
+
+        _this3.axios.get('http://localhost:8000/api/posts').then(function (response) {
+          _this3.posts = response.data.data;
+        });
+      })["catch"](function (err) {
+        alert('System Error!');
       });
     },
     onChangePage: function onChangePage(pageOfPosts) {
@@ -50245,7 +50258,7 @@ var render = function () {
         _vm._v(" "),
         _c(
           "tbody",
-          _vm._l(_vm.categories, function (category) {
+          _vm._l(_vm.categories, function (category, index) {
             return _c("tr", { key: category.id }, [
               _c("td", [_vm._v(_vm._s(category.id))]),
               _vm._v(" "),
@@ -50272,7 +50285,7 @@ var render = function () {
                       on: {
                         click: function ($event) {
                           $event.preventDefault()
-                          return _vm.PostDelete(category.id, _vm.index)
+                          return _vm.CategoryDelete(category.id, index)
                         },
                       },
                     },

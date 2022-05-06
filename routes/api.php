@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardCategoryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardPostController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,4 @@ Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
 Route::get('/categories', [DashboardCategoryController::class, 'index']);
 Route::get('/category/{category:id}', [DashboardCategoryController::class, 'show']);
 Route::post('/category/update/{category:id}', [DashboardCategoryController::class, 'update']);
+Route::delete('/category/{category:id}', [DashboardCategoryController::class, 'destroy']);

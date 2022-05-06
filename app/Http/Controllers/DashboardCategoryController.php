@@ -71,17 +71,15 @@ class DashboardCategoryController extends Controller
         ], 404);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Category $category)
     {
         Category::destroy($category->id);
         Post::where('category_id', $category->id)->delete();
-        return redirect('/dashboard/categories')->with('success', 'Category and it`s posts has been deleted');
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Category and it posts has been deleted'
+        ], 200);
     }
 
     public function checkSlug(Request $request){
