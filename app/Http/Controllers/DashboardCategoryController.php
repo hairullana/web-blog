@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Js;
 
 class DashboardCategoryController extends Controller
 {
@@ -20,7 +21,24 @@ class DashboardCategoryController extends Controller
 
     public function store(Request $request)
     {
-        
+        $this->validate($request, [
+            'name' => ['required', 'min:3'],
+            'slug' => ['required', 'min:3']
+        ]);
+
+        $category = Category::create($request->all());
+
+        if($category){
+            return response()->json([
+                'success' => true,
+                'message' => 'New category has been created',
+            ], 200);
+        }else {
+            return response()->json([
+                'success' => false,
+                'message' => 'New category failed to save',
+            ], 409);
+        }
     }
     
     public function show(Category $category)

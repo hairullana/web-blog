@@ -4,7 +4,7 @@
     <div class="table-responsive mb-5">
       <h1>Manage Categories</h1>
 
-      <!-- <router-link :to="{ name: 'create' }" class="btn btn-primary mb-3">Create New Post</router-link> -->
+      <router-link :to="{ name: 'categoryCreate' }" class="btn btn-primary mb-3">Create New Category</router-link>
 
       <table class="table table-striped table-sm">
         <thead>
@@ -87,10 +87,8 @@
     methods: {
       PostDelete(id, index){
         let uri = `http://localhost:8000/api/post/${id}`
-        // console.log(uri)
         this.axios.delete(uri).then(res => {
           this.posts.splice(index, 1)
-          // location.reload()
         }).catch(err => {
           alert('system error')
         })
@@ -99,6 +97,7 @@
         this.axios.delete(`http://localhost:8000/api/category/${id}`).then(res => {
           this.categories.splice(index, 1)
 
+          // reload posts data
           this.axios.get('http://localhost:8000/api/posts').then(response => {
             this.posts = response.data.data
           })

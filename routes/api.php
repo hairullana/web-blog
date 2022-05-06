@@ -32,4 +32,5 @@ Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
 Route::get('/categories', [DashboardCategoryController::class, 'index']);
 Route::get('/category/{category:id}', [DashboardCategoryController::class, 'show']);
 Route::post('/category/update/{category:id}', [DashboardCategoryController::class, 'update']);
+Route::post('/category/store', [DashboardCategoryController::class, 'store']);
 Route::delete('/category/{category:id}', [DashboardCategoryController::class, 'destroy']);
