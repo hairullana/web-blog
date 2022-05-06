@@ -8,6 +8,11 @@ Vue.use(VueRouter)
 import VueAxios from 'vue-axios'
 import axios from 'axios'
 import App from './App.vue'
+// trix editor
+import 'vue-trix'
+import VueTrix from "vue-trix"
+Vue.use(VueTrix)
+Vue.component('VueTrix', VueTrix)
 
 Vue.use(VueAxios, axios)
 
@@ -22,6 +27,7 @@ import CategoryEdit from './components/category/Edit.vue'
 import CategoryCreate from './components/category/Create.vue'
 
 import moment from 'moment'
+import Vue from 'vue'
 Vue.filter('formatDate', function(value) {
   if (value) {
     return moment(String(value)).format('MM/DD/YYYY hh:mm')

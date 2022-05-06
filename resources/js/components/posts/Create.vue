@@ -29,7 +29,8 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Body</label>
-          <textarea required v-model="body" type="hidden" name="body"></textarea>
+          <input type="hidden" id="body" v-model="body">
+          <VueTrix inputId="body" inputName="body" v-model="body" placeholder="enter your content..."/>
           <div class="invalid-feedback" v-if="this.errors.body">
             {{ this.errors.body[0] }}
           </div>
@@ -55,7 +56,6 @@ export default {
   },
   methods: {
     PostStore(){
-      // console.log(this.title)
       let uri = 'http://localhost:8000/api/post/store'
       this.axios.post(uri, {
         user_id: this.user_id,
@@ -63,17 +63,14 @@ export default {
         title: this.title,
         slug: this.slug,
         category_id: this.category_id,
-        body: this.body
+        body: this.body,
       }).then((response) => {
         // back to dashboard
         this.$router.push({
           name: 'dashboard'
         })
       }).catch(error => {
-        console.log(error.response.data.errors)
         this.errors = error.response.data.errors
-        console.log(this.errors)
-        console.log(this.errors.title[0])
       })
     }
   }

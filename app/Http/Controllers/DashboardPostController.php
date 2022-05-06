@@ -47,6 +47,7 @@ class DashboardPostController extends Controller
   }
   
   public function store(Request $request){
+    // dd($request);
     //set validation
     $this->validate($request, [
       'category_id' => 'required',
