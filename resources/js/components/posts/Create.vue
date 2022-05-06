@@ -54,6 +54,11 @@ export default {
       errors: {}
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next( async vm => {
+        document.title = 'Create Post | HL Blog'
+    })
+  },
   methods: {
     PostStore(){
       let uri = 'http://localhost:8000/api/post/store'

@@ -14,7 +14,7 @@
     {{-- My CSS --}}
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-    <title><?= $title ?> | HL Blog</title>
+    <title>{{ $title }} | HL Blog</title>
   </head>
   <body id="page-container">
     @include('partials.navbar')

@@ -29,7 +29,8 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Body</label>
-          <textarea required v-model="body" type="hidden" name="body"></textarea>
+          <input type="hidden" id="body" v-model="body">
+          <VueTrix inputId="body" inputName="body" v-model="body" placeholder="enter your content..."/>
           <div class="invalid-feedback" v-if="this.errors.body">
             {{ this.errors.body[0] }}
           </div>
@@ -51,6 +52,11 @@ export default {
       body: '',
       errors: {}
     }
+  },
+  beforeRouteEnter (to, from, next) {
+    next( async vm => {
+        document.title = 'Edit Post | HL Blog'
+    })
   },
   created(){
     let uri = `http://localhost:8000/api/post/${this.$route.params.id}`

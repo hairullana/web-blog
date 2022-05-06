@@ -37,6 +37,11 @@ export default {
       errors: {}
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next( async vm => {
+        document.title = 'Create Category | HL Blog'
+    })
+  },
   methods: {
     CategoryStore(){
       this.axios.post('http://localhost:8000/api/category/store', {

@@ -36,6 +36,11 @@ export default {
       errors: {}
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next( async vm => {
+        document.title = 'Edit Category | HL Blog'
+    })
+  },
   created(){
     let uri = `http://localhost:8000/api/category/${this.$route.params.id}`
     this.axios.get(uri)
