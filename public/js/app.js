@@ -51841,7 +51841,16 @@ var render = function () {
               return _c("tr", { key: post.id }, [
                 _c("td", [_vm._v(_vm._s(post.id))]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(post.title))]),
+                _c("td", [
+                  _c(
+                    "a",
+                    {
+                      staticStyle: { "text-decoration": "none" },
+                      attrs: { href: "/post/" + post.slug, target: "_blank" },
+                    },
+                    [_vm._v(_vm._s(post.title))]
+                  ),
+                ]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(post.category.name))]),
                 _vm._v(" "),

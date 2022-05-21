@@ -47,7 +47,7 @@
         <tbody>
           <tr v-for="(post, index) in pageOfPosts" :key="post.id">
             <td>{{ post.id }}</td>
-            <td>{{ post.title }}</td>
+            <td><a v-bind:href="'/post/' + post.slug" target="_blank" style="text-decoration:none;">{{ post.title }}</a></td>
             <td>{{ post.category.name }}</td>
             <td>
               <router-link :to="'/dashboard/post/edit/' + post.id" class="text-dark badge btn-warning">Edit</router-link>
