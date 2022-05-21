@@ -29,7 +29,7 @@ Route::post('/post/update/{id}', [DashboardPostController::class, 'update']);
 Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
 
 // Categories API
-Route::get('/categories', [DashboardCategoryController::class, 'index']);
+Route::get('/categories', [DashboardCategoryController::class, 'index'])->name('categories');
 Route::get('/category/{category:id}', [DashboardCategoryController::class, 'show']);
 Route::post('/category/update/{category:id}', [DashboardCategoryController::class, 'update']);
 Route::post('/category/store', [DashboardCategoryController::class, 'store']);

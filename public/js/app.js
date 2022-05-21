@@ -5809,6 +5809,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5817,6 +5822,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       slug: '',
       category_id: '',
       body: '',
+      categories: [],
       errors: {}
     };
   },
@@ -5852,6 +5858,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this.slug = res.data.data.slug;
       _this.category_id = res.data.data.category_id;
       _this.body = res.data.data.body;
+    });
+    this.axios.get("http://localhost:8000/api/categories").then(function (res) {
+      _this.categories = res.data.data;
     });
   },
   methods: {
@@ -52572,11 +52581,19 @@ var render = function () {
                   },
                 },
               },
-              [
-                _c("option", { attrs: { value: "1", selected: "" } }, [
-                  _vm._v("Example"),
-                ]),
-              ]
+              _vm._l(_vm.categories, function (category) {
+                return _c(
+                  "option",
+                  {
+                    domProps: {
+                      value: category.id,
+                      selected: category.id == _vm.category_id,
+                    },
+                  },
+                  [_vm._v(_vm._s(category.name) + "\n          ")]
+                )
+              }),
+              0
             ),
           ]),
           _vm._v(" "),

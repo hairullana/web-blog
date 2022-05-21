@@ -24,7 +24,12 @@
         <div class="mb-3">
           <label for="category" class="form-label">Category</label>
           <select v-model="category_id" id="category" class="form-select">
-            <option value="1" selected>Example</option>
+            <option 
+              v-for="category in categories" 
+              v-bind:value="category.id"
+              :selected="category.id == category_id"
+              >{{ category.name }}
+            </option>
           </select>
         </div>
         <div class="mb-3">
@@ -50,6 +55,7 @@ export default {
       slug: '',
       category_id: '',  
       body: '',
+      categories: [],
       errors: {}
     }
   },
@@ -60,14 +66,16 @@ export default {
   },
   created(){
     let uri = `http://localhost:8000/api/post/${this.$route.params.id}`
-    this.axios.get(uri)
-      .then((res) => {
-        this.excerpt = res.data.data.excerpt
-        this.title = res.data.data.title
-        this.slug = res.data.data.slug
-        this.category_id = res.data.data.category_id
-        this.body = res.data.data.body
-      })
+    this.axios.get(uri).then((res) => {
+      this.excerpt = res.data.data.excerpt
+      this.title = res.data.data.title
+      this.slug = res.data.data.slug
+      this.category_id = res.data.data.category_id
+      this.body = res.data.data.body
+    })
+    this.axios.get("http://localhost:8000/api/categories").then(res => {
+      this.categories = res.data.data
+    })
   },
   methods: {
     PostUpdate(){
