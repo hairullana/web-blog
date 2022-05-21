@@ -5693,6 +5693,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5759,7 +5762,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           });
         });
       })["catch"](function (error) {
-        _this2.errors = error.res.data.errors;
+        _this2.errors = error.response.data.errors;
+
+        _this2.$toasted.show(error.response.data.message, {
+          type: 'error',
+          theme: "bubble",
+          position: "top-right",
+          duration: 3000
+        });
       });
     }
   }
@@ -52386,6 +52396,16 @@ var render = function () {
               }),
               0
             ),
+            _vm._v(" "),
+            this.errors.category
+              ? _c("div", { staticClass: "invalid-feedback" }, [
+                  _vm._v(
+                    "\n          " +
+                      _vm._s(this.errors.category[0]) +
+                      "\n        "
+                  ),
+                ])
+              : _vm._e(),
           ]),
           _vm._v(" "),
           _c(

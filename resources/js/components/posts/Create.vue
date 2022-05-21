@@ -30,6 +30,9 @@
               >{{ category.name }}
             </option>
           </select>
+          <div class="invalid-feedback" v-if="this.errors.category">
+            {{ this.errors.category[0] }}
+          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Body</label>
@@ -89,7 +92,13 @@ export default {
           })
         })
       }).catch(error => {
-        this.errors = error.res.data.errors
+        this.errors = error.response.data.errors
+        this.$toasted.show(error.response.data.message, { 
+          type: 'error',
+          theme: "bubble", 
+          position: "top-right", 
+          duration : 3000
+        })
       })
     }
   }
