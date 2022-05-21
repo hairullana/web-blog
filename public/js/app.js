@@ -5374,21 +5374,18 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    var postsAPI = 'http://localhost:8000/api/posts';
-    this.axios.get(postsAPI).then(function (response) {
-      _this.posts = response.data.data;
+    this.axios.get('http://localhost:8000/api/posts').then(function (res) {
+      _this.posts = res.data.data;
     });
-    var categoriesAPI = 'http://localhost:8000/api/categories';
-    this.axios.get(categoriesAPI).then(function (response) {
-      _this.categories = response.data.data;
+    this.axios.get('http://localhost:8000/api/categories').then(function (res) {
+      _this.categories = res.data.data;
     });
   },
   methods: {
     PostDelete: function PostDelete(id, index) {
       var _this2 = this;
 
-      var uri = "http://localhost:8000/api/post/".concat(id);
-      this.axios["delete"](uri).then(function (res) {
+      this.axios["delete"]("http://localhost:8000/api/post/".concat(id)).then(function (res) {
         _this2.posts.splice(index, 1);
       })["catch"](function (err) {
         alert('system error');
@@ -5401,8 +5398,8 @@ __webpack_require__.r(__webpack_exports__);
         _this3.categories.splice(index, 1); // reload posts data
 
 
-        _this3.axios.get('http://localhost:8000/api/posts').then(function (response) {
-          _this3.posts = response.data.data;
+        _this3.axios.get('http://localhost:8000/api/posts').then(function (res) {
+          _this3.posts = res.data.data;
         });
       })["catch"](function (err) {
         alert('System Error!');
@@ -5503,13 +5500,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.axios.post('http://localhost:8000/api/category/store', {
         name: this.name,
         slug: this.slug
-      }).then(function (response) {
+      }).then(function (res) {
         // back to dashboard
         _this.$router.push({
           name: 'dashboard'
         });
       })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
+        _this.errors = error.res.data.errors;
       });
     }
   }
@@ -5598,8 +5595,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    var uri = "http://localhost:8000/api/category/".concat(this.$route.params.id);
-    this.axios.get(uri).then(function (res) {
+    this.axios.get("http://localhost:8000/api/category/".concat(this.$route.params.id)).then(function (res) {
       _this.name = res.data.data.name;
       _this.slug = res.data.data.slug;
     });
@@ -5608,8 +5604,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     CategoryUpdate: function CategoryUpdate() {
       var _this2 = this;
 
-      var uri = "http://localhost:8000/api/category/update/".concat(this.$route.params.id);
-      this.axios.post(uri, {
+      this.axios.post("http://localhost:8000/api/category/update/".concat(this.$route.params.id), {
         name: this.name,
         slug: this.slug
       }).then(function (res) {
@@ -5617,7 +5612,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           name: 'dashboard'
         });
       })["catch"](function (error) {
-        _this2.errors = error.response.data.errors;
+        _this2.errors = error.res.data.errors;
       });
     }
   }
@@ -5725,21 +5720,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     PostStore: function PostStore() {
       var _this = this;
 
-      var uri = 'http://localhost:8000/api/post/store';
-      this.axios.post(uri, {
+      this.axios.post('http://localhost:8000/api/post/store', {
         user_id: this.user_id,
         excerpt: this.title,
         title: this.title,
         slug: this.slug,
         category_id: this.category_id,
         body: this.body
-      }).then(function (response) {
+      }).then(function (res) {
         // back to dashboard
         _this.$router.push({
           name: 'dashboard'
         });
       })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
+        _this.errors = error.res.data.errors;
       });
     }
   }
@@ -5851,8 +5845,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    var uri = "http://localhost:8000/api/post/".concat(this.$route.params.id);
-    this.axios.get(uri).then(function (res) {
+    this.axios.get("http://localhost:8000/api/post/".concat(this.$route.params.id)).then(function (res) {
       _this.excerpt = res.data.data.excerpt;
       _this.title = res.data.data.title;
       _this.slug = res.data.data.slug;
@@ -5867,8 +5860,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     PostUpdate: function PostUpdate() {
       var _this2 = this;
 
-      var uri = "http://localhost:8000/api/post/update/".concat(this.$route.params.id);
-      this.axios.post(uri, {
+      this.axios.post("http://localhost:8000/api/post/update/".concat(this.$route.params.id), {
         excerpt: this.title,
         title: this.title,
         slug: this.slug,

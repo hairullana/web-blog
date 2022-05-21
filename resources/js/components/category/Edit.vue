@@ -42,23 +42,20 @@ export default {
     })
   },
   created(){
-    let uri = `http://localhost:8000/api/category/${this.$route.params.id}`
-    this.axios.get(uri)
-      .then((res) => {
-        this.name = res.data.data.name
-        this.slug = res.data.data.slug
-      })
+    this.axios.get(`http://localhost:8000/api/category/${this.$route.params.id}`).then(res => {
+      this.name = res.data.data.name
+      this.slug = res.data.data.slug
+    })
   },
   methods: {
     CategoryUpdate(){
-      let uri = `http://localhost:8000/api/category/update/${this.$route.params.id}`
-      this.axios.post(uri, {
+      this.axios.post(`http://localhost:8000/api/category/update/${this.$route.params.id}`, {
         name: this.name,
         slug: this.slug
-      }).then((res) => {
+      }).then(res => {
         this.$router.push({name: 'dashboard'})
       }).catch(error => {
-        this.errors = error.response.data.errors
+        this.errors = error.res.data.errors
       })
     }
   }

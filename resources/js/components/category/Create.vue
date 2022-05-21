@@ -47,13 +47,13 @@ export default {
       this.axios.post('http://localhost:8000/api/category/store', {
         name: this.name,
         slug: this.slug
-      }).then((response) => {
+      }).then(res => {
         // back to dashboard
         this.$router.push({
           name: 'dashboard'
         })
       }).catch(error => {
-        this.errors = error.response.data.errors
+        this.errors = error.res.data.errors
       })
     }
   }

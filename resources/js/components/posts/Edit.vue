@@ -65,8 +65,7 @@ export default {
     })
   },
   created(){
-    let uri = `http://localhost:8000/api/post/${this.$route.params.id}`
-    this.axios.get(uri).then((res) => {
+    this.axios.get(`http://localhost:8000/api/post/${this.$route.params.id}`).then(res => {
       this.excerpt = res.data.data.excerpt
       this.title = res.data.data.title
       this.slug = res.data.data.slug
@@ -79,8 +78,7 @@ export default {
   },
   methods: {
     PostUpdate(){
-      let uri = `http://localhost:8000/api/post/update/${this.$route.params.id}`
-      this.axios.post(uri, {
+      this.axios.post(`http://localhost:8000/api/post/update/${this.$route.params.id}`, {
         excerpt: this.title,
         title: this.title,
         slug: this.slug,

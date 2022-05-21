@@ -61,21 +61,20 @@ export default {
   },
   methods: {
     PostStore(){
-      let uri = 'http://localhost:8000/api/post/store'
-      this.axios.post(uri, {
+      this.axios.post('http://localhost:8000/api/post/store', {
         user_id: this.user_id,
         excerpt: this.title,
         title: this.title,
         slug: this.slug,
         category_id: this.category_id,
         body: this.body,
-      }).then((response) => {
+      }).then(res => {
         // back to dashboard
         this.$router.push({
           name: 'dashboard'
         })
       }).catch(error => {
-        this.errors = error.response.data.errors
+        this.errors = error.res.data.errors
       })
     }
   }

@@ -75,19 +75,16 @@
       }
     },
     mounted(){
-      let postsAPI = 'http://localhost:8000/api/posts'
-      this.axios.get(postsAPI).then(response => {
-        this.posts = response.data.data
+      this.axios.get('http://localhost:8000/api/posts').then(res => {
+        this.posts = res.data.data
       })
-      let categoriesAPI = 'http://localhost:8000/api/categories'
-      this.axios.get(categoriesAPI).then(response => {
-        this.categories = response.data.data
+      this.axios.get('http://localhost:8000/api/categories').then(res => {
+        this.categories = res.data.data
       })
     },
     methods: {
       PostDelete(id, index){
-        let uri = `http://localhost:8000/api/post/${id}`
-        this.axios.delete(uri).then(res => {
+        this.axios.delete(`http://localhost:8000/api/post/${id}`).then(res => {
           this.posts.splice(index, 1)
         }).catch(err => {
           alert('system error')
@@ -98,8 +95,8 @@
           this.categories.splice(index, 1)
 
           // reload posts data
-          this.axios.get('http://localhost:8000/api/posts').then(response => {
-            this.posts = response.data.data
+          this.axios.get('http://localhost:8000/api/posts').then(res => {
+            this.posts = res.data.data
           })
         }).catch(err => {
           alert('System Error!')
