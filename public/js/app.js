@@ -5682,6 +5682,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5691,6 +5695,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       slug: '',
       category_id: '',
       body: '',
+      categories: '',
       errors: {}
     };
   },
@@ -5716,9 +5721,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       };
     }());
   },
+  created: function created() {
+    var _this = this;
+
+    this.axios.get("http://localhost:8000/api/categories").then(function (res) {
+      _this.categories = res.data.data;
+    });
+  },
   methods: {
     PostStore: function PostStore() {
-      var _this = this;
+      var _this2 = this;
 
       this.axios.post('http://localhost:8000/api/post/store', {
         user_id: this.user_id,
@@ -5729,11 +5741,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         body: this.body
       }).then(function (res) {
         // back to dashboard
-        _this.$router.push({
+        _this2.$router.push({
           name: 'dashboard'
         });
       })["catch"](function (error) {
-        _this.errors = error.res.data.errors;
+        _this2.errors = error.res.data.errors;
       });
     }
   }
@@ -52347,11 +52359,12 @@ var render = function () {
                   },
                 },
               },
-              [
-                _c("option", { attrs: { value: "1", selected: "" } }, [
-                  _vm._v("Example"),
-                ]),
-              ]
+              _vm._l(_vm.categories, function (category) {
+                return _c("option", { domProps: { value: category.id } }, [
+                  _vm._v(_vm._s(category.name) + "\n          "),
+                ])
+              }),
+              0
             ),
           ]),
           _vm._v(" "),

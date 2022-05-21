@@ -24,7 +24,11 @@
         <div class="mb-3">
           <label for="category" class="form-label">Category</label>
           <select v-model="category_id" id="category" class="form-select">
-            <option value="1" selected>Example</option>
+            <option 
+              v-for="category in categories" 
+              v-bind:value="category.id"
+              >{{ category.name }}
+            </option>
           </select>
         </div>
         <div class="mb-3">
@@ -51,12 +55,18 @@ export default {
       slug: '',
       category_id: '',  
       body: '',
+      categories: '',
       errors: {}
     }
   },
   beforeRouteEnter (to, from, next) {
     next( async vm => {
         document.title = 'Create Post | HL Blog'
+    })
+  },
+  created(){
+    this.axios.get("http://localhost:8000/api/categories").then(res => {
+      this.categories = res.data.data
     })
   },
   methods: {
