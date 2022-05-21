@@ -22,7 +22,7 @@
             <td>{{ category.slug }}</td>
             <td>
               <router-link :to="'/dashboard/category/edit/' + category.id" class="text-dark badge btn-warning">Edit</router-link>
-              <button @click.prevent="CategoryDelete(category.id, index)" class="text-dark badge btn-danger border-0">Delete</span></button>
+              <button @click.prevent="CategoryDelete(category.id, index)" class="text-dark badge btn-danger border-0">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -51,7 +51,7 @@
             <td>{{ post.category.name }}</td>
             <td>
               <router-link :to="'/dashboard/post/edit/' + post.id" class="text-dark badge btn-warning">Edit</router-link>
-              <button @click.prevent="PostDelete(post.id, index)" class="text-dark badge btn-danger border-0">Delete</span></button>
+              <button @click.prevent="PostDelete(post.id, index)" class="text-dark badge btn-danger border-0">Delete</button>
             </td>
           </tr>
         </tbody>
