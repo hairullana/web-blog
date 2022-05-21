@@ -91,15 +91,31 @@
         })
       },
       CategoryDelete(id, index){
-        this.axios.delete(`http://localhost:8000/api/category/${id}`).then(res => {
-          this.categories.splice(index, 1)
+        this.$swal({
+          title: 'Are you sure?',
+          text: "to delete this category and it posts",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.axios.delete(`http://localhost:8000/api/category/${id}`).then(res => {
+              this.categories.splice(index, 1)
 
-          // reload posts data
-          this.axios.get('http://localhost:8000/api/posts').then(res => {
-            this.posts = res.data.data
-          })
-        }).catch(err => {
-          alert('System Error!')
+              // reload posts data
+              this.axios.get('http://localhost:8000/api/posts').then(res => {
+                this.posts = res.data.data
+              })
+              this.$swal(
+                'Deleted!',
+                'Your category has been deleted.',
+                'success'
+              )
+            }).catch(err => {
+              alert('System Error!')
+            })
+          }
         })
       },
       onChangePage(pageOfPosts) {

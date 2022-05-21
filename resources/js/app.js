@@ -8,23 +8,26 @@ Vue.use(VueRouter)
 import VueAxios from 'vue-axios'
 import axios from 'axios'
 import App from './App.vue'
+
 // trix editor
 import 'vue-trix'
 import VueTrix from "vue-trix"
 Vue.use(VueTrix)
 Vue.component('VueTrix', VueTrix)
-
+// vue axios
 Vue.use(VueAxios, axios)
-
-// register the plugin on vue
-import Toasted from 'vue-toasted';
 // toastr alert
+import Toasted from 'vue-toasted';
 Vue.use(Toasted)
-
 // JwPagination
 import JwPagination from 'jw-vue-pagination'
 Vue.component('jw-pagination', JwPagination);
+// swal2
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+Vue.use(VueSweetalert2);
 
+// component
 import Dashboard from './components/Dashboard.vue'
 import PostCreate from './components/posts/Create.vue'
 import PostEdit from './components/posts/Edit.vue'
