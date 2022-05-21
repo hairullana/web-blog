@@ -5626,7 +5626,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           name: 'dashboard'
         });
       })["catch"](function (error) {
-        _this2.errors = error.res.data.errors;
+        _this2.errors = error.response.data.errors;
+
+        _this2.$toasted.show(error.response.data.message, {
+          type: 'error',
+          theme: "bubble",
+          position: "top-right",
+          duration: 3000
+        });
       });
     }
   }
@@ -5915,6 +5922,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
       })["catch"](function (error) {
         _this2.errors = error.response.data.errors;
+
+        _this2.$toasted.show(error.response.data.message, {
+          type: 'error',
+          theme: "bubble",
+          position: "top-right",
+          duration: 3000
+        });
       });
     }
   }

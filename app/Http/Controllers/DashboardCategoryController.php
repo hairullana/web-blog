@@ -67,8 +67,8 @@ class DashboardCategoryController extends Controller
     {
         // validate
         $validate = $request->validate([
-            'name' => ['required'],
-            'slug' => ['required']
+            'name' => ['required', 'min:3'],
+            'slug' => ['required', 'min:3']
         ]);
 
         if($category) {

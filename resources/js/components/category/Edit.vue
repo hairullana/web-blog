@@ -55,7 +55,13 @@ export default {
       }).then(res => {
         this.$router.push({name: 'dashboard'})
       }).catch(error => {
-        this.errors = error.res.data.errors
+        this.errors = error.response.data.errors
+        this.$toasted.show(error.response.data.message, { 
+          type: 'error',
+          theme: "bubble", 
+          position: "top-right", 
+          duration : 3000
+        })
       })
     }
   }
