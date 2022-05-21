@@ -51997,7 +51997,30 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c(
+      "div",
+      {
+        staticClass:
+          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
+      },
+      [
+        _c(
+          "h3",
+          [
+            _c(
+              "router-link",
+              {
+                staticStyle: { "text-decoration": "none" },
+                attrs: { to: { name: "dashboard" } },
+              },
+              [_vm._v("Dashboard")]
+            ),
+            _vm._v(" / Create New Category"),
+          ],
+          1
+        ),
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-8 mb-3" }, [
       _c(
@@ -52093,21 +52116,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
-      },
-      [_c("h1", { staticClass: "h2" }, [_vm._v("Create New Category")])]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52131,7 +52140,30 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c(
+      "div",
+      {
+        staticClass:
+          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
+      },
+      [
+        _c(
+          "h3",
+          [
+            _c(
+              "router-link",
+              {
+                staticStyle: { "text-decoration": "none" },
+                attrs: { to: { name: "dashboard" } },
+              },
+              [_vm._v("Dashboard")]
+            ),
+            _vm._v(" / Edit Category"),
+          ],
+          1
+        ),
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-8 mb-3" }, [
       _c(
@@ -52227,21 +52259,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
-      },
-      [_c("h1", { staticClass: "h2" }, [_vm._v("Edit Category")])]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -52520,7 +52538,30 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c(
+      "div",
+      {
+        staticClass:
+          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
+      },
+      [
+        _c(
+          "h3",
+          [
+            _c(
+              "router-link",
+              {
+                staticStyle: { "text-decoration": "none" },
+                attrs: { to: { name: "dashboard" } },
+              },
+              [_vm._v("Dashboard")]
+            ),
+            _vm._v(" / Create New Post"),
+          ],
+          1
+        ),
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "col-lg-8 mb-3" }, [
       _c(
@@ -52725,21 +52766,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
-      },
-      [_c("h1", { staticClass: "h2" }, [_vm._v("Create New Post")])]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
