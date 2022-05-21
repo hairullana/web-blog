@@ -16,6 +16,11 @@ Vue.component('VueTrix', VueTrix)
 
 Vue.use(VueAxios, axios)
 
+// register the plugin on vue
+import Toasted from 'vue-toasted';
+// toastr alert
+Vue.use(Toasted)
+
 // JwPagination
 import JwPagination from 'jw-vue-pagination'
 Vue.component('jw-pagination', JwPagination);

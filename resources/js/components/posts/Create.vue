@@ -80,8 +80,13 @@ export default {
         body: this.body,
       }).then(res => {
         // back to dashboard
-        this.$router.push({
-          name: 'dashboard'
+        this.$router.push({name: 'dashboard'}, () => {
+          this.$toasted.show("Post has been posted!", { 
+            type: 'success',
+            theme: "bubble", 
+            position: "top-right", 
+            duration : 3000
+          })
         })
       }).catch(error => {
         this.errors = error.res.data.errors
