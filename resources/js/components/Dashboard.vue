@@ -84,10 +84,31 @@
     },
     methods: {
       PostDelete(id, index){
-        this.axios.delete(`http://localhost:8000/api/post/${id}`).then(res => {
-          this.posts.splice(index, 1)
-        }).catch(err => {
-          alert('system error')
+        this.$swal({
+          title: 'Are you sure?',
+          text: "to delete this post",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.axios.delete(`http://localhost:8000/api/post/${id}`).then(res => {
+              this.posts.splice(index, 1)
+              this.$swal(
+                'Deleted!',
+                'Your post has been deleted.',
+                'success'
+              )
+            }).catch(err => {
+              this.$toasted.show('System error', { 
+                type: 'error',
+                theme: "bubble", 
+                position: "top-right", 
+                duration : 3000
+              })
+            })
+          }
         })
       },
       CategoryDelete(id, index){
@@ -113,7 +134,12 @@
                 'success'
               )
             }).catch(err => {
-              alert('System Error!')
+              this.$toasted.show('System error', { 
+                type: 'error',
+                theme: "bubble", 
+                position: "top-right", 
+                duration : 3000
+              })
             })
           }
         })

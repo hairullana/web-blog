@@ -5385,10 +5385,28 @@ __webpack_require__.r(__webpack_exports__);
     PostDelete: function PostDelete(id, index) {
       var _this2 = this;
 
-      this.axios["delete"]("http://localhost:8000/api/post/".concat(id)).then(function (res) {
-        _this2.posts.splice(index, 1);
-      })["catch"](function (err) {
-        alert('system error');
+      this.$swal({
+        title: 'Are you sure?',
+        text: "to delete this post",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this2.axios["delete"]("http://localhost:8000/api/post/".concat(id)).then(function (res) {
+            _this2.posts.splice(index, 1);
+
+            _this2.$swal('Deleted!', 'Your post has been deleted.', 'success');
+          })["catch"](function (err) {
+            _this2.$toasted.show('System error', {
+              type: 'error',
+              theme: "bubble",
+              position: "top-right",
+              duration: 3000
+            });
+          });
+        }
       });
     },
     CategoryDelete: function CategoryDelete(id, index) {
@@ -5413,7 +5431,12 @@ __webpack_require__.r(__webpack_exports__);
 
             _this3.$swal('Deleted!', 'Your category has been deleted.', 'success');
           })["catch"](function (err) {
-            alert('System Error!');
+            _this3.$toasted.show('System error', {
+              type: 'error',
+              theme: "bubble",
+              position: "top-right",
+              duration: 3000
+            });
           });
         }
       });
