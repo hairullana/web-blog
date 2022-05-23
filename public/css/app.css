@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -2898,7 +2899,7 @@ textarea.form-control-lg {
 }
 
 .invalid-feedback {
-  display: block !important;
+  display: none;
   width: 100%;
   margin-top: 0.25rem;
   font-size: 0.875em;
@@ -2923,7 +2924,7 @@ textarea.form-control-lg {
 .was-validated :invalid ~ .invalid-tooltip,
 .is-invalid ~ .invalid-feedback,
 .is-invalid ~ .invalid-tooltip {
-  display: block !important;
+  display: block;
 }
 
 .was-validated .form-control:invalid, .form-control.is-invalid {
