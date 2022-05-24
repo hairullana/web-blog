@@ -5363,6 +5363,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -51902,161 +51937,74 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "table-responsive mb-5" },
-      [
-        _c("h1", [_vm._v("Manage Categories")]),
-        _vm._v(" "),
-        _c(
-          "router-link",
-          {
-            staticClass: "btn btn-primary mb-3",
-            attrs: { to: { name: "categoryCreate" } },
-          },
-          [_vm._v("Create New Category")]
-        ),
-        _vm._v(" "),
-        _c("table", { staticClass: "table table-striped table-sm" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.categories, function (category, index) {
-              return _c("tr", { key: category.id }, [
-                _c("td", [_vm._v(_vm._s(category.id))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(category.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(category.slug))]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "text-dark badge btn-warning",
-                        attrs: {
-                          to: "/dashboard/category/edit/" + category.id,
-                        },
-                      },
-                      [_vm._v("Edit")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "text-dark badge btn-danger border-0",
-                        on: {
-                          click: function ($event) {
-                            $event.preventDefault()
-                            return _vm.CategoryDelete(category.id, index)
-                          },
-                        },
-                      },
-                      [_vm._v("Delete")]
-                    ),
-                  ],
-                  1
-                ),
-              ])
-            }),
-            0
-          ),
-        ]),
-      ],
-      1
-    ),
+  return _c("div", { staticClass: "container-fluid" }, [
+    _vm._m(0),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "table-responsive" },
-      [
-        _c("h1", [_vm._v("Manage Posts")]),
-        _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-xl-3 col-md-6 mb-4" }, [
         _c(
-          "router-link",
-          {
-            staticClass: "btn btn-primary mb-3",
-            attrs: { to: { name: "postCreate" } },
-          },
-          [_vm._v("Create New Post")]
-        ),
-        _vm._v(" "),
-        _c("table", { staticClass: "table table-striped table-sm" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            _vm._l(_vm.pageOfPosts, function (post, index) {
-              return _c("tr", { key: post.id }, [
-                _c("td", [_vm._v(_vm._s(post.id))]),
-                _vm._v(" "),
-                _c("td", [
+          "div",
+          { staticClass: "card border-left-primary shadow h-100 py-2" },
+          [
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row no-gutters align-items-center" }, [
+                _c("div", { staticClass: "col mr-2" }, [
                   _c(
-                    "a",
+                    "div",
                     {
-                      staticStyle: { "text-decoration": "none" },
-                      attrs: { href: "/post/" + post.slug, target: "_blank" },
+                      staticClass:
+                        "text-xs font-weight-bold text-primary text-uppercase mb-1",
                     },
-                    [_vm._v(_vm._s(post.title))]
+                    [_vm._v("\n                                Total Post")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "h5 mb-0 font-weight-bold text-gray-800" },
+                    [_vm._v(_vm._s(_vm.posts.length))]
                   ),
                 ]),
                 _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(post.category.name))]),
-                _vm._v(" "),
-                _c(
-                  "td",
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "text-dark badge btn-warning",
-                        attrs: { to: "/dashboard/post/edit/" + post.id },
-                      },
-                      [_vm._v("Edit")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "text-dark badge btn-danger border-0",
-                        on: {
-                          click: function ($event) {
-                            $event.preventDefault()
-                            return _vm.PostDelete(post.id, index)
-                          },
-                        },
-                      },
-                      [_vm._v("Delete")]
-                    ),
-                  ],
-                  1
-                ),
-              ])
-            }),
-            0
-          ),
-        ]),
-        _vm._v(" "),
+                _vm._m(1),
+              ]),
+            ]),
+          ]
+        ),
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-xl-3 col-md-6 mb-4" }, [
         _c(
           "div",
-          {
-            staticClass: "card-footer pb-3 pt-3 d-flex justify-content-center",
-          },
+          { staticClass: "card border-left-success shadow h-100 py-2" },
           [
-            _c("jw-pagination", {
-              attrs: { pageSize: 10, items: _vm.posts },
-              on: { changePage: _vm.onChangePage },
-            }),
-          ],
-          1
+            _c("div", { staticClass: "card-body" }, [
+              _c("div", { staticClass: "row no-gutters align-items-center" }, [
+                _c("div", { staticClass: "col mr-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "text-xs font-weight-bold text-success text-uppercase mb-1",
+                    },
+                    [_vm._v("\n                                Total Category")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "h5 mb-0 font-weight-bold text-gray-800" },
+                    [_vm._v(_vm._s(_vm.categories.length))]
+                  ),
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+              ]),
+            ]),
+          ]
         ),
-      ],
-      1
-    ),
+      ]),
+    ]),
+    _vm._v(" "),
+    _vm._m(3),
   ])
 }
 var staticRenderFns = [
@@ -52064,31 +52012,153 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+    return _c(
+      "div",
+      {
+        staticClass:
+          "d-sm-flex align-items-center justify-content-between mb-4",
+      },
+      [
+        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
+          _vm._v("Dashboard"),
+        ]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Slug")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")]),
-      ]),
+        _c(
+          "a",
+          {
+            staticClass:
+              "d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm",
+            attrs: { href: "#" },
+          },
+          [
+            _c("i", { staticClass: "fas fa-download fa-sm text-white-50" }),
+            _vm._v(" Generate Report"),
+          ]
+        ),
+      ]
+    )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("i", { staticClass: "fas fa-calendar fa-2x text-gray-300" }),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Category")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Action")]),
+    return _c("div", { staticClass: "col-auto" }, [
+      _c("i", { staticClass: "fas fa-dollar-sign fa-2x text-gray-300" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 mb-4" }, [
+        _c("div", { staticClass: "card shadow mb-4" }, [
+          _c("div", { staticClass: "card-header py-3" }, [
+            _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
+              _vm._v("Projects"),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", { staticClass: "small font-weight-bold" }, [
+              _vm._v("Server Migration "),
+              _c("span", { staticClass: "float-right" }, [_vm._v("20%")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "progress mb-4" }, [
+              _c("div", {
+                staticClass: "progress-bar bg-danger",
+                staticStyle: { width: "20%" },
+                attrs: {
+                  role: "progressbar",
+                  "aria-valuenow": "20",
+                  "aria-valuemin": "0",
+                  "aria-valuemax": "100",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("h4", { staticClass: "small font-weight-bold" }, [
+              _vm._v("Sales Tracking "),
+              _c("span", { staticClass: "float-right" }, [_vm._v("40%")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "progress mb-4" }, [
+              _c("div", {
+                staticClass: "progress-bar bg-warning",
+                staticStyle: { width: "40%" },
+                attrs: {
+                  role: "progressbar",
+                  "aria-valuenow": "40",
+                  "aria-valuemin": "0",
+                  "aria-valuemax": "100",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("h4", { staticClass: "small font-weight-bold" }, [
+              _vm._v("Customer Database "),
+              _c("span", { staticClass: "float-right" }, [_vm._v("60%")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "progress mb-4" }, [
+              _c("div", {
+                staticClass: "progress-bar",
+                staticStyle: { width: "60%" },
+                attrs: {
+                  role: "progressbar",
+                  "aria-valuenow": "60",
+                  "aria-valuemin": "0",
+                  "aria-valuemax": "100",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("h4", { staticClass: "small font-weight-bold" }, [
+              _vm._v("Payout Details "),
+              _c("span", { staticClass: "float-right" }, [_vm._v("80%")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "progress mb-4" }, [
+              _c("div", {
+                staticClass: "progress-bar bg-info",
+                staticStyle: { width: "80%" },
+                attrs: {
+                  role: "progressbar",
+                  "aria-valuenow": "80",
+                  "aria-valuemin": "0",
+                  "aria-valuemax": "100",
+                },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("h4", { staticClass: "small font-weight-bold" }, [
+              _vm._v("Account Setup "),
+              _c("span", { staticClass: "float-right" }, [_vm._v("Complete!")]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "progress" }, [
+              _c("div", {
+                staticClass: "progress-bar bg-success",
+                staticStyle: { width: "100%" },
+                attrs: {
+                  role: "progressbar",
+                  "aria-valuenow": "100",
+                  "aria-valuemin": "0",
+                  "aria-valuemax": "100",
+                },
+              }),
+            ]),
+          ]),
+        ]),
       ]),
     ])
   },

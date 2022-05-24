@@ -1,68 +1,103 @@
 <template>
-  <div>
-    <!-- Manage Categories -->
-    <div class="table-responsive mb-5">
-      <h1>Manage Categories</h1>
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
 
-      <router-link :to="{ name: 'categoryCreate' }" class="btn btn-primary mb-3">Create New Category</router-link>
-
-      <table class="table table-striped table-sm">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Slug</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(category, index) in categories" :key="category.id">
-            <td>{{ category.id }}</td>
-            <td>{{ category.name }}</td>
-            <td>{{ category.slug }}</td>
-            <td>
-              <router-link :to="'/dashboard/category/edit/' + category.id" class="text-dark badge btn-warning">Edit</router-link>
-              <button @click.prevent="CategoryDelete(category.id, index)" class="text-dark badge btn-danger border-0">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Manage Post -->
-    <div class="table-responsive">
-      <h1>Manage Posts</h1>
-
-      <router-link :to="{ name: 'postCreate' }" class="btn btn-primary mb-3">Create New Post</router-link>
-
-      <table class="table table-striped table-sm">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Category</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(post, index) in pageOfPosts" :key="post.id">
-            <td>{{ post.id }}</td>
-            <td><a v-bind:href="'/post/' + post.slug" target="_blank" style="text-decoration:none;">{{ post.title }}</a></td>
-            <td>{{ post.category.name }}</td>
-            <td>
-              <router-link :to="'/dashboard/post/edit/' + post.id" class="text-dark badge btn-warning">Edit</router-link>
-              <button @click.prevent="PostDelete(post.id, index)" class="text-dark badge btn-danger border-0">Delete</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- paginate -->
-      <div class="card-footer pb-3 pt-3 d-flex justify-content-center">
-        <jw-pagination :pageSize=10 :items="posts" @changePage="onChangePage"></jw-pagination>
+      <!-- Page Heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                  class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
       </div>
-    </div>
+
+      <!-- Content Row -->
+      <div class="row">
+
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                  Total Post</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ posts.length }}</div>
+                          </div>
+                          <div class="col-auto">
+                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                          <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                  Total Category</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">{{ categories.length }}</div>
+                          </div>
+                          <div class="col-auto">
+                              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Content Row -->
+      <div class="row">
+          <!-- Content Column -->
+          <div class="col-12 mb-4">
+
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                  </div>
+                  <div class="card-body">
+                      <h4 class="small font-weight-bold">Server Migration <span
+                              class="float-right">20%</span></h4>
+                      <div class="progress mb-4">
+                          <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
+                              aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <h4 class="small font-weight-bold">Sales Tracking <span
+                              class="float-right">40%</span></h4>
+                      <div class="progress mb-4">
+                          <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
+                              aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <h4 class="small font-weight-bold">Customer Database <span
+                              class="float-right">60%</span></h4>
+                      <div class="progress mb-4">
+                          <div class="progress-bar" role="progressbar" style="width: 60%"
+                              aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <h4 class="small font-weight-bold">Payout Details <span
+                              class="float-right">80%</span></h4>
+                      <div class="progress mb-4">
+                          <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
+                              aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <h4 class="small font-weight-bold">Account Setup <span
+                              class="float-right">Complete!</span></h4>
+                      <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                              aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+
   </div>
+  <!-- /.container-fluid -->
 </template>
 
 <script>
