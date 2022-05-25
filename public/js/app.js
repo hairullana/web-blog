@@ -52417,117 +52417,13 @@ var staticRenderFns = [
           "navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow",
       },
       [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-link d-md-none rounded-circle mr-3",
-            attrs: { id: "sidebarToggleTop" },
-          },
-          [_c("i", { staticClass: "fa fa-bars" })]
-        ),
-        _vm._v(" "),
-        _c(
-          "form",
-          {
-            staticClass:
-              "d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search",
-          },
-          [
-            _c("div", { staticClass: "input-group" }, [
-              _c("input", {
-                staticClass: "form-control bg-light border-0 small",
-                attrs: {
-                  type: "text",
-                  placeholder: "Search for...",
-                  "aria-label": "Search",
-                  "aria-describedby": "basic-addon2",
-                },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group-append" }, [
-                _c(
-                  "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "button" } },
-                  [_c("i", { staticClass: "fas fa-search fa-sm" })]
-                ),
-              ]),
-            ]),
-          ]
-        ),
-        _vm._v(" "),
         _c("ul", { staticClass: "navbar-nav ml-auto" }, [
-          _c("li", { staticClass: "nav-item dropdown no-arrow d-sm-none" }, [
-            _c(
-              "a",
-              {
-                staticClass: "nav-link dropdown-toggle",
-                attrs: {
-                  href: "#",
-                  id: "searchDropdown",
-                  role: "button",
-                  "data-toggle": "dropdown",
-                  "aria-haspopup": "true",
-                  "aria-expanded": "false",
-                },
-              },
-              [_c("i", { staticClass: "fas fa-search fa-fw" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in",
-                attrs: { "aria-labelledby": "searchDropdown" },
-              },
-              [
-                _c(
-                  "form",
-                  { staticClass: "form-inline mr-auto w-100 navbar-search" },
-                  [
-                    _c("div", { staticClass: "input-group" }, [
-                      _c("input", {
-                        staticClass: "form-control bg-light border-0 small",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Search for...",
-                          "aria-label": "Search",
-                          "aria-describedby": "basic-addon2",
-                        },
-                      }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "input-group-append" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { type: "button" },
-                          },
-                          [_c("i", { staticClass: "fas fa-search fa-sm" })]
-                        ),
-                      ]),
-                    ]),
-                  ]
-                ),
-              ]
-            ),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "topbar-divider d-none d-sm-block" }),
-          _vm._v(" "),
           _c("li", { staticClass: "nav-item dropdown no-arrow" }, [
             _c(
               "a",
               {
                 staticClass: "nav-link dropdown-toggle",
-                attrs: {
-                  href: "#",
-                  id: "userDropdown",
-                  role: "button",
-                  "data-toggle": "dropdown",
-                  "aria-haspopup": "true",
-                  "aria-expanded": "false",
-                },
+                attrs: { id: "userDropdown", role: "button" },
               },
               [
                 _c(
@@ -52542,78 +52438,6 @@ var staticRenderFns = [
                   staticClass: "img-profile rounded-circle",
                   attrs: { src: "http://ngeewap.xtgem.com/files/hl.jpg" },
                 }),
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "dropdown-menu dropdown-menu-right shadow animated--grow-in",
-                attrs: { "aria-labelledby": "userDropdown" },
-              },
-              [
-                _c(
-                  "a",
-                  { staticClass: "dropdown-item", attrs: { href: "#" } },
-                  [
-                    _c("i", {
-                      staticClass: "fas fa-user fa-sm fa-fw mr-2 text-gray-400",
-                    }),
-                    _vm._v(
-                      "\n                                Profile\n                            "
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "dropdown-item", attrs: { href: "#" } },
-                  [
-                    _c("i", {
-                      staticClass: "fas fa-cogs fa-sm fa-fw mr-2 text-gray-400",
-                    }),
-                    _vm._v(
-                      "\n                                Settings\n                            "
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "dropdown-item", attrs: { href: "#" } },
-                  [
-                    _c("i", {
-                      staticClass: "fas fa-list fa-sm fa-fw mr-2 text-gray-400",
-                    }),
-                    _vm._v(
-                      "\n                                Activity Log\n                            "
-                    ),
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "dropdown-divider" }),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "dropdown-item",
-                    attrs: {
-                      href: "#",
-                      "data-toggle": "modal",
-                      "data-target": "#logoutModal",
-                    },
-                  },
-                  [
-                    _c("i", {
-                      staticClass:
-                        "fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400",
-                    }),
-                    _vm._v(
-                      "\n                                Logout\n                            "
-                    ),
-                  ]
-                ),
               ]
             ),
           ]),
@@ -52657,11 +52481,11 @@ var render = function () {
         {
           staticClass:
             "sidebar-brand d-flex align-items-center justify-content-center",
-          attrs: { to: { name: "categoryCreate" } },
+          attrs: { to: { name: "dashboard" } },
         },
         [
-          _c("div", { staticClass: "sidebar-brand-icon rotate-n-15" }, [
-            _c("i", { staticClass: "bi bi-123" }),
+          _c("div", { staticClass: "sidebar-brand-icon" }, [
+            _c("i", { staticClass: "bi bi-speedometer2" }),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "sidebar-brand-text mx-3" }, [
@@ -52670,27 +52494,59 @@ var render = function () {
         ]
       ),
       _vm._v(" "),
-      _c("hr", { staticClass: "sidebar-divider my-0" }),
+      _c("hr", { staticClass: "sidebar-divider" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sidebar-heading" }, [
+        _vm._v("\n    Content\n  "),
+      ]),
+      _vm._v(" "),
+      _c(
+        "li",
+        { staticClass: "nav-item" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "nav-link collapsed",
+              attrs: { to: { name: "categories" } },
+            },
+            [
+              _c("i", { staticClass: "fas fa-fw fa-wrench" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("Categories")]),
+            ]
+          ),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "li",
+        { staticClass: "nav-item" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "nav-link collapsed",
+              attrs: { to: { name: "posts" } },
+            },
+            [
+              _c("i", { staticClass: "fas fa-fw fa-cog" }),
+              _vm._v(" "),
+              _c("span", [_vm._v("Posts")]),
+            ]
+          ),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("hr", { staticClass: "sidebar-divider" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "sidebar-heading" }, [
+        _vm._v("\n    Links\n  "),
+      ]),
       _vm._v(" "),
       _vm._m(0),
-      _vm._v(" "),
-      _c("hr", { staticClass: "sidebar-divider" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "sidebar-heading" }, [
-        _vm._v("\n          Content\n        "),
-      ]),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2),
-      _vm._v(" "),
-      _c("hr", { staticClass: "sidebar-divider" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "sidebar-heading" }, [
-        _vm._v("\n          Links\n        "),
-      ]),
-      _vm._v(" "),
-      _vm._m(3),
     ],
     1
   )
@@ -52700,44 +52556,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item active" }, [
-      _c("a", { staticClass: "nav-link", attrs: { href: "index.html" } }, [
-        _c("i", { staticClass: "fas fa-fw fa-tachometer-alt" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Dashboard")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link collapsed", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fas fa-fw fa-cog" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Posts")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link collapsed", attrs: { href: "#" } }, [
-        _c("i", { staticClass: "fas fa-fw fa-wrench" }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Categories")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", { staticClass: "nav-item" }, [
-      _c("a", { staticClass: "nav-link collapsed", attrs: { href: "#" } }, [
+      _c("a", { staticClass: "nav-link collapsed", attrs: { href: "/" } }, [
         _c("i", { staticClass: "fas fa-fw fa-folder" }),
         _vm._v(" "),
         _c("span", [_vm._v("Back to home")]),
