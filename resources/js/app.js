@@ -32,8 +32,9 @@ import Dashboard from './components/Dashboard.vue'
 import Categories from './components/category/Index.vue'
 import CategoryEdit from './components/category/Edit.vue'
 import CategoryCreate from './components/category/Create.vue'
-import PostCreate from './components/posts/Create.vue'
+import Posts from './components/posts/Index.vue'
 import PostEdit from './components/posts/Edit.vue'
+import PostCreate from './components/posts/Create.vue'
 
 import moment from 'moment'
 import Vue from 'vue'
@@ -50,19 +51,14 @@ const routes = [
     component: Dashboard
   },
   {
-    name: 'postCreate',
-    path: '/dashboard/post/create',
-    component: PostCreate
-  },
-  {
-    name: 'postEdit',
-    path: '/dashboard/post/edit/:id',
-    component: PostEdit
-  },
-  {
     name: 'categories',
     path: '/dashboard/categories',
     component: Categories
+  },
+  {
+    name: 'categoryEdit',
+    path: '/dashboard/category/edit/:id',
+    component: CategoryEdit
   },
   {
     name: 'categoryCreate',
@@ -70,9 +66,19 @@ const routes = [
     component: CategoryCreate
   },
   {
-    name: 'categoryEdit',
-    path: '/dashboard/category/edit/:id',
-    component: CategoryEdit
+    name: 'posts',
+    path: '/dashboard/posts',
+    component: Posts
+  },
+  {
+    name: 'postEdit',
+    path: '/dashboard/post/edit/:id',
+    component: PostEdit
+  },
+  {
+    name: 'postCreate',
+    path: '/dashboard/post/create',
+    component: PostCreate
   }
 ]
 
