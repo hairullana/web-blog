@@ -29,6 +29,7 @@ Vue.use(VueSweetalert2);
 
 // component
 import Dashboard from './components/Dashboard.vue'
+import Categories from './components/category/Index.vue'
 import CategoryEdit from './components/category/Edit.vue'
 import CategoryCreate from './components/category/Create.vue'
 import PostCreate from './components/posts/Create.vue'
@@ -57,6 +58,11 @@ const routes = [
     name: 'postEdit',
     path: '/dashboard/post/edit/:id',
     component: PostEdit
+  },
+  {
+    name: 'categories',
+    path: '/dashboard/categories',
+    component: Categories
   },
   {
     name: 'categoryCreate',
