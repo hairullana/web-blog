@@ -29,10 +29,10 @@ Vue.use(VueSweetalert2);
 
 // component
 import Dashboard from './components/Dashboard.vue'
-import PostCreate from './components/posts/Create.vue'
-import PostEdit from './components/posts/Edit.vue'
 import CategoryEdit from './components/category/Edit.vue'
 import CategoryCreate from './components/category/Create.vue'
+import PostCreate from './components/posts/Create.vue'
+import PostEdit from './components/posts/Edit.vue'
 
 import moment from 'moment'
 import Vue from 'vue'
