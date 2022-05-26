@@ -5441,6 +5441,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Footer.vue */ "./resources/js/components/Footer.vue");
+/* harmony import */ var _Navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Navbar.vue */ "./resources/js/components/Navbar.vue");
+/* harmony import */ var _Sidebar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Sidebar.vue */ "./resources/js/components/Sidebar.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5476,7 +5479,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    FooterComponent: _Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Navbar: _Navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Sidebar: _Sidebar_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
   data: function data() {
     return {
       user_id: 1,
@@ -5517,7 +5536,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }).then(function (res) {
         // back to dashboard
         _this.$router.push({
-          name: 'dashboard'
+          name: 'categories'
         }, function () {
           _this.$toasted.show("Category has been created!", {
             type: 'success',
@@ -5555,6 +5574,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Footer.vue */ "./resources/js/components/Footer.vue");
+/* harmony import */ var _Navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Navbar.vue */ "./resources/js/components/Navbar.vue");
+/* harmony import */ var _Sidebar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Sidebar.vue */ "./resources/js/components/Sidebar.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5590,7 +5612,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    FooterComponent: _Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Navbar: _Navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Sidebar: _Sidebar_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
   data: function data() {
     return {
       name: '',
@@ -52967,127 +53005,165 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
+  return _c(
+    "div",
+    { attrs: { id: "wrapper" } },
+    [
+      _c("Sidebar"),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "d-flex flex-column", attrs: { id: "content-wrapper" } },
+        [
+          _c(
+            "div",
+            { attrs: { id: "content" } },
+            [
+              _c("Navbar"),
+              _vm._v(" "),
+              _c("div", { staticClass: "container-fluid" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-8 mb-3" }, [
+                  _c(
+                    "form",
+                    {
+                      on: {
+                        submit: function ($event) {
+                          $event.preventDefault()
+                          return _vm.CategoryStore.apply(null, arguments)
+                        },
+                      },
+                    },
+                    [
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          { staticClass: "form-label", attrs: { for: "name" } },
+                          [_vm._v("Name")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.name,
+                              expression: "name",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            required: "",
+                            type: "text",
+                            id: "name",
+                            autofocus: "",
+                          },
+                          domProps: { value: _vm.name },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.name = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        this.errors.name
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(this.errors.name[0]) +
+                                  "\n              "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          { staticClass: "form-label", attrs: { for: "slug" } },
+                          [_vm._v("Slug")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.slug,
+                              expression: "slug",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: { required: "", type: "text", id: "slug" },
+                          domProps: { value: _vm.slug },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.slug = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        this.errors.slug
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(this.errors.slug[0]) +
+                                  "\n              "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" },
+                        },
+                        [_vm._v("Create Category")]
+                      ),
+                    ]
+                  ),
+                ]),
+              ]),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("FooterComponent"),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
       "div",
       {
         staticClass:
-          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
+          "d-sm-flex align-items-center justify-content-between mb-4",
       },
       [
-        _c(
-          "h3",
-          [
-            _c(
-              "router-link",
-              {
-                staticStyle: { "text-decoration": "none" },
-                attrs: { to: { name: "dashboard" } },
-              },
-              [_vm._v("Dashboard")]
-            ),
-            _vm._v(" / Create New Category"),
-          ],
-          1
-        ),
+        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
+          _vm._v("Create Category"),
+        ]),
       ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-lg-8 mb-3" }, [
-      _c(
-        "form",
-        {
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.CategoryStore.apply(null, arguments)
-            },
-          },
-        },
-        [
-          _c("div", { staticClass: "mb-3" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "name" } }, [
-              _vm._v("Name"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.name,
-                  expression: "name",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { required: "", type: "text", id: "name", autofocus: "" },
-              domProps: { value: _vm.name },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.name = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
-            this.errors.name
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(this.errors.name[0]) + "\n        "
-                  ),
-                ])
-              : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "slug" } }, [
-              _vm._v("Slug"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.slug,
-                  expression: "slug",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { required: "", type: "text", id: "slug" },
-              domProps: { value: _vm.slug },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.slug = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
-            this.errors.slug
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(this.errors.slug[0]) + "\n        "
-                  ),
-                ])
-              : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Create Category")]
-          ),
-        ]
-      ),
-    ]),
-  ])
-}
-var staticRenderFns = []
+    )
+  },
+]
 render._withStripped = true
 
 
@@ -53110,127 +53186,165 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
+  return _c(
+    "div",
+    { attrs: { id: "wrapper" } },
+    [
+      _c("Sidebar"),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "d-flex flex-column", attrs: { id: "content-wrapper" } },
+        [
+          _c(
+            "div",
+            { attrs: { id: "content" } },
+            [
+              _c("Navbar"),
+              _vm._v(" "),
+              _c("div", { staticClass: "container-fluid" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-8 mb-3" }, [
+                  _c(
+                    "form",
+                    {
+                      on: {
+                        submit: function ($event) {
+                          $event.preventDefault()
+                          return _vm.CategoryUpdate.apply(null, arguments)
+                        },
+                      },
+                    },
+                    [
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          { staticClass: "form-label", attrs: { for: "name" } },
+                          [_vm._v("Name")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.name,
+                              expression: "name",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            required: "",
+                            type: "text",
+                            id: "name",
+                            autofocus: "",
+                          },
+                          domProps: { value: _vm.name },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.name = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        this.errors.name
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(this.errors.name[0]) +
+                                  "\n              "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          { staticClass: "form-label", attrs: { for: "slug" } },
+                          [_vm._v("Slug")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.slug,
+                              expression: "slug",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: { required: "", type: "text", id: "slug" },
+                          domProps: { value: _vm.slug },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.slug = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        this.errors.slug
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(this.errors.slug[0]) +
+                                  "\n              "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" },
+                        },
+                        [_vm._v("Update Category")]
+                      ),
+                    ]
+                  ),
+                ]),
+              ]),
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("FooterComponent"),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
       "div",
       {
         staticClass:
-          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
+          "d-sm-flex align-items-center justify-content-between mb-4",
       },
       [
-        _c(
-          "h3",
-          [
-            _c(
-              "router-link",
-              {
-                staticStyle: { "text-decoration": "none" },
-                attrs: { to: { name: "dashboard" } },
-              },
-              [_vm._v("Dashboard")]
-            ),
-            _vm._v(" / Edit Category"),
-          ],
-          1
-        ),
+        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
+          _vm._v("Create Category"),
+        ]),
       ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-lg-8 mb-3" }, [
-      _c(
-        "form",
-        {
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.CategoryUpdate.apply(null, arguments)
-            },
-          },
-        },
-        [
-          _c("div", { staticClass: "mb-3" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "name" } }, [
-              _vm._v("Name"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.name,
-                  expression: "name",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { required: "", type: "text", id: "name", autofocus: "" },
-              domProps: { value: _vm.name },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.name = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
-            this.errors.name
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(this.errors.name[0]) + "\n        "
-                  ),
-                ])
-              : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "slug" } }, [
-              _vm._v("Slug"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.slug,
-                  expression: "slug",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { required: "", type: "text", id: "slug" },
-              domProps: { value: _vm.slug },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.slug = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
-            this.errors.slug
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(this.errors.slug[0]) + "\n        "
-                  ),
-                ])
-              : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Update Category")]
-          ),
-        ]
-      ),
-    ]),
-  ])
-}
-var staticRenderFns = []
+    )
+  },
+]
 render._withStripped = true
 
 
