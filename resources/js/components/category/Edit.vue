@@ -6,7 +6,7 @@
         <Navbar />
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Create Category</h1>
+            <h1 class="h3 mb-0 text-gray-800">Edit Category</h1>
           </div>
           <div class="col-lg-8 mb-3">
             <form @submit.prevent="CategoryUpdate">

@@ -5832,6 +5832,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Footer.vue */ "./resources/js/components/Footer.vue");
+/* harmony import */ var _Navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Navbar.vue */ "./resources/js/components/Navbar.vue");
+/* harmony import */ var _Sidebar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Sidebar.vue */ "./resources/js/components/Sidebar.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5888,7 +5891,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    FooterComponent: _Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Navbar: _Navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Sidebar: _Sidebar_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
   data: function data() {
     return {
       user_id: 1,
@@ -5982,6 +6001,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Footer_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Footer.vue */ "./resources/js/components/Footer.vue");
+/* harmony import */ var _Navbar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Navbar.vue */ "./resources/js/components/Navbar.vue");
+/* harmony import */ var _Sidebar_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Sidebar.vue */ "./resources/js/components/Sidebar.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6036,7 +6058,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    FooterComponent: _Footer_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Navbar: _Navbar_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Sidebar: _Sidebar_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
   data: function data() {
     return {
       excerpt: '',
@@ -53339,7 +53378,7 @@ var staticRenderFns = [
       },
       [
         _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
-          _vm._v("Create Category"),
+          _vm._v("Edit Category"),
         ]),
       ]
     )
@@ -53552,239 +53591,289 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass:
-          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
-      },
-      [
-        _c(
-          "h3",
-          [
-            _c(
-              "router-link",
-              {
-                staticStyle: { "text-decoration": "none" },
-                attrs: { to: { name: "dashboard" } },
-              },
-              [_vm._v("Dashboard")]
-            ),
-            _vm._v(" / Create New Post"),
-          ],
-          1
-        ),
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-lg-8 mb-3" }, [
+  return _c(
+    "div",
+    { attrs: { id: "wrapper" } },
+    [
+      _c("Sidebar"),
+      _vm._v(" "),
       _c(
-        "form",
-        {
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.PostStore.apply(null, arguments)
-            },
-          },
-        },
+        "div",
+        { staticClass: "d-flex flex-column", attrs: { id: "content-wrapper" } },
         [
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "title" } },
-              [_vm._v("Title")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.title,
-                  expression: "title",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { required: "", type: "text", id: "title", autofocus: "" },
-              domProps: { value: _vm.title },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.title = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
-            this.errors.title
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(this.errors.title[0]) + "\n        "
-                  ),
-                ])
-              : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "slug" } }, [
-              _vm._v("Slug"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.slug,
-                  expression: "slug",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { required: "", type: "text", id: "slug" },
-              domProps: { value: _vm.slug },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.slug = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
-            this.errors.slug
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(this.errors.slug[0]) + "\n        "
-                  ),
-                ])
-              : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "category" } },
-              [_vm._v("Category")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.category_id,
-                    expression: "category_id",
-                  },
-                ],
-                staticClass: "form-select",
-                attrs: { id: "category" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.category_id = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              _vm._l(_vm.categories, function (category) {
-                return _c("option", { domProps: { value: category.id } }, [
-                  _vm._v(_vm._s(category.name) + "\n          "),
-                ])
-              }),
-              0
-            ),
-            _vm._v(" "),
-            this.errors.category
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n          " +
-                      _vm._s(this.errors.category[0]) +
-                      "\n        "
-                  ),
-                ])
-              : _vm._e(),
-          ]),
-          _vm._v(" "),
           _c(
             "div",
-            { staticClass: "mb-3" },
+            { attrs: { id: "content" } },
             [
-              _c("label", { staticClass: "form-label" }, [_vm._v("Body")]),
+              _c("Navbar"),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body",
-                  },
-                ],
-                attrs: { type: "hidden", id: "body" },
-                domProps: { value: _vm.body },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.body = $event.target.value
-                  },
-                },
-              }),
-              _vm._v(" "),
-              _c("VueTrix", {
-                attrs: {
-                  inputId: "body",
-                  inputName: "body",
-                  placeholder: "enter your content...",
-                },
-                model: {
-                  value: _vm.body,
-                  callback: function ($$v) {
-                    _vm.body = $$v
-                  },
-                  expression: "body",
-                },
-              }),
-              _vm._v(" "),
-              this.errors.body
-                ? _c("div", { staticClass: "invalid-feedback" }, [
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(this.errors.body[0]) +
-                        "\n        "
-                    ),
-                  ])
-                : _vm._e(),
+              _c("div", { staticClass: "container-fluid" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-8 mb-3" }, [
+                  _c(
+                    "form",
+                    {
+                      on: {
+                        submit: function ($event) {
+                          $event.preventDefault()
+                          return _vm.PostStore.apply(null, arguments)
+                        },
+                      },
+                    },
+                    [
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "title" },
+                          },
+                          [_vm._v("Title")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.title,
+                              expression: "title",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            required: "",
+                            type: "text",
+                            id: "title",
+                            autofocus: "",
+                          },
+                          domProps: { value: _vm.title },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.title = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        this.errors.title
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(this.errors.title[0]) +
+                                  "\n              "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          { staticClass: "form-label", attrs: { for: "slug" } },
+                          [_vm._v("Slug")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.slug,
+                              expression: "slug",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: { required: "", type: "text", id: "slug" },
+                          domProps: { value: _vm.slug },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.slug = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        this.errors.slug
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(this.errors.slug[0]) +
+                                  "\n              "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "category" },
+                          },
+                          [_vm._v("Category")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.category_id,
+                                expression: "category_id",
+                              },
+                            ],
+                            staticClass: "form-select",
+                            attrs: { id: "category" },
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.category_id = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                            },
+                          },
+                          _vm._l(_vm.categories, function (category) {
+                            return _c(
+                              "option",
+                              { domProps: { value: category.id } },
+                              [
+                                _vm._v(
+                                  _vm._s(category.name) + "\n                "
+                                ),
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        this.errors.category
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(this.errors.category[0]) +
+                                  "\n              "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "mb-3" },
+                        [
+                          _c("label", { staticClass: "form-label" }, [
+                            _vm._v("Body"),
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.body,
+                                expression: "body",
+                              },
+                            ],
+                            attrs: { type: "hidden", id: "body" },
+                            domProps: { value: _vm.body },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.body = $event.target.value
+                              },
+                            },
+                          }),
+                          _vm._v(" "),
+                          _c("VueTrix", {
+                            attrs: {
+                              inputId: "body",
+                              inputName: "body",
+                              placeholder: "enter your content...",
+                            },
+                            model: {
+                              value: _vm.body,
+                              callback: function ($$v) {
+                                _vm.body = $$v
+                              },
+                              expression: "body",
+                            },
+                          }),
+                          _vm._v(" "),
+                          this.errors.body
+                            ? _c("div", { staticClass: "invalid-feedback" }, [
+                                _vm._v(
+                                  "\n                " +
+                                    _vm._s(this.errors.body[0]) +
+                                    "\n              "
+                                ),
+                              ])
+                            : _vm._e(),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" },
+                        },
+                        [_vm._v("Create Post")]
+                      ),
+                    ]
+                  ),
+                ]),
+              ]),
             ],
             1
           ),
           _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Create Post")]
-          ),
-        ]
+          _c("FooterComponent"),
+        ],
+        1
       ),
-    ]),
-  ])
+    ],
+    1
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "d-sm-flex align-items-center justify-content-between mb-4",
+      },
+      [
+        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
+          _vm._v("Create Post"),
+        ]),
+      ]
+    )
+  },
+]
 render._withStripped = true
 
 
@@ -53807,236 +53896,284 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      {
-        staticClass:
-          "d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom",
-      },
-      [
-        _c(
-          "h3",
-          [
-            _c(
-              "router-link",
-              {
-                staticStyle: { "text-decoration": "none" },
-                attrs: { to: { name: "dashboard" } },
-              },
-              [_vm._v("Dashboard")]
-            ),
-            _vm._v(" / Create New Post"),
-          ],
-          1
-        ),
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-lg-8 mb-3" }, [
+  return _c(
+    "div",
+    { attrs: { id: "wrapper" } },
+    [
+      _c("Sidebar"),
+      _vm._v(" "),
       _c(
-        "form",
-        {
-          on: {
-            submit: function ($event) {
-              $event.preventDefault()
-              return _vm.PostUpdate.apply(null, arguments)
-            },
-          },
-        },
+        "div",
+        { staticClass: "d-flex flex-column", attrs: { id: "content-wrapper" } },
         [
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "title" } },
-              [_vm._v("Title")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.title,
-                  expression: "title",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { required: "", type: "text", id: "title", autofocus: "" },
-              domProps: { value: _vm.title },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.title = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
-            this.errors.title
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(this.errors.title[0]) + "\n        "
-                  ),
-                ])
-              : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "slug" } }, [
-              _vm._v("Slug"),
-            ]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.slug,
-                  expression: "slug",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { required: "", type: "text", id: "slug" },
-              domProps: { value: _vm.slug },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.slug = $event.target.value
-                },
-              },
-            }),
-            _vm._v(" "),
-            this.errors.slug
-              ? _c("div", { staticClass: "invalid-feedback" }, [
-                  _vm._v(
-                    "\n          " + _vm._s(this.errors.slug[0]) + "\n        "
-                  ),
-                ])
-              : _vm._e(),
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "category" } },
-              [_vm._v("Category")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.category_id,
-                    expression: "category_id",
-                  },
-                ],
-                staticClass: "form-select",
-                attrs: { id: "category" },
-                on: {
-                  change: function ($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function (o) {
-                        return o.selected
-                      })
-                      .map(function (o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.category_id = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                },
-              },
-              _vm._l(_vm.categories, function (category) {
-                return _c(
-                  "option",
-                  {
-                    domProps: {
-                      value: category.id,
-                      selected: category.id == _vm.category_id,
-                    },
-                  },
-                  [_vm._v(_vm._s(category.name) + "\n          ")]
-                )
-              }),
-              0
-            ),
-          ]),
-          _vm._v(" "),
           _c(
             "div",
-            { staticClass: "mb-3" },
+            { attrs: { id: "content" } },
             [
-              _c("label", { staticClass: "form-label" }, [_vm._v("Body")]),
+              _c("Navbar"),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body",
-                  },
-                ],
-                attrs: { type: "hidden", id: "body" },
-                domProps: { value: _vm.body },
-                on: {
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.body = $event.target.value
-                  },
-                },
-              }),
-              _vm._v(" "),
-              _c("VueTrix", {
-                attrs: {
-                  inputId: "body",
-                  inputName: "body",
-                  placeholder: "enter your content...",
-                },
-                model: {
-                  value: _vm.body,
-                  callback: function ($$v) {
-                    _vm.body = $$v
-                  },
-                  expression: "body",
-                },
-              }),
-              _vm._v(" "),
-              this.errors.body
-                ? _c("div", { staticClass: "invalid-feedback" }, [
-                    _vm._v(
-                      "\n          " +
-                        _vm._s(this.errors.body[0]) +
-                        "\n        "
-                    ),
-                  ])
-                : _vm._e(),
+              _c("div", { staticClass: "container-fluid" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-lg-8 mb-3" }, [
+                  _c(
+                    "form",
+                    {
+                      on: {
+                        submit: function ($event) {
+                          $event.preventDefault()
+                          return _vm.PostUpdate.apply(null, arguments)
+                        },
+                      },
+                    },
+                    [
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "title" },
+                          },
+                          [_vm._v("Title")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.title,
+                              expression: "title",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            required: "",
+                            type: "text",
+                            id: "title",
+                            autofocus: "",
+                          },
+                          domProps: { value: _vm.title },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.title = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        this.errors.title
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(this.errors.title[0]) +
+                                  "\n              "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          { staticClass: "form-label", attrs: { for: "slug" } },
+                          [_vm._v("Slug")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.slug,
+                              expression: "slug",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: { required: "", type: "text", id: "slug" },
+                          domProps: { value: _vm.slug },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.slug = $event.target.value
+                            },
+                          },
+                        }),
+                        _vm._v(" "),
+                        this.errors.slug
+                          ? _c("div", { staticClass: "invalid-feedback" }, [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(this.errors.slug[0]) +
+                                  "\n              "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "category" },
+                          },
+                          [_vm._v("Category")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.category_id,
+                                expression: "category_id",
+                              },
+                            ],
+                            staticClass: "form-select",
+                            attrs: { id: "category" },
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.category_id = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                            },
+                          },
+                          _vm._l(_vm.categories, function (category) {
+                            return _c(
+                              "option",
+                              {
+                                domProps: {
+                                  value: category.id,
+                                  selected: category.id == _vm.category_id,
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  _vm._s(category.name) + "\n                "
+                                ),
+                              ]
+                            )
+                          }),
+                          0
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "mb-3" },
+                        [
+                          _c("label", { staticClass: "form-label" }, [
+                            _vm._v("Body"),
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.body,
+                                expression: "body",
+                              },
+                            ],
+                            attrs: { type: "hidden", id: "body" },
+                            domProps: { value: _vm.body },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.body = $event.target.value
+                              },
+                            },
+                          }),
+                          _vm._v(" "),
+                          _c("VueTrix", {
+                            attrs: {
+                              inputId: "body",
+                              inputName: "body",
+                              placeholder: "enter your content...",
+                            },
+                            model: {
+                              value: _vm.body,
+                              callback: function ($$v) {
+                                _vm.body = $$v
+                              },
+                              expression: "body",
+                            },
+                          }),
+                          _vm._v(" "),
+                          this.errors.body
+                            ? _c("div", { staticClass: "invalid-feedback" }, [
+                                _vm._v(
+                                  "\n                " +
+                                    _vm._s(this.errors.body[0]) +
+                                    "\n              "
+                                ),
+                              ])
+                            : _vm._e(),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" },
+                        },
+                        [_vm._v("Update Post")]
+                      ),
+                    ]
+                  ),
+                ]),
+              ]),
             ],
             1
           ),
           _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Update Post")]
-          ),
-        ]
+          _c("FooterComponent"),
+        ],
+        1
       ),
-    ]),
-  ])
+    ],
+    1
+  )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "d-sm-flex align-items-center justify-content-between mb-4",
+      },
+      [
+        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
+          _vm._v("Edit Post"),
+        ]),
+      ]
+    )
+  },
+]
 render._withStripped = true
 
 
