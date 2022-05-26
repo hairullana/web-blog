@@ -53061,7 +53061,40 @@ var render = function () {
               _c("Navbar"),
               _vm._v(" "),
               _c("div", { staticClass: "container-fluid" }, [
-                _vm._m(0),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-sm-flex align-items-center justify-content-between mb-4",
+                  },
+                  [
+                    _c(
+                      "h1",
+                      { staticClass: "h3 mb-0 text-gray-800" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "dashboard" } },
+                          },
+                          [_vm._v("Dashboard")]
+                        ),
+                        _vm._v(" / "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "categories" } },
+                          },
+                          [_vm._v("Categories")]
+                        ),
+                        _vm._v(" / Create Category"),
+                      ],
+                      1
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-lg-8 mb-3" }, [
                   _c(
@@ -53184,25 +53217,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-sm-flex align-items-center justify-content-between mb-4",
-      },
-      [
-        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
-          _vm._v("Create Category"),
-        ]),
-      ]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -53242,7 +53257,40 @@ var render = function () {
               _c("Navbar"),
               _vm._v(" "),
               _c("div", { staticClass: "container-fluid" }, [
-                _vm._m(0),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-sm-flex align-items-center justify-content-between mb-4",
+                  },
+                  [
+                    _c(
+                      "h1",
+                      { staticClass: "h3 mb-0 text-gray-800" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "dashboard" } },
+                          },
+                          [_vm._v("Dashboard")]
+                        ),
+                        _vm._v(" / "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "categories" } },
+                          },
+                          [_vm._v("Categories")]
+                        ),
+                        _vm._v(" / Edit Category"),
+                      ],
+                      1
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-lg-8 mb-3" }, [
                   _c(
@@ -53365,25 +53413,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-sm-flex align-items-center justify-content-between mb-4",
-      },
-      [
-        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
-          _vm._v("Edit Category"),
-        ]),
-      ]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -53423,12 +53453,36 @@ var render = function () {
               _c("Navbar"),
               _vm._v(" "),
               _c("div", { staticClass: "container-fluid" }, [
-                _vm._m(0),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-sm-flex align-items-center justify-content-between mb-4",
+                  },
+                  [
+                    _c(
+                      "h1",
+                      { staticClass: "h3 mb-0 text-gray-800" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "dashboard" } },
+                          },
+                          [_vm._v("Dashboard")]
+                        ),
+                        _vm._v(" / Posts"),
+                      ],
+                      1
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-12 mb-4" }, [
                     _c("div", { staticClass: "card shadow mb-4" }, [
-                      _vm._m(1),
+                      _vm._m(0),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -53447,7 +53501,7 @@ var render = function () {
                             "table",
                             { staticClass: "table table-striped table-sm" },
                             [
-                              _vm._m(2),
+                              _vm._m(1),
                               _vm._v(" "),
                               _c(
                                 "tbody",
@@ -53529,23 +53583,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-sm-flex align-items-center justify-content-between mb-4",
-      },
-      [
-        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
-          _vm._v("Dashboard"),
-        ]),
-      ]
-    )
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header py-3" }, [
       _c("h6", { staticClass: "m-0 font-weight-bold text-primary" }, [
         _vm._v("Categories"),
@@ -53608,7 +53645,40 @@ var render = function () {
               _c("Navbar"),
               _vm._v(" "),
               _c("div", { staticClass: "container-fluid" }, [
-                _vm._m(0),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-sm-flex align-items-center justify-content-between mb-4",
+                  },
+                  [
+                    _c(
+                      "h1",
+                      { staticClass: "h3 mb-0 text-gray-800" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "dashboard" } },
+                          },
+                          [_vm._v("Dashboard")]
+                        ),
+                        _vm._v(" / "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "posts" } },
+                          },
+                          [_vm._v("Posts")]
+                        ),
+                        _vm._v(" / Create Post"),
+                      ],
+                      1
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-lg-8 mb-3" }, [
                   _c(
@@ -53855,25 +53925,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-sm-flex align-items-center justify-content-between mb-4",
-      },
-      [
-        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
-          _vm._v("Create Post"),
-        ]),
-      ]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -53913,7 +53965,40 @@ var render = function () {
               _c("Navbar"),
               _vm._v(" "),
               _c("div", { staticClass: "container-fluid" }, [
-                _vm._m(0),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-sm-flex align-items-center justify-content-between mb-4",
+                  },
+                  [
+                    _c(
+                      "h1",
+                      { staticClass: "h3 mb-0 text-gray-800" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "dashboard" } },
+                          },
+                          [_vm._v("Dashboard")]
+                        ),
+                        _vm._v(" / "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "posts" } },
+                          },
+                          [_vm._v("Posts")]
+                        ),
+                        _vm._v(" / Edit Post"),
+                      ],
+                      1
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-lg-8 mb-3" }, [
                   _c(
@@ -54155,25 +54240,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-sm-flex align-items-center justify-content-between mb-4",
-      },
-      [
-        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
-          _vm._v("Edit Post"),
-        ]),
-      ]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -54213,12 +54280,36 @@ var render = function () {
               _c("Navbar"),
               _vm._v(" "),
               _c("div", { staticClass: "container-fluid" }, [
-                _vm._m(0),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-sm-flex align-items-center justify-content-between mb-4",
+                  },
+                  [
+                    _c(
+                      "h1",
+                      { staticClass: "h3 mb-0 text-gray-800" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "path-link",
+                            attrs: { to: { name: "dashboard" } },
+                          },
+                          [_vm._v("Dashboard")]
+                        ),
+                        _vm._v(" / Posts"),
+                      ],
+                      1
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-12 mb-4" }, [
                     _c("div", { staticClass: "card shadow mb-4" }, [
-                      _vm._m(1),
+                      _vm._m(0),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -54237,7 +54328,7 @@ var render = function () {
                             "table",
                             { staticClass: "table table-striped table-sm" },
                             [
-                              _vm._m(2),
+                              _vm._m(1),
                               _vm._v(" "),
                               _c(
                                 "tbody",
@@ -54343,23 +54434,6 @@ var render = function () {
   )
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-sm-flex align-items-center justify-content-between mb-4",
-      },
-      [
-        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
-          _vm._v("Dashboard"),
-        ]),
-      ]
-    )
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement
