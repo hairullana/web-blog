@@ -6,7 +6,7 @@
         <Navbar />
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800"><router-link class="path-link" :to="{ name: 'dashboard' }">Dashboard</router-link> / Posts</h1>
+            <h1 class="h3 mb-0 text-gray-800"><router-link class="path-link" :to="{ name: 'dashboard' }">Dashboard</router-link> / Categories</h1>
           </div>
 
           <div class="row">
@@ -67,6 +67,11 @@
         categories: [],
         pageOfPosts: []
       }
+    },
+    beforeRouteEnter (to, from, next) {
+      next( async vm => {
+          document.title = 'Categories | HL Blog'
+      })
     },
     mounted(){
       this.axios.get('http://localhost:8000/api/categories').then(res => {

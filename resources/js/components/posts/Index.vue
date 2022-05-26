@@ -73,6 +73,11 @@
         pageOfPosts: []
       }
     },
+    beforeRouteEnter (to, from, next) {
+      next( async vm => {
+          document.title = 'Post | HL Blog'
+      })
+    },
     mounted(){
       this.axios.get('http://localhost:8000/api/posts').then(res => {
         this.posts = res.data.data

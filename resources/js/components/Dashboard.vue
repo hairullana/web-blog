@@ -115,6 +115,11 @@
         categories: []
       }
     },
+    beforeRouteEnter (to, from, next) {
+      next( async vm => {
+          document.title = 'Dashboard | HL Blog'
+      })
+    },
     mounted(){
       this.axios.get('http://localhost:8000/api/posts').then(res => {
         this.posts = res.data.data
