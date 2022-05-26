@@ -30,6 +30,7 @@ Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
 
 // Categories API
 Route::get('/categories', [DashboardCategoryController::class, 'index'])->name('categories');
+Route::get('/category/percentage', [DashboardCategoryController::class, 'categoryPercentage'])->name('category.percentage');
 Route::get('/category/{category:id}', [DashboardCategoryController::class, 'show']);
 Route::post('/category/update/{category:id}', [DashboardCategoryController::class, 'update']);
 Route::post('/category/store', [DashboardCategoryController::class, 'store']);

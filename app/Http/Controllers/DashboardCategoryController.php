@@ -19,43 +19,32 @@ class DashboardCategoryController extends Controller
         ], 200);
     }
 
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'name' => ['required', 'min:3'],
-            'slug' => ['required', 'min:3']
-        ]);
-
-        $category = Category::create($request->all());
-
-        if($category){
-            return response()->json([
-                'success' => true,
-                'message' => 'New category has been created',
-            ], 200);
-        }else {
-            return response()->json([
-                'success' => false,
-                'message' => 'New category failed to save',
-            ], 409);
-        }
-    }
-    
-    public function show(Category $category)
-    {
+    public function categoryPercentage(){
+        $category = Post::all()->groupBy('category.name');
+        
         return response()->json([
-            'success' => true,
-            'message' => 'Category Data',
-            'data'    => $category
+            'message' => 'Percentage of Category',
+            'data' => $category
         ], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\category  $category
-     * @return \Illuminate\Http\Response
-     */
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
+    }
+
+    public function destroy(Category $category)
+    {
+        Category::destroy($category->id);
+        Post::where('category_id', $category->id)->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Category and it posts has been deleted'
+        ], 200);
+    }
+    
     public function edit(Category $category)
     {
         return view('dashboard.categories.edit', [
@@ -88,20 +77,35 @@ class DashboardCategoryController extends Controller
             'message' => 'Post Not Found',
         ], 404);
     }
-
-    public function destroy(Category $category)
+    
+    public function show(Category $category)
     {
-        Category::destroy($category->id);
-        Post::where('category_id', $category->id)->delete();
-
         return response()->json([
             'success' => true,
-            'message' => 'Category and it posts has been deleted'
+            'message' => 'Category Data',
+            'data'    => $category
         ], 200);
     }
 
-    public function checkSlug(Request $request){
-        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
-        return response()->json(['slug' => $slug]);
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => ['required', 'min:3'],
+            'slug' => ['required', 'min:3']
+        ]);
+
+        $category = Category::create($request->all());
+
+        if($category){
+            return response()->json([
+                'success' => true,
+                'message' => 'New category has been created',
+            ], 200);
+        }else {
+            return response()->json([
+                'success' => false,
+                'message' => 'New category failed to save',
+            ], 409);
+        }
     }
 }
