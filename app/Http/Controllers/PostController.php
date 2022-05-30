@@ -12,8 +12,9 @@ class PostController extends Controller
   {
     return view('index', [
       "title" => "Home",
-      "posts" => Post::latest()->paginate(6),
-      "categories" => Category::latest()
+      "posts" => Post::latest()->paginate(4),
+      "categories" => Category::latest()->get(),
+      "popularPost" => Post::all()->random(6)
     ]);
   }
 
