@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "autoprefixer": "10.4.5",
         "jquery": "^3.6.0",
         "jw-vue-pagination": "^1.0.3",
         "moment": "^2.29.3",
