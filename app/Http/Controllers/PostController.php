@@ -15,7 +15,12 @@ class PostController extends Controller
 
     if ($request) {
       $posts = Post::latest();
-      if ($request->search) $posts = $posts->where('title', 'like', '%' . $request->search . '%')->orWhere('body', 'like', '%' . $request->search . '%')->orWhere('slug', 'like', '%' . $request->search . '%');
+      if ($request->category) $posts = $posts->where('category_id', Category::where('slug', $request->category)->first()->id);
+      if ($request->search) $posts = $posts->where(function ($query) use ($request) {
+        $query->where('title', 'like', '%' . $request->search . '%')
+          ->orWhere('body', 'like', '%' . $request->search . '%')
+          ->orWhere('slug', 'like', '%' . $request->search . '%');
+      });
     }
 
     return view('index', [

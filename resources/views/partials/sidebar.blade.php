@@ -2,6 +2,9 @@
 <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
     <form action="">
         <div class="input-group" action="{{ route('index') }}#listPost">
+            @if (request()->has('category'))
+                <input type="hidden" name="category" value="{{ request()->get('category') }}">
+            @endif
             <input type="text" name="search" class="form-control p-3" placeholder="Keyword" value="{{ request()->get('search') }}">
             <button type="submit" class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
         </div>
@@ -16,7 +19,7 @@
     </div>
     <div class="link-animated d-flex flex-column justify-content-start">
     @foreach ($categories as $category)  
-        <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2 text-decoration-none" href="/category/{{ $category->slug }}"><i class="bi bi-arrow-right me-2"></i>{{ $category->name }}</a>
+        <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2 text-decoration-none" href="{{ route('index') }}/?category={{ $category->slug }}"><i class="bi bi-arrow-right me-2"></i>{{ $category->name }}</a>
     @endforeach
     </div>
 </div>
