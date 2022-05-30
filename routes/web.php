@@ -17,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Posts
-Route::get('/', [PostController::class, 'index'])->name('index');
-Route::get('/post/{post:slug}', [PostController::class, 'show']);
+Route::controller(PostController::class)->group(function () {
+  Route::get('/', 'index')->name('index');
+  Route::get('/post/{post:slug}', 'show');
+  Route::get('/category/{category:slug}', 'showCategory');
+});
 
 // Dashboard with SPA (VueJS)
 Route::get('/dashboard/{any}', [DashboardController::class, 'index'])->where('any', '.*');

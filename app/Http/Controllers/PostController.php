@@ -27,4 +27,17 @@ class PostController extends Controller
       "popularPost" => Post::all()->random(6)
     ]);
   }
+
+  public function showCategory($category)
+  {
+    $category = Category::where('slug', $category)->first();
+    $posts = Post::where('category_id', $category->id)->paginate(4);
+
+    return view('post.post-by-category', [
+      'title' => 'Categories',
+      'posts' => $posts,
+      "categories" => Category::latest()->get(),
+      "popularPost" => Post::all()->random(6)
+    ]);
+  }
 }
