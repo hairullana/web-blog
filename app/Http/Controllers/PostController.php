@@ -23,7 +23,8 @@ class PostController extends Controller
     return view('post.show', [
       'title' => $post->title,
       'post' => $post,
-      'active' => false
+      "categories" => Category::latest()->get(),
+      "popularPost" => Post::all()->random(6)
     ]);
   }
 }

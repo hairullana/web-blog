@@ -13,23 +13,16 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    {{-- vendor --}}
-    <link href="/vendor/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="/vendor/animate/animate.min.css" rel="stylesheet">
     {{-- My CSS --}}
     <link href="/css/blog.css" rel="stylesheet">
     <title>{{ $title }} | HL Blog</title>
   </head>
   <body id="page-container">
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-      <div class="spinner"></div>
-    </div>
 
     <!-- Navbar Start -->
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-            <a href="index.html" class="navbar-brand p-0">
+            <a href="{{ route('index') }}" class="navbar-brand p-0">
                 <h1 class="m-0"><i class="bi bi-newspaper me-2"></i> Web Blog</h1>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -43,25 +36,49 @@
             </div>
         </nav>
 
-        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Web Blog</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">SPA with<br/>Laravel & Vue</h1>
-                            <a href="https://github.com/hairullana/web-blog" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Source Code</a>
-                            <a href="https://hairullana.github.io" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Coder</a>
+        @if (Route::currentRouteName() == 'index')
+            <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="/img/carousel-1.jpg" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 900px;">
+                                <h5 class="text-white text-uppercase mb-3 animated slideInDown">Web Blog</h5>
+                                <h1 class="display-1 text-white mb-md-4 animated zoomIn">SPA with<br/>Laravel & Vue</h1>
+                                <a href="https://github.com/hairullana/web-blog" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Source Code</a>
+                                <a href="https://hairullana.github.io" class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Coder</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @else
+            <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+                <div class="row py-5">
+                    <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+                        <h1 class="display-4 text-white animated zoomIn">Blog Detail</h1>
+                        <a href="{{ route('index') }}" class="text-decoration-none h5 text-white">Back to home</a>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 
     <div class="container mt-4" id="content-wrap">
-      @yield('content')
+        <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-8">
+                        <div class="row g-5">
+                            @yield('content')
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        @include('partials.sidebar')
+                    </div>
+                </div>
+            </div>
+        </div>    
     </div>
 
     <!-- Footer Start -->
@@ -115,11 +132,5 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
-    {{-- vendor --}}
-    <script src="/vendor/wow/wow.min.js"></script>
-    <script src="/vendor/easing/easing.min.js"></script>
-    <script src="/vendor/waypoints/waypoints.min.js"></script>
-    <script src="/vendor/counterup/counterup.min.js"></script>
-    <script src="/vendor/owlcarousel/owl.carousel.min.js"></script>
   </body>
 </html>
