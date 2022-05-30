@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('index') }}" class="nav-item nav-link">Home</a>
-                    <a href="/dashboard" class="nav-item nav-link">Dashboard</a>
+                    <a href="/dashboard/overview" class="nav-item nav-link">Dashboard</a>
                 </div>
             </div>
         </nav>

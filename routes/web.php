@@ -21,4 +21,4 @@ Route::get('/', [PostController::class, 'index'])->name('index');
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
 
 // Dashboard with SPA (VueJS)
-Route::get('/{any}', [DashboardController::class, 'index'])->where('any', '.*');
+Route::get('/dashboard/{any}', [DashboardController::class, 'index'])->where('any', '.*');

@@ -6433,7 +6433,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].filter('formatDate', function (value
 });
 var routes = [{
   name: 'dashboard',
-  path: '/dashboard',
+  path: '/dashboard/overview',
   component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
 }, {
   name: 'categories',
