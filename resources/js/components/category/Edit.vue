@@ -12,7 +12,7 @@
             <form @submit.prevent="CategoryUpdate">
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input required type="text" class="form-control" v-model="name" id="name" autofocus>
+                <input required type="text" class="form-control" v-model="name" id="name" @keyup="createSlug" autofocus>
                 <div class="invalid-feedback" v-if="this.errors.name">
                   {{ this.errors.name[0] }}
                 </div>
@@ -65,6 +65,10 @@
       })
     },
     methods: {
+      createSlug(event) {
+        const value = event.target.value
+        this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
+      },
       CategoryUpdate(){
         this.axios.post(`http://localhost:8000/api/category/update/${this.$route.params.id}`, {
           name: this.name,
