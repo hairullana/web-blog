@@ -16,16 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Index
-Route::get('/', function() {
-  return view('index', [
-    "title" => "Home",
-    "active" => 'home'
-  ]);
-});
-
 // Posts
-Route::get('/post', [PostController::class, 'index']);
+Route::get('/', [PostController::class, 'index'])->name('index');
 Route::get('/post/{post:slug}', [PostController::class, 'show']);
 
 // Dashboard with SPA (VueJS)
