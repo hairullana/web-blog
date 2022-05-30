@@ -5980,6 +5980,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     });
   },
   methods: {
+    createSlug: function createSlug(event) {
+      var value = event.target.value;
+      this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase();
+    },
     PostStore: function PostStore() {
       var _this2 = this;
 
@@ -6154,6 +6158,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     });
   },
   methods: {
+    createSlug: function createSlug(event) {
+      var value = event.target.value;
+      this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase();
+    },
     PostUpdate: function PostUpdate() {
       var _this2 = this;
 
@@ -52971,6 +52979,7 @@ var render = function () {
                           },
                           domProps: { value: _vm.title },
                           on: {
+                            keyup: _vm.createSlug,
                             input: function ($event) {
                               if ($event.target.composing) {
                                 return
@@ -53291,6 +53300,7 @@ var render = function () {
                           },
                           domProps: { value: _vm.title },
                           on: {
+                            keyup: _vm.createSlug,
                             input: function ($event) {
                               if ($event.target.composing) {
                                 return

@@ -12,7 +12,7 @@
             <form @submit.prevent="PostStore">
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input required type="text" class="form-control" v-model="title" id="title" autofocus>
+                <input required type="text" class="form-control" v-model="title" id="title" @keyup="createSlug" autofocus>
                 <div class="invalid-feedback" v-if="this.errors.title">
                   {{ this.errors.title[0] }}
                 </div>
@@ -90,6 +90,10 @@
       })
     },
     methods: {
+      createSlug(event) {
+        const value = event.target.value
+        this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
+      },
       PostStore(){
         this.axios.post('http://localhost:8000/api/post/store', {
           user_id: this.user_id,

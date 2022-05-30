@@ -12,7 +12,7 @@
             <form @submit.prevent="PostUpdate">
               <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input required type="text" class="form-control" v-model="title" id="title" autofocus>
+                <input required type="text" class="form-control" v-model="title" id="title" @keyup="createSlug" autofocus>
                 <div class="invalid-feedback" v-if="this.errors.title">
                   {{ this.errors.title[0] }}
                 </div>
@@ -95,6 +95,10 @@
       })
     },
     methods: {
+      createSlug(event) {
+        const value = event.target.value
+        this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
+      },
       PostUpdate(){
         this.axios.post(`http://localhost:8000/api/post/update/${this.$route.params.id}`, {
           excerpt: this.title,

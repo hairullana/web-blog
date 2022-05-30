@@ -23,10 +23,9 @@ Vue.use(Toasted)
 import JwPagination from 'jw-vue-pagination'
 Vue.component('jw-pagination', JwPagination);
 // swal2
-import VueSweetalert2 from 'vue-sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
-Vue.use(VueSweetalert2);
-
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
+Vue.use(VueSweetalert2)
 // component
 import Dashboard from './components/Dashboard.vue'
 import Categories from './components/category/Index.vue'
