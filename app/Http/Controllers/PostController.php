@@ -5,14 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
+    $posts = Post::latest();
+
+    if ($request) {
+      $posts = Post::latest();
+      if ($request->search) $posts = $posts->where('title', 'like', '%' . $request->search . '%')->orWhere('body', 'like', '%' . $request->search . '%')->orWhere('slug', 'like', '%' . $request->search . '%');
+    }
+
     return view('index', [
       "title" => "Home",
-      "posts" => Post::latest()->paginate(4),
+      "posts" => $posts->paginate(4),
       "categories" => Category::latest()->get(),
       "popularPost" => Post::all()->random(6)
     ]);

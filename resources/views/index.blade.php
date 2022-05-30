@@ -20,9 +20,17 @@
         </div>
     </div>
   @endforeach
-  <div class="col-12 wow slideInUp" data-wow-delay="0.1s">
+  <div class="col-12">
       <nav aria-label="Page navigation">
         {{ $posts->links() }}
       </nav>
   </div>
+
+  @push('scripts')
+    <script>
+      if({{ request()->hasAny('search', 'category') }}){
+        document.getElementById('content-wrap').scrollIntoView();
+      }
+    </script>
+  @endpush
 @endsection

@@ -1,9 +1,11 @@
 <!-- Search Form Start -->
 <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
-    <div class="input-group">
-        <input type="text" class="form-control p-3" placeholder="Keyword">
-        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
-    </div>
+    <form action="">
+        <div class="input-group" action="{{ route('index') }}#listPost">
+            <input type="text" name="search" class="form-control p-3" placeholder="Keyword" value="{{ request()->get('search') }}">
+            <button type="submit" class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+        </div>
+    </form>
 </div>
 <!-- Search Form End -->
 
