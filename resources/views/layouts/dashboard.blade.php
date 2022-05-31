@@ -16,7 +16,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="/css/dashboard.css" rel="stylesheet">
+
+    <style>
+      .trix-button-group--file-tools {
+        display: none !important;
+      }
+    </style>
 
     <title>Dashboard | HL Blog</title>
   </head>
