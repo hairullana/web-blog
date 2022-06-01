@@ -5977,6 +5977,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       category_id: '',
       body: '',
       categories: '',
+      image: '',
       errors: {}
     };
   },
@@ -6010,6 +6011,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     });
   },
   methods: {
+    uploadImage: function uploadImage(event) {
+      this.image = event.target.files[0];
+    },
     createSlug: function createSlug(event) {
       var value = event.target.value;
       this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase();
@@ -6017,14 +6021,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     PostStore: function PostStore() {
       var _this2 = this;
 
-      this.axios.post('http://localhost:8000/api/post/store', {
-        user_id: this.user_id,
-        excerpt: this.title,
-        title: this.title,
-        slug: this.slug,
-        category_id: this.category_id,
-        body: this.body
-      }).then(function (res) {
+      var config = {
+        header: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      var data = new FormData();
+      data.append('user_id', this.user_id);
+      data.append('excerpt', this.title);
+      data.append('title', this.title);
+      data.append('slug', this.slug);
+      data.append('category_id', this.category_id);
+      data.append('body', this.body);
+      data.append('image', this.image);
+      this.axios.post('http://localhost:8000/api/post/store', data, config).then(function (res) {
         // back to dashboard
         _this2.$router.push({
           name: 'dashboard'
@@ -53861,7 +53871,22 @@ var render = function () {
                               : _vm._e(),
                           ]),
                           _vm._v(" "),
-                          _vm._m(1),
+                          _c("div", { staticClass: "mb-3 " }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "image" },
+                              },
+                              [_vm._v("Image")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: { type: "file", id: "image" },
+                              on: { change: _vm.uploadImage },
+                            }),
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "mb-3" }, [
                             _c(
@@ -54024,21 +54049,6 @@ var staticRenderFns = [
       _c("img", {
         staticClass: "img-fluid img-thumbnail",
         attrs: { src: "http://127.0.0.1:8000/img/blog-1.jpg" },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3 " }, [
-      _c("label", { staticClass: "form-label", attrs: { for: "image" } }, [
-        _vm._v("Image"),
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "file", id: "image" },
       }),
     ])
   },

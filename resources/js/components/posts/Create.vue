@@ -31,7 +31,7 @@
                   </div>
                   <div class="mb-3 ">
                     <label for="image" class="form-label">Image</label>
-                    <input class="form-control" type="file" id="image">
+                    <input class="form-control" type="file" id="image" @change="uploadImage">
                   </div>
                   <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
@@ -87,12 +87,13 @@
         category_id: '',  
         body: '',
         categories: '',
+        image: '',
         errors: {}
       }
     },
     beforeRouteEnter (to, from, next) {
       next( async vm => {
-          document.title = 'Create Post | HL Blog'
+        document.title = 'Create Post | HL Blog'
       })
     },
     created(){
@@ -101,37 +102,47 @@
       })
     },
     methods: {
+      uploadImage(event) {
+        this.image = event.target.files[0]
+      },
       createSlug(event) {
         const value = event.target.value
         this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
       },
       PostStore(){
-        this.axios.post('http://localhost:8000/api/post/store', {
-          user_id: this.user_id,
-          excerpt: this.title,
-          title: this.title,
-          slug: this.slug,
-          category_id: this.category_id,
-          body: this.body,
-        }).then(res => {
-          // back to dashboard
-          this.$router.push({name: 'dashboard'}, () => {
-            this.$toasted.show("Post has been posted!", { 
-              type: 'success',
+        const config = {
+          header: {
+            'content-type': 'multipart/form-data'
+          }
+        }
+        let data = new FormData()
+        data.append('user_id', this.user_id)
+        data.append('excerpt', this.title)
+        data.append('title', this.title)
+        data.append('slug', this.slug)
+        data.append('category_id', this.category_id)
+        data.append('body', this.body)
+        data.append('image', this.image)
+        this.axios.post('http://localhost:8000/api/post/store', data, config)
+          .then(res => {
+            // back to dashboard
+            this.$router.push({name: 'dashboard'}, () => {
+              this.$toasted.show("Post has been posted!", { 
+                type: 'success',
+                theme: "bubble", 
+                position: "top-right", 
+                duration : 3000
+              })
+            })
+          }).catch(error => {
+            this.errors = error.response.data.errors
+            this.$toasted.show(error.response.data.message, { 
+              type: 'error',
               theme: "bubble", 
               position: "top-right", 
               duration : 3000
             })
           })
-        }).catch(error => {
-          this.errors = error.response.data.errors
-          this.$toasted.show(error.response.data.message, { 
-            type: 'error',
-            theme: "bubble", 
-            position: "top-right", 
-            duration : 3000
-          })
-        })
       }
     }
   }

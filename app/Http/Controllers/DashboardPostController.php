@@ -13,15 +13,16 @@ use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPostController extends Controller
 {
-  public function index() {
+  public function index()
+  {
     $title = '';
 
-    if(request('category')) {
+    if (request('category')) {
       $category = Category::firstWhere('slug', request('category'));
       $title = ' in ' . $category->name;
     }
 
-    if(request('author')) {
+    if (request('author')) {
       $author = User::firstWhere('username', request('author'));
       $title = ' by ' . $author->name;
     }
@@ -34,22 +35,25 @@ class DashboardPostController extends Controller
     ], 200);
   }
 
-  public function show($id) {
+  public function show($id)
+  {
     // find post with id
     $post = Post::find($id);
 
     //make response JSON
     return response()->json([
-        'success' => true,
-        'message' => 'Detail Data Post',
-        'data'    => $post 
+      'success' => true,
+      'message' => 'Detail Data Post',
+      'data'    => $post
     ], 200);
   }
-  
-  public function store(Request $request){
+
+  public function store(Request $request)
+  {
     // dd($request);
     //set validation
     $this->validate($request, [
+      'image' => 'nullable|mimes:jpg,jpeg,png|max:2048',
       'category_id' => 'required',
       'user_id' => 'required',
       'title'   => 'required|min:3',
@@ -60,6 +64,7 @@ class DashboardPostController extends Controller
 
     //save to database
     $post = Post::create([
+      'image' => $request->image != null ? true : false,
       'category_id' => $request->category_id,
       'user_id' => $request->user_id,
       'title'   => $request->title,
@@ -68,14 +73,16 @@ class DashboardPostController extends Controller
       'body' => $request->body
     ]);
 
+    if ($request->image != null) $request->file('image')->move(public_path('storage\images\posts'), $post->id . '.jpg');
+
     //success save to database
-    if($post) {
+    if ($post) {
       return response()->json([
         'success' => true,
         'message' => 'Post Created',
-        'data'    => $post  
+        'data'    => $post
       ], 200);
-    } 
+    }
 
     //failed save to database
     return response()->json([
@@ -84,7 +91,8 @@ class DashboardPostController extends Controller
     ], 409);
   }
 
-  public function update(Request $request, $id){
+  public function update(Request $request, $id)
+  {
     //set validation
     $this->validate($request, [
       'category_id' => 'required',
@@ -97,7 +105,7 @@ class DashboardPostController extends Controller
     //find post by ID
     $post = Post::findOrFail($id);
 
-    if($post) {
+    if ($post) {
       //update post
       $post->update([
         'category_id' => $request->category_id,
@@ -110,7 +118,7 @@ class DashboardPostController extends Controller
       return response()->json([
         'success' => true,
         'message' => 'Post Updated',
-        'data'    => $post  
+        'data'    => $post
       ], 200);
     }
 
@@ -119,14 +127,14 @@ class DashboardPostController extends Controller
       'success' => false,
       'message' => 'Post Not Found',
     ], 404);
-
   }
 
-  public function destroy($id){
+  public function destroy($id)
+  {
     //find post by ID
     $post = Post::findOrfail($id);
 
-    if($post) {
+    if ($post) {
       //delete post
       $post->delete();
 
@@ -134,7 +142,6 @@ class DashboardPostController extends Controller
         'success' => true,
         'message' => 'Post Deleted',
       ], 200);
-
     }
 
     //data post not found
@@ -144,7 +151,8 @@ class DashboardPostController extends Controller
     ], 404);
   }
 
-  public function checkSlug(Request $request){
+  public function checkSlug(Request $request)
+  {
     $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
     return response()->json(['slug' => $slug]);
   }
