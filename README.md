@@ -44,6 +44,11 @@ composer install
 npm install
 ```
 
+### 7. Storage Link
+```bash
+php artisan storage:link
+```
+
 ### 8. Run Laraver Server
 ```bash
 php artisan serve
@@ -53,4 +58,3 @@ php artisan serve
 ```bash
 npm run watch
 ```
-
