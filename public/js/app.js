@@ -5425,13 +5425,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     var _this = this;
 
-    this.axios.get('http://localhost:8000/api/posts').then(function (res) {
+    this.axios.get('http://127.0.0.3:9292/api/posts').then(function (res) {
       _this.posts = res.data.data;
     });
-    this.axios.get('http://localhost:8000/api/categories').then(function (res) {
+    this.axios.get('http://127.0.0.3:9292/api/categories').then(function (res) {
       _this.categories = res.data.data;
     });
-    this.axios.get('http://localhost:8000/api/category/percentage').then(function (res) {
+    this.axios.get('http://127.0.0.3:9292/api/category/percentage').then(function (res) {
       _this.postsPerCategory = res.data.data;
     });
   }
@@ -5545,7 +5545,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     CategoryStore: function CategoryStore() {
       var _this = this;
 
-      this.axios.post('http://localhost:8000/api/category/store', {
+      this.axios.post('http://127.0.0.3:9292/api/category/store', {
         name: this.name,
         slug: this.slug
       }).then(function (res) {
@@ -5676,7 +5676,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    this.axios.get("http://localhost:8000/api/category/".concat(this.$route.params.id)).then(function (res) {
+    this.axios.get("http://127.0.0.3:9292/api/category/".concat(this.$route.params.id)).then(function (res) {
       _this.name = res.data.data.name;
       _this.slug = res.data.data.slug;
     });
@@ -5689,7 +5689,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     CategoryUpdate: function CategoryUpdate() {
       var _this2 = this;
 
-      this.axios.post("http://localhost:8000/api/category/update/".concat(this.$route.params.id), {
+      this.axios.post("http://127.0.0.3:9292/api/category/update/".concat(this.$route.params.id), {
         name: this.name,
         slug: this.slug
       }).then(function (res) {
@@ -5827,7 +5827,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     var _this = this;
 
-    this.axios.get('http://localhost:8000/api/categories').then(function (res) {
+    this.axios.get('http://127.0.0.3:9292/api/categories').then(function (res) {
       _this.categories = res.data.data;
     });
   },
@@ -5844,7 +5844,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cancelButtonColor: '#d33'
       }).then(function (result) {
         if (result.isConfirmed) {
-          _this2.axios["delete"]("http://localhost:8000/api/category/".concat(id)).then(function (res) {
+          _this2.axios["delete"]("http://127.0.0.3:9292/api/category/".concat(id)).then(function (res) {
             _this2.categories.splice(index, 1);
 
             _this2.$swal('Deleted!', 'Your category has been deleted.', 'success');
@@ -6006,7 +6006,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    this.axios.get("http://localhost:8000/api/categories").then(function (res) {
+    this.axios.get("http://127.0.0.3:9292/api/categories").then(function (res) {
       _this.categories = res.data.data;
     });
   },
@@ -6035,7 +6035,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       data.append('category_id', this.category_id);
       data.append('body', this.body);
       data.append('image', this.image);
-      this.axios.post('http://localhost:8000/api/post/store', data, config).then(function (res) {
+      this.axios.post('http://127.0.0.3:9292/api/post/store', data, config).then(function (res) {
         // back to dashboard
         _this2.$router.push({
           name: 'dashboard'
@@ -6166,12 +6166,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
+      id: '',
       excerpt: '',
       title: '',
       slug: '',
       category_id: '',
       body: '',
       categories: [],
+      image: '',
       errors: {}
     };
   },
@@ -6200,14 +6202,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    this.axios.get("http://localhost:8000/api/post/".concat(this.$route.params.id)).then(function (res) {
+    this.axios.get("http://127.0.0.3:9292/api/post/".concat(this.$route.params.id)).then(function (res) {
+      _this.id = res.data.data.id;
       _this.excerpt = res.data.data.excerpt;
       _this.title = res.data.data.title;
       _this.slug = res.data.data.slug;
       _this.category_id = res.data.data.category_id;
       _this.body = res.data.data.body;
+      var me = _this;
+      var imageURL = "http://127.0.0.3:9292/storage/images/posts/" + res.data.data.id + ".jpg";
+
+      _this.axios.get(imageURL).then(function (res) {
+        me.image = imageURL;
+      })["catch"](function (err) {
+        me.image = "http://127.0.0.3:9292/storage/images/posts/example.jpg";
+      });
     });
-    this.axios.get("http://localhost:8000/api/categories").then(function (res) {
+    this.axios.get("http://127.0.0.3:9292/api/categories").then(function (res) {
       _this.categories = res.data.data;
     });
   },
@@ -6223,7 +6234,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     PostUpdate: function PostUpdate() {
       var _this2 = this;
 
-      this.axios.post("http://localhost:8000/api/post/update/".concat(this.$route.params.id), {
+      this.axios.post("http://127.0.0.3:9292/api/post/update/".concat(this.$route.params.id), {
         excerpt: this.title,
         title: this.title,
         slug: this.slug,
@@ -6369,7 +6380,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     var _this = this;
 
-    this.axios.get('http://localhost:8000/api/posts').then(function (res) {
+    this.axios.get('http://127.0.0.3:9292/api/posts').then(function (res) {
       _this.posts = res.data.data;
     });
   },
@@ -6386,7 +6397,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cancelButtonColor: '#d33'
       }).then(function (result) {
         if (result.isConfirmed) {
-          _this2.axios["delete"]("http://localhost:8000/api/post/".concat(id)).then(function (res) {
+          _this2.axios["delete"]("http://127.0.0.3:9292/api/post/".concat(id)).then(function (res) {
             _this2.posts.splice(index, 1);
 
             _this2.$swal('Deleted!', 'Your post has been deleted.', 'success');
@@ -54145,7 +54156,12 @@ var render = function () {
                     },
                     [
                       _c("div", { staticClass: "row" }, [
-                        _vm._m(0),
+                        _c("div", { staticClass: "col-lg-5 mt-auto" }, [
+                          _c("img", {
+                            staticClass: "img-fluid img-thumbnail",
+                            attrs: { src: this.image },
+                          }),
+                        ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-lg-7" }, [
                           _c("div", { staticClass: "mb-3" }, [
@@ -54414,19 +54430,7 @@ var render = function () {
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-5 mt-auto" }, [
-      _c("img", {
-        staticClass: "img-fluid img-thumbnail",
-        attrs: { src: "http://127.0.0.1:8000/img/blog-1.jpg" },
-      }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

@@ -79,7 +79,7 @@
       })
     },
     mounted(){
-      this.axios.get('http://localhost:8000/api/posts').then(res => {
+      this.axios.get('http://127.0.0.3:9292/api/posts').then(res => {
         this.posts = res.data.data
       })
     },
@@ -94,7 +94,7 @@
           cancelButtonColor: '#d33'
         }).then((result) => {
           if (result.isConfirmed) {
-            this.axios.delete(`http://localhost:8000/api/post/${id}`).then(res => {
+            this.axios.delete(`http://127.0.0.3:9292/api/post/${id}`).then(res => {
               this.posts.splice(index, 1)
               this.$swal(
                 'Deleted!',

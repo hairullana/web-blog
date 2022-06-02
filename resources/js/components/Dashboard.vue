@@ -99,13 +99,13 @@
       })
     },
     mounted(){
-      this.axios.get('http://localhost:8000/api/posts').then(res => {
+      this.axios.get('http://127.0.0.3:9292/api/posts').then(res => {
         this.posts = res.data.data
       })
-      this.axios.get('http://localhost:8000/api/categories').then(res => {
+      this.axios.get('http://127.0.0.3:9292/api/categories').then(res => {
         this.categories = res.data.data
       })
-      this.axios.get('http://localhost:8000/api/category/percentage').then(res => {
+      this.axios.get('http://127.0.0.3:9292/api/category/percentage').then(res => {
         this.postsPerCategory = res.data.data
       })
     }

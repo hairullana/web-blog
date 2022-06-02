@@ -12,7 +12,7 @@
             <form @submit.prevent="PostStore">
               <div class="row">
                 <div class="col-lg-5 mt-auto">
-                  <img src="http://127.0.0.1:8000/img/blog-1.jpg" class="img-fluid img-thumbnail">
+                  <img v-bind:src="this.image" class="img-fluid img-thumbnail">
                 </div>
                 <div class="col-lg-7">
                   <div class="mb-3">
@@ -81,12 +81,14 @@
     },
     data(){
       return {
+        id: '',
         excerpt: '',
         title: '',
         slug: '',
         category_id: '',  
         body: '',
         categories: [],
+        image: '',
         errors: {}
       }
     },
@@ -96,14 +98,24 @@
       })
     },
     created(){
-      this.axios.get(`http://localhost:8000/api/post/${this.$route.params.id}`).then(res => {
+      this.axios.get(`http://127.0.0.3:9292/api/post/${this.$route.params.id}`).then(res => {
+        this.id = res.data.data.id
         this.excerpt = res.data.data.excerpt
         this.title = res.data.data.title
         this.slug = res.data.data.slug
         this.category_id = res.data.data.category_id
         this.body = res.data.data.body
+        
+        let me = this
+        let imageURL = "http://127.0.0.3:9292/storage/images/posts/" + res.data.data.id + ".jpg"
+        this.axios.get(imageURL).then(res => {
+          me.image = imageURL
+        }).catch(err => {
+          me.image = "http://127.0.0.3:9292/storage/images/posts/example.jpg"
+        })
       })
-      this.axios.get("http://localhost:8000/api/categories").then(res => {
+      
+      this.axios.get("http://127.0.0.3:9292/api/categories").then(res => {
         this.categories = res.data.data
       })
     },
@@ -117,7 +129,7 @@
         this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
       },
       PostUpdate(){
-        this.axios.post(`http://localhost:8000/api/post/update/${this.$route.params.id}`, {
+        this.axios.post(`http://127.0.0.3:9292/api/post/update/${this.$route.params.id}`, {
           excerpt: this.title,
           title: this.title,
           slug: this.slug,

@@ -64,7 +64,6 @@ class DashboardPostController extends Controller
 
     //save to database
     $post = Post::create([
-      'image' => $request->image != null ? true : false,
       'category_id' => $request->category_id,
       'user_id' => $request->user_id,
       'title'   => $request->title,
@@ -95,6 +94,7 @@ class DashboardPostController extends Controller
   {
     //set validation
     $this->validate($request, [
+      'image' => 'nullable|mimes:jpg,jpeg,png|max:2048',
       'category_id' => 'required',
       'title'   => 'required|min:3',
       'slug' => 'required',

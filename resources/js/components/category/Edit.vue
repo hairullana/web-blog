@@ -59,7 +59,7 @@
       })
     },
     created(){
-      this.axios.get(`http://localhost:8000/api/category/${this.$route.params.id}`).then(res => {
+      this.axios.get(`http://127.0.0.3:9292/api/category/${this.$route.params.id}`).then(res => {
         this.name = res.data.data.name
         this.slug = res.data.data.slug
       })
@@ -70,7 +70,7 @@
         this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
       },
       CategoryUpdate(){
-        this.axios.post(`http://localhost:8000/api/category/update/${this.$route.params.id}`, {
+        this.axios.post(`http://127.0.0.3:9292/api/category/update/${this.$route.params.id}`, {
           name: this.name,
           slug: this.slug
         }).then(res => {
