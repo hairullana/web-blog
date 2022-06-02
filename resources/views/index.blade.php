@@ -5,7 +5,7 @@
     <div class="col-md-6 wow slideInUp" data-wow-delay="0.1s">
         <div class="blog-item bg-light rounded overflow-hidden">
             <div class="blog-img position-relative overflow-hidden">
-                <img class="img-fluid" src="/img/blog-1.jpg" alt="">
+                <img class="img-fluid" src="{{ file_exists(public_path('storage/images/posts/' . $post->id . '.jpg')) ? url('storage/images/posts/' . $post->id . '.jpg') : url('storage/images/posts/example.jpg') }}" alt="">
                 <a class="opacity-75 text-decoration-none position-absolute top-0 start-0 bg-dark text-white rounded-end mt-5 py-2 px-4" href="/category/{{ $post->category->slug }}">{{ $post->category->name }}</a>
             </div>
             <div class="p-4">
