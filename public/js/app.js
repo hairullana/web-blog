@@ -6013,6 +6013,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     uploadImage: function uploadImage(event) {
       this.image = event.target.files[0];
+      $('.img-thumbnail').attr('src', URL.createObjectURL(this.image));
     },
     createSlug: function createSlug(event) {
       var value = event.target.value;
@@ -6211,6 +6212,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     });
   },
   methods: {
+    uploadImage: function uploadImage(event) {
+      this.image = event.target.files[0];
+      $('.img-thumbnail').attr('src', URL.createObjectURL(this.image));
+    },
     createSlug: function createSlug(event) {
       var value = event.target.value;
       this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase();
@@ -54240,7 +54245,22 @@ var render = function () {
                               : _vm._e(),
                           ]),
                           _vm._v(" "),
-                          _vm._m(1),
+                          _c("div", { staticClass: "mb-3 " }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "image" },
+                              },
+                              [_vm._v("Image")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              staticClass: "form-control",
+                              attrs: { type: "file", id: "image" },
+                              on: { change: _vm.uploadImage },
+                            }),
+                          ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "mb-3" }, [
                             _c(
@@ -54403,21 +54423,6 @@ var staticRenderFns = [
       _c("img", {
         staticClass: "img-fluid img-thumbnail",
         attrs: { src: "http://127.0.0.1:8000/img/blog-1.jpg" },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "mb-3 " }, [
-      _c("label", { staticClass: "form-label", attrs: { for: "image" } }, [
-        _vm._v("Image"),
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "file", id: "image" },
       }),
     ])
   },

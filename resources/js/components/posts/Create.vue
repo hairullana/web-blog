@@ -104,6 +104,7 @@
     methods: {
       uploadImage(event) {
         this.image = event.target.files[0]
+        $('.img-thumbnail').attr('src', URL.createObjectURL(this.image))
       },
       createSlug(event) {
         const value = event.target.value

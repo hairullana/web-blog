@@ -31,7 +31,7 @@
                   </div>
                   <div class="mb-3 ">
                     <label for="image" class="form-label">Image</label>
-                    <input class="form-control" type="file" id="image">
+                    <input class="form-control" type="file" id="image" @change="uploadImage">
                   </div>
                   <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
@@ -108,6 +108,10 @@
       })
     },
     methods: {
+      uploadImage(event) {
+        this.image = event.target.files[0]
+        $('.img-thumbnail').attr('src', URL.createObjectURL(this.image))
+      },
       createSlug(event) {
         const value = event.target.value
         this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
