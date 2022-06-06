@@ -31,7 +31,7 @@
     </div>
     @foreach ($popularPost as $item)
     <div class="d-flex rounded overflow-hidden mb-3">
-        <img class="img-fluid" src="/img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;">
+        <img class="img-fluid" src="{{ file_exists(public_path('storage/images/posts/' . $item->id . '.jpg')) ? url('storage/images/posts/' . $item->id . '.jpg') : url('storage/images/posts/example.jpg') }}" style="width: 100px; height: 100px; object-fit: cover;">
         <a href="/post/{{ $item->slug }}" class="text-decoration-none h6 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">{{ $item->title }}</a>
     </div>
     @endforeach
