@@ -6027,7 +6027,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.axios.post('/api/post/store', data, config).then(function (res) {
         // back to dashboard
         _this2.$router.push({
-          name: 'dashboard'
+          name: 'posts'
         }, function () {
           _this2.$toasted.show("Post has been posted!", {
             type: 'success',
@@ -6204,7 +6204,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this.axios.get(imageURL).then(function (res) {
         me.image = imageURL;
       })["catch"](function (err) {
-        me.image = "/storage/images/posts/example.jpg";
+        me.image = "http://ngeewap.xtgem.com/files/hl.jpg";
       });
     });
     this.axios.get("/api/categories").then(function (res) {
@@ -6214,7 +6214,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     uploadImage: function uploadImage(event) {
       this.image = event.target.files[0];
-      $('.img-thumbnail').attr('src', URL.createObjectURL(this.image));
+      $('.image-preview').find('.img-thumbnail').remove();
+      $('.image-preview').append("<img src=\"".concat(URL.createObjectURL(this.image), "\" class=\"img-fluid img-thumbnail\">"));
     },
     createSlug: function createSlug(event) {
       var value = event.target.value;
@@ -6223,15 +6224,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     PostUpdate: function PostUpdate() {
       var _this2 = this;
 
-      this.axios.post("/api/post/update/".concat(this.$route.params.id), {
-        excerpt: this.title,
-        title: this.title,
-        slug: this.slug,
-        category_id: this.category_id,
-        body: this.body
-      }).then(function (res) {
+      var config = {
+        header: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      var data = new FormData();
+      data.append('excerpt', this.title);
+      data.append('title', this.title);
+      data.append('slug', this.slug);
+      data.append('category_id', this.category_id);
+      data.append('body', this.body);
+      data.append('image', this.image);
+      this.axios.post("/api/post/update/".concat(this.$route.params.id), data, config).then(function (res) {
+        // back to dashboard
         _this2.$router.push({
-          name: 'dashboard'
+          name: 'posts'
+        }, function () {
+          _this2.$toasted.show("Post has been posted!", {
+            type: 'success',
+            theme: "bubble",
+            position: "top-right",
+            duration: 3000
+          });
         });
       })["catch"](function (error) {
         _this2.errors = error.response.data.errors;
@@ -53289,7 +53304,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-lg-5 mt-auto" }, [
       _c("img", {
         staticClass: "img-fluid img-thumbnail",
-        attrs: { src: "http://127.0.0.1:8000/img/blog-1.jpg" },
+        attrs: { src: "http://ngeewap.xtgem.com/files/hl.jpg" },
       }),
     ])
   },
@@ -53375,18 +53390,22 @@ var render = function () {
                       on: {
                         submit: function ($event) {
                           $event.preventDefault()
-                          return _vm.PostStore.apply(null, arguments)
+                          return _vm.PostUpdate.apply(null, arguments)
                         },
                       },
                     },
                     [
                       _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-lg-5 mt-auto" }, [
-                          _c("img", {
-                            staticClass: "img-fluid img-thumbnail",
-                            attrs: { src: this.image },
-                          }),
-                        ]),
+                        _c(
+                          "div",
+                          { staticClass: "col-lg-5 mt-auto image-preview" },
+                          [
+                            _c("img", {
+                              staticClass: "img-fluid img-thumbnail",
+                              attrs: { src: this.image },
+                            }),
+                          ]
+                        ),
                         _vm._v(" "),
                         _c("div", { staticClass: "col-lg-7" }, [
                           _c("div", { staticClass: "mb-3" }, [

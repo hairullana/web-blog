@@ -106,6 +106,8 @@ class DashboardPostController extends Controller
     $post = Post::findOrFail($id);
 
     if ($post) {
+      // upload image
+      if ($request->image != null) $request->file('image')->move(public_path('storage\images\posts'), $post->id . '.jpg');
       //update post
       $post->update([
         'category_id' => $request->category_id,

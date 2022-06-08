@@ -12,7 +12,7 @@
             <form @submit.prevent="PostStore">
               <div class="row">
                 <div class="col-lg-5 mt-auto">
-                  <img src="http://127.0.0.1:8000/img/blog-1.jpg" class="img-fluid img-thumbnail">
+                  <img src="http://ngeewap.xtgem.com/files/hl.jpg" class="img-fluid img-thumbnail">
                 </div>
                 <div class="col-lg-7">
                   <div class="mb-3">
@@ -127,7 +127,7 @@
         this.axios.post('/api/post/store', data, config)
           .then(res => {
             // back to dashboard
-            this.$router.push({name: 'dashboard'}, () => {
+            this.$router.push({name: 'posts'}, () => {
               this.$toasted.show("Post has been posted!", { 
                 type: 'success',
                 theme: "bubble", 

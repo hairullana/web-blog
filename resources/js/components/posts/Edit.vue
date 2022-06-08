@@ -9,9 +9,9 @@
             <h1 class="h3 mb-0 text-gray-800"><router-link class="path-link" :to="{ name: 'dashboard' }">Dashboard</router-link> / <router-link class="path-link" :to="{ name: 'posts' }">Posts</router-link> / Edit Post</h1>
           </div>
           <div class="col-lg-12 mb-3">
-            <form @submit.prevent="PostStore">
+            <form @submit.prevent="PostUpdate">
               <div class="row">
-                <div class="col-lg-5 mt-auto">
+                <div class="col-lg-5 mt-auto image-preview">
                   <img v-bind:src="this.image" class="img-fluid img-thumbnail">
                 </div>
                 <div class="col-lg-7">
@@ -111,7 +111,7 @@
         this.axios.get(imageURL).then(res => {
           me.image = imageURL
         }).catch(err => {
-          me.image = "/storage/images/posts/example.jpg"
+          me.image = "http://ngeewap.xtgem.com/files/hl.jpg"
         })
       })
       
@@ -122,21 +122,36 @@
     methods: {
       uploadImage(event) {
         this.image = event.target.files[0]
-        $('.img-thumbnail').attr('src', URL.createObjectURL(this.image))
+        $('.image-preview').find('.img-thumbnail').remove()
+        $('.image-preview').append(`<img src="${URL.createObjectURL(this.image)}" class="img-fluid img-thumbnail">`)
       },
       createSlug(event) {
         const value = event.target.value
         this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
       },
       PostUpdate(){
-        this.axios.post(`/api/post/update/${this.$route.params.id}`, {
-          excerpt: this.title,
-          title: this.title,
-          slug: this.slug,
-          category_id: this.category_id,
-          body: this.body
-        }).then((res) => {
-          this.$router.push({name: 'dashboard'})
+        const config = {
+          header: {
+            'content-type': 'multipart/form-data'
+          }
+        }
+        let data = new FormData()
+        data.append('excerpt', this.title)
+        data.append('title', this.title)
+        data.append('slug', this.slug)
+        data.append('category_id', this.category_id)
+        data.append('body', this.body)
+        data.append('image', this.image)
+        this.axios.post(`/api/post/update/${this.$route.params.id}`, data, config).then((res) => {
+          // back to dashboard
+          this.$router.push({name: 'posts'}, () => {
+            this.$toasted.show("Post has been posted!", { 
+              type: 'success',
+              theme: "bubble", 
+              position: "top-right", 
+              duration : 3000
+            })
+          })
         }).catch(error => {
           this.errors = error.response.data.errors
           this.$toasted.show(error.response.data.message, { 
