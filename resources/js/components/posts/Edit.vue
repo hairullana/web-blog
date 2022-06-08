@@ -98,7 +98,7 @@
       })
     },
     created(){
-      this.axios.get(`http://127.0.0.3:9292/api/post/${this.$route.params.id}`).then(res => {
+      this.axios.get(`/api/post/${this.$route.params.id}`).then(res => {
         this.id = res.data.data.id
         this.excerpt = res.data.data.excerpt
         this.title = res.data.data.title
@@ -107,15 +107,15 @@
         this.body = res.data.data.body
         
         let me = this
-        let imageURL = "http://127.0.0.3:9292/storage/images/posts/" + res.data.data.id + ".jpg"
+        let imageURL = "/storage/images/posts/" + res.data.data.id + ".jpg"
         this.axios.get(imageURL).then(res => {
           me.image = imageURL
         }).catch(err => {
-          me.image = "http://127.0.0.3:9292/storage/images/posts/example.jpg"
+          me.image = "/storage/images/posts/example.jpg"
         })
       })
       
-      this.axios.get("http://127.0.0.3:9292/api/categories").then(res => {
+      this.axios.get("/api/categories").then(res => {
         this.categories = res.data.data
       })
     },
@@ -129,7 +129,7 @@
         this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
       },
       PostUpdate(){
-        this.axios.post(`http://127.0.0.3:9292/api/post/update/${this.$route.params.id}`, {
+        this.axios.post(`/api/post/update/${this.$route.params.id}`, {
           excerpt: this.title,
           title: this.title,
           slug: this.slug,

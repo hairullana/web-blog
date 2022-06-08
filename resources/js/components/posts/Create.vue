@@ -97,7 +97,7 @@
       })
     },
     created(){
-      this.axios.get("http://127.0.0.3:9292/api/categories").then(res => {
+      this.axios.get("/api/categories").then(res => {
         this.categories = res.data.data
       })
     },
@@ -124,7 +124,7 @@
         data.append('category_id', this.category_id)
         data.append('body', this.body)
         data.append('image', this.image)
-        this.axios.post('http://127.0.0.3:9292/api/post/store', data, config)
+        this.axios.post('/api/post/store', data, config)
           .then(res => {
             // back to dashboard
             this.$router.push({name: 'dashboard'}, () => {

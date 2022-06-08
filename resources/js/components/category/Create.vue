@@ -65,7 +65,7 @@
         this.slug = value.replace(/\s+/g, '-').replace(/\W+/g, '-').replace(/\-$/, '').toLowerCase()
       },
       CategoryStore(){
-        this.axios.post('http://127.0.0.3:9292/api/category/store', {
+        this.axios.post('/api/category/store', {
           name: this.name,
           slug: this.slug
         }).then(res => {
