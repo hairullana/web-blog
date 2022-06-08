@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardPostController extends Controller
 {
@@ -137,6 +138,7 @@ class DashboardPostController extends Controller
     $post = Post::findOrfail($id);
 
     if ($post) {
+      unlink(public_path("storage/images/posts/" . $id . ".jpg"));
       //delete post
       $post->delete();
 
