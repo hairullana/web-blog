@@ -20,7 +20,7 @@
           <h3 class="mb-0">3 Comments</h3>
       </div>
       <div class="d-flex mb-4">
-          <img src="/img/user.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
+          <img src="http://ngeewap.xtgem.com/files/hl.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
           <div class="ps-3">
               <h6><a href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
               <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
@@ -29,7 +29,7 @@
           </div>
       </div>
       <div class="d-flex mb-4">
-          <img src="/img/user.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
+          <img src="http://ngeewap.xtgem.com/files/hl.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
           <div class="ps-3">
               <h6><a href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
               <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
@@ -38,7 +38,7 @@
           </div>
       </div>
       <div class="d-flex ms-5 mb-4">
-          <img src="/img/user.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
+          <img src="http://ngeewap.xtgem.com/files/hl.jpg" class="img-fluid rounded" style="width: 45px; height: 45px;">
           <div class="ps-3">
               <h6><a href="">John Doe</a> <small><i>01 Jan 2045</i></small></h6>
               <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore
