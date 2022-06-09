@@ -5787,6 +5787,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -6297,6 +6300,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -53614,57 +53620,82 @@ var render = function () {
                               _vm._v(" "),
                               _c(
                                 "tbody",
-                                _vm._l(
-                                  _vm.categories,
-                                  function (category, index) {
-                                    return _c("tr", { key: category.id }, [
-                                      _c("td", [_vm._v(_vm._s(category.id))]),
-                                      _vm._v(" "),
-                                      _c("td", [_vm._v(_vm._s(category.name))]),
-                                      _vm._v(" "),
-                                      _c("td", [_vm._v(_vm._s(category.slug))]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "td",
-                                        [
-                                          _c(
-                                            "router-link",
-                                            {
-                                              staticClass:
-                                                "text-dark badge btn-warning",
-                                              attrs: {
-                                                to:
-                                                  "/dashboard/category/edit/" +
-                                                  category.id,
-                                              },
-                                            },
-                                            [_vm._v("Edit")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "button",
-                                            {
-                                              staticClass:
-                                                "text-dark badge btn-danger border-0",
-                                              on: {
-                                                click: function ($event) {
-                                                  $event.preventDefault()
-                                                  return _vm.CategoryDelete(
-                                                    category.id,
-                                                    index
-                                                  )
-                                                },
-                                              },
-                                            },
-                                            [_vm._v("Delete")]
-                                          ),
-                                        ],
-                                        1
+                                [
+                                  _vm.posts.length == 0
+                                    ? _c("tr", [
+                                        _c(
+                                          "td",
+                                          {
+                                            staticClass: "text-center",
+                                            attrs: { colspan: "4" },
+                                          },
+                                          [_vm._v("Category Not Found")]
+                                        ),
+                                      ])
+                                    : _vm._l(
+                                        _vm.categories,
+                                        function (category, index) {
+                                          return _c(
+                                            "tr",
+                                            { key: category.id },
+                                            [
+                                              _c("td", [
+                                                _vm._v(_vm._s(category.id)),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(category.name)),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("td", [
+                                                _vm._v(_vm._s(category.slug)),
+                                              ]),
+                                              _vm._v(" "),
+                                              _c(
+                                                "td",
+                                                [
+                                                  _c(
+                                                    "router-link",
+                                                    {
+                                                      staticClass:
+                                                        "text-dark badge btn-warning",
+                                                      attrs: {
+                                                        to:
+                                                          "/dashboard/category/edit/" +
+                                                          category.id,
+                                                      },
+                                                    },
+                                                    [_vm._v("Edit")]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "button",
+                                                    {
+                                                      staticClass:
+                                                        "text-dark badge btn-danger border-0",
+                                                      on: {
+                                                        click: function (
+                                                          $event
+                                                        ) {
+                                                          $event.preventDefault()
+                                                          return _vm.CategoryDelete(
+                                                            category.id,
+                                                            index
+                                                          )
+                                                        },
+                                                      },
+                                                    },
+                                                    [_vm._v("Delete")]
+                                                  ),
+                                                ],
+                                                1
+                                              ),
+                                            ]
+                                          )
+                                        }
                                       ),
-                                    ])
-                                  }
-                                ),
-                                0
+                                ],
+                                2
                               ),
                             ]
                           ),
@@ -54541,70 +54572,88 @@ var render = function () {
                               _vm._v(" "),
                               _c(
                                 "tbody",
-                                _vm._l(_vm.pageOfPosts, function (post, index) {
-                                  return _c("tr", { key: post.id }, [
-                                    _c("td", [_vm._v(_vm._s(post.id))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _c(
-                                        "a",
-                                        {
-                                          staticStyle: {
-                                            "text-decoration": "none",
+                                [
+                                  _vm.posts.length == 0
+                                    ? _c("tr", [
+                                        _c(
+                                          "td",
+                                          {
+                                            staticClass: "text-center",
+                                            attrs: { colspan: "4" },
                                           },
-                                          attrs: {
-                                            href: "/post/" + post.slug,
-                                            target: "_blank",
-                                          },
-                                        },
-                                        [_vm._v(_vm._s(post.title))]
+                                          [_vm._v("Post Not Found")]
+                                        ),
+                                      ])
+                                    : _vm._l(
+                                        _vm.pageOfPosts,
+                                        function (post, index) {
+                                          return _c("tr", { key: post.id }, [
+                                            _c("td", [_vm._v(_vm._s(post.id))]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _c(
+                                                "a",
+                                                {
+                                                  staticStyle: {
+                                                    "text-decoration": "none",
+                                                  },
+                                                  attrs: {
+                                                    href: "/post/" + post.slug,
+                                                    target: "_blank",
+                                                  },
+                                                },
+                                                [_vm._v(_vm._s(post.title))]
+                                              ),
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _vm._v(
+                                                _vm._s(post.category.name)
+                                              ),
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              [
+                                                _c(
+                                                  "router-link",
+                                                  {
+                                                    staticClass:
+                                                      "text-dark badge btn-warning",
+                                                    attrs: {
+                                                      to:
+                                                        "/dashboard/post/edit/" +
+                                                        post.id,
+                                                    },
+                                                  },
+                                                  [_vm._v("Edit")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "text-dark badge btn-danger border-0",
+                                                    on: {
+                                                      click: function ($event) {
+                                                        $event.preventDefault()
+                                                        return _vm.PostDelete(
+                                                          post.id,
+                                                          index
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [_vm._v("Delete")]
+                                                ),
+                                              ],
+                                              1
+                                            ),
+                                          ])
+                                        }
                                       ),
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(_vm._s(post.category.name)),
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            staticClass:
-                                              "text-dark badge btn-warning",
-                                            attrs: {
-                                              to:
-                                                "/dashboard/post/edit/" +
-                                                post.id,
-                                            },
-                                          },
-                                          [_vm._v("Edit")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass:
-                                              "text-dark badge btn-danger border-0",
-                                            on: {
-                                              click: function ($event) {
-                                                $event.preventDefault()
-                                                return _vm.PostDelete(
-                                                  post.id,
-                                                  index
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("Delete")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                  ])
-                                }),
-                                0
+                                ],
+                                2
                               ),
                             ]
                           ),

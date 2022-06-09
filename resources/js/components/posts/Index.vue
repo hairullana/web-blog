@@ -28,7 +28,10 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="(post, index) in pageOfPosts" :key="post.id">
+                      <tr v-if="posts.length == 0">
+                        <td colspan="4" class="text-center">Post Not Found</td>
+                      </tr>
+                      <tr v-else v-for="(post, index) in pageOfPosts" :key="post.id">
                         <td>{{ post.id }}</td>
                         <td><a v-bind:href="'/post/' + post.slug" target="_blank" style="text-decoration:none;">{{ post.title }}</a></td>
                         <td>{{ post.category.name }}</td>
