@@ -2899,7 +2899,7 @@ textarea.form-control-lg {
 }
 
 .invalid-feedback {
-  display: none;
+  display: block !important;
   width: 100%;
   margin-top: 0.25rem;
   font-size: 0.875em;
@@ -2924,7 +2924,7 @@ textarea.form-control-lg {
 .was-validated :invalid ~ .invalid-tooltip,
 .is-invalid ~ .invalid-feedback,
 .is-invalid ~ .invalid-tooltip {
-  display: block;
+  display: block !important;
 }
 
 .was-validated .form-control:invalid, .form-control.is-invalid {

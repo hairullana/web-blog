@@ -28,7 +28,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-if="posts.length == 0">
+                      <tr v-if="categories.length == 0">
                         <td colspan="4" class="text-center">Category Not Found</td>
                       </tr>
                       <tr v-else v-for="(category, index) in categories" :key="category.id">

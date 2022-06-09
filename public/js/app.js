@@ -5959,9 +5959,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 
 
@@ -53621,7 +53618,7 @@ var render = function () {
                               _c(
                                 "tbody",
                                 [
-                                  _vm.posts.length == 0
+                                  _vm.categories.length == 0
                                     ? _c("tr", [
                                         _c(
                                           "td",
@@ -53921,16 +53918,6 @@ var render = function () {
                                 },
                               },
                             }),
-                            _vm._v(" "),
-                            this.errors.slug
-                              ? _c("div", { staticClass: "invalid-feedback" }, [
-                                  _vm._v(
-                                    "\n                    " +
-                                      _vm._s(this.errors.slug[0]) +
-                                      "\n                  "
-                                  ),
-                                ])
-                              : _vm._e(),
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "mb-3 " }, [
@@ -54008,11 +53995,11 @@ var render = function () {
                               0
                             ),
                             _vm._v(" "),
-                            this.errors.category
+                            this.errors.category_id
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   _vm._v(
                                     "\n                    " +
-                                      _vm._s(this.errors.category[0]) +
+                                      _vm._s(this.errors.category_id[0]) +
                                       "\n                  "
                                   ),
                                 ])
@@ -54386,11 +54373,11 @@ var render = function () {
                               0
                             ),
                             _vm._v(" "),
-                            this.errors.category
+                            this.errors.category_id
                               ? _c("div", { staticClass: "invalid-feedback" }, [
                                   _vm._v(
                                     "\n                    " +
-                                      _vm._s(this.errors.category[0]) +
+                                      _vm._s(this.errors.category_id[0]) +
                                       "\n                  "
                                   ),
                                 ])
