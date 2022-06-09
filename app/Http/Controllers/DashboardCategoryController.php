@@ -19,9 +19,10 @@ class DashboardCategoryController extends Controller
         ], 200);
     }
 
-    public function categoryPercentage(){
+    public function categoryPercentage()
+    {
         $category = Post::all()->groupBy('category.name');
-        
+
         return response()->json([
             'message' => 'Percentage of Category',
             'data' => $category
@@ -37,14 +38,18 @@ class DashboardCategoryController extends Controller
     public function destroy(Category $category)
     {
         Category::destroy($category->id);
-        Post::where('category_id', $category->id)->delete();
+        $posts = Post::where('category_id', $category->id)->get();
+        $postController = new DashboardPostController();
+        foreach ($posts as $post) {
+            $postController->destroy($post->id);
+        }
 
         return response()->json([
             'success' => true,
             'message' => 'Category and it posts has been deleted'
         ], 200);
     }
-    
+
     public function edit(Category $category)
     {
         return view('dashboard.categories.edit', [
@@ -60,14 +65,14 @@ class DashboardCategoryController extends Controller
             'slug' => ['required', 'min:3']
         ]);
 
-        if($category) {
+        if ($category) {
             //update category
             $category->update($request->all());
 
             return response()->json([
                 'success' => true,
                 'message' => 'Post Updated',
-                'data'    => $category  
+                'data'    => $category
             ], 200);
         }
 
@@ -77,7 +82,7 @@ class DashboardCategoryController extends Controller
             'message' => 'Post Not Found',
         ], 404);
     }
-    
+
     public function show(Category $category)
     {
         return response()->json([
@@ -96,12 +101,12 @@ class DashboardCategoryController extends Controller
 
         $category = Category::create($request->all());
 
-        if($category){
+        if ($category) {
             return response()->json([
                 'success' => true,
                 'message' => 'New category has been created',
             ], 200);
-        }else {
+        } else {
             return response()->json([
                 'success' => false,
                 'message' => 'New category failed to save',
