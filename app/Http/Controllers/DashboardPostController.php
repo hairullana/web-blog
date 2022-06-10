@@ -138,7 +138,7 @@ class DashboardPostController extends Controller
     $post = Post::findOrfail($id);
 
     if ($post) {
-      unlink(public_path("storage/images/posts/" . $id . ".jpg"));
+      if (file_exists(public_path('storage/images/posts/' . $id . '.jpg'))) unlink(public_path('storage/images/posts/' . $id . '.jpg'));
       //delete post
       $post->delete();
 

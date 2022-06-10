@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class PostController extends Controller
 {
@@ -27,7 +27,7 @@ class PostController extends Controller
       "title" => "Home",
       "posts" => $posts->paginate(4),
       "categories" => Category::latest()->get(),
-      "popularPost" => Post::all()->random(6)
+      "popularPost" => Post::all()->random(Post::all()->count() == 6 ? 6 : Post::all()->count())
     ]);
   }
 
@@ -37,7 +37,7 @@ class PostController extends Controller
       'title' => $post->title,
       'post' => $post,
       "categories" => Category::latest()->get(),
-      "popularPost" => Post::all()->random(6)
+      "popularPost" => Post::all()->random(Post::all()->count() == 6 ? 6 : Post::all()->count())
     ]);
   }
 
@@ -50,7 +50,7 @@ class PostController extends Controller
       'title' => 'Categories',
       'posts' => $posts,
       "categories" => Category::latest()->get(),
-      "popularPost" => Post::all()->random(6)
+      "popularPost" => Post::all()->random(Post::all()->count() == 6 ? 6 : Post::all()->count())
     ]);
   }
 }

@@ -25,9 +25,6 @@
                   <div class="mb-3">
                     <label for="slug" class="form-label">Slug</label>
                     <input required type="text" class="form-control" v-model="slug" id="slug" disabled>
-                    <div class="invalid-feedback" v-if="this.errors.slug">
-                      {{ this.errors.slug[0] }}
-                    </div>
                   </div>
                   <div class="mb-3 ">
                     <label for="image" class="form-label">Image</label>
@@ -42,8 +39,8 @@
                         >{{ category.name }}
                       </option>
                     </select>
-                    <div class="invalid-feedback" v-if="this.errors.category">
-                      {{ this.errors.category[0] }}
+                    <div class="invalid-feedback" v-if="this.errors.category_id">
+                      {{ this.errors.category_id[0] }}
                     </div>
                   </div>
                 </div>

@@ -42,8 +42,8 @@
                         >{{ category.name }}
                       </option>
                     </select>
-                    <div class="invalid-feedback" v-if="this.errors.category">
-                      {{ this.errors.category[0] }}
+                    <div class="invalid-feedback" v-if="this.errors.category_id">
+                      {{ this.errors.category_id[0] }}
                     </div>
                   </div>
                 </div>
