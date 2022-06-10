@@ -5,7 +5,7 @@
     @if ($post->image)
       <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid mt-3" alt="{{ $post->category->name }}">
     @else
-      <img src="{{ file_exists(public_path('storage/images/posts/' . $post->id . '.jpg')) ? url('storage/images/posts/' . $post->id . '.jpg') : 'http://ngeewap.xtgem.com/files/hl.jpg' }}" class="img-fluid mt-3" alt="{{ $post->category->name }}">
+      <img src="{{ file_exists(public_path('storage/images/posts/' . $post->id . '.jpg')) ? url('storage/images/posts/' . $post->id . '.jpg') : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg' }}" class="img-fluid mt-3" alt="{{ $post->category->name }}">
     @endif
     <h1>{{ $post->title }}</h1>
     <p><i class="bi bi-person"></i> <a href="/posts?author={{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> <i class="bi bi-calendar3"></i> {{ $post->created_at->diffForHumans() }} <i class="bi bi-tag"></i> <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
