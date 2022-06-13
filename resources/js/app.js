@@ -26,6 +26,7 @@ Vue.component('jw-pagination', JwPagination);
 import VueSweetalert2 from 'vue-sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
 Vue.use(VueSweetalert2)
+
 // component
 import Dashboard from './components/Dashboard.vue'
 import Categories from './components/category/Index.vue'
@@ -34,6 +35,7 @@ import CategoryCreate from './components/category/Create.vue'
 import Posts from './components/posts/Index.vue'
 import PostEdit from './components/posts/Edit.vue'
 import PostCreate from './components/posts/Create.vue'
+import Register from './components/auth/Register.vue'
 
 import moment from 'moment'
 import Vue from 'vue'
@@ -78,6 +80,11 @@ const routes = [
     name: 'postCreate',
     path: '/dashboard/post/create',
     component: PostCreate
+  },
+  {
+    name: 'register',
+    path: '/dashboard/register',
+    component: Register
   }
 ]
 
