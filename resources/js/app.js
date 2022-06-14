@@ -33,6 +33,7 @@ import Categories from './components/category/Index.vue'
 import CategoryEdit from './components/category/Edit.vue'
 import CategoryCreate from './components/category/Create.vue'
 import Posts from './components/posts/Index.vue'
+import Login from './components/auth/Login.vue'
 import PostEdit from './components/posts/Edit.vue'
 import PostCreate from './components/posts/Create.vue'
 import Register from './components/auth/Register.vue'
@@ -85,6 +86,11 @@ const routes = [
     name: 'register',
     path: '/dashboard/register',
     component: Register
+  },
+  {
+    name: 'login',
+    path: '/dashboard/login',
+    component: Login
   }
 ]
 

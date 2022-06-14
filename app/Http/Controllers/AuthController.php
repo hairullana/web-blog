@@ -5,10 +5,37 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class AuthController extends Controller
 {
+    public function login(Request $request)
+    {
+        $request->validate([
+            'user' => ['required'],
+            'password' => ['required']
+        ]);
+
+        if (Auth::attempt([
+            'email' => $request->user,
+            'password' => $request->password
+        ])) {
+            return response()->json(Auth::user(), 200);
+        }
+
+        if (Auth::attempt([
+            'username' => $request->user,
+            'password' => $request->password
+        ])) {
+            return response()->json(Auth::user(), 200);
+        }
+
+        throw ValidationException::withMessages(['Login failed! User or password is wrong!']);
+    }
+
     public function register(Request $request)
     {
         $request->validate([
