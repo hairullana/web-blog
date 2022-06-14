@@ -6742,105 +6742,72 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].filter('formatDate', function (value
     return moment__WEBPACK_IMPORTED_MODULE_19___default()(String(value)).format('MM/DD/YYYY hh:mm');
   }
 });
+
+function isLogin(to, form, next) {
+  axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
+    next();
+  })["catch"](function () {
+    return next({
+      name: 'login'
+    });
+  });
+}
+
+function isLogout(to, form, next) {
+  axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
+    return next({
+      name: 'dashboard'
+    });
+  })["catch"](function () {
+    next();
+  });
+}
+
 var routes = [{
   name: 'dashboard',
   path: '/dashboard/overview',
   component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
-  beforeEnter: function beforeEnter(to, form, next) {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
-      next();
-    })["catch"](function () {
-      return next({
-        name: 'login'
-      });
-    });
-  }
+  beforeEnter: isLogin
 }, {
   name: 'categories',
   path: '/dashboard/categories',
   component: _components_category_Index_vue__WEBPACK_IMPORTED_MODULE_11__["default"],
-  beforeEnter: function beforeEnter(to, form, next) {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
-      next();
-    })["catch"](function () {
-      return next({
-        name: 'login'
-      });
-    });
-  }
+  beforeEnter: isLogin
 }, {
   name: 'categoryEdit',
   path: '/dashboard/category/edit/:id',
   component: _components_category_Edit_vue__WEBPACK_IMPORTED_MODULE_12__["default"],
-  beforeEnter: function beforeEnter(to, form, next) {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
-      next();
-    })["catch"](function () {
-      return next({
-        name: 'login'
-      });
-    });
-  }
+  beforeEnter: isLogin
 }, {
   name: 'categoryCreate',
   path: '/dashboard/category/create',
   component: _components_category_Create_vue__WEBPACK_IMPORTED_MODULE_13__["default"],
-  beforeEnter: function beforeEnter(to, form, next) {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
-      next();
-    })["catch"](function () {
-      return next({
-        name: 'login'
-      });
-    });
-  }
+  beforeEnter: isLogin
 }, {
   name: 'posts',
   path: '/dashboard/posts',
   component: _components_posts_Index_vue__WEBPACK_IMPORTED_MODULE_14__["default"],
-  beforeEnter: function beforeEnter(to, form, next) {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
-      next();
-    })["catch"](function () {
-      return next({
-        name: 'login'
-      });
-    });
-  }
+  beforeEnter: isLogin
 }, {
   name: 'postEdit',
   path: '/dashboard/post/edit/:id',
   component: _components_posts_Edit_vue__WEBPACK_IMPORTED_MODULE_16__["default"],
-  beforeEnter: function beforeEnter(to, form, next) {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
-      next();
-    })["catch"](function () {
-      return next({
-        name: 'login'
-      });
-    });
-  }
+  beforeEnter: isLogin
 }, {
   name: 'postCreate',
   path: '/dashboard/post/create',
   component: _components_posts_Create_vue__WEBPACK_IMPORTED_MODULE_17__["default"],
-  beforeEnter: function beforeEnter(to, form, next) {
-    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
-      next();
-    })["catch"](function () {
-      return next({
-        name: 'login'
-      });
-    });
-  }
+  beforeEnter: isLogin
 }, {
   name: 'register',
   path: '/dashboard/register',
-  component: _components_auth_Register_vue__WEBPACK_IMPORTED_MODULE_18__["default"]
+  component: _components_auth_Register_vue__WEBPACK_IMPORTED_MODULE_18__["default"],
+  beforeEnter: isLogout
 }, {
   name: 'login',
   path: '/dashboard/login',
-  component: _components_auth_Login_vue__WEBPACK_IMPORTED_MODULE_15__["default"]
+  component: _components_auth_Login_vue__WEBPACK_IMPORTED_MODULE_15__["default"],
+  beforeEnter: isLogout
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',

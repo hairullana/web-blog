@@ -46,100 +46,76 @@ Vue.filter('formatDate', function(value) {
   }
 });
 
+function isLogin(to, form, next) {
+  axios.get('/api/auth').then(() => {
+    next()
+  }).catch(() => {
+    return next({ name: 'login' })
+  })
+}
+
+function isLogout(to, form, next) {
+  axios.get('/api/auth').then(() => {
+    return next({ name: 'dashboard' })
+  }).catch(() => {
+    next()
+  })
+}
+
 const routes = [
   {
     name: 'dashboard',
     path: '/dashboard/overview',
     component: Dashboard,
-    beforeEnter: (to, form, next) => {
-      axios.get('/api/auth').then(() => {
-        next()
-      }).catch(() => {
-        return next({ name: 'login' })
-      })
-    }
+    beforeEnter: isLogin
   },
   {
     name: 'categories',
     path: '/dashboard/categories',
     component: Categories,
-    beforeEnter: (to, form, next) => {
-      axios.get('/api/auth').then(() => {
-        next()
-      }).catch(() => {
-        return next({ name: 'login' })
-      })
-    }
+    beforeEnter: isLogin
   },
   {
     name: 'categoryEdit',
     path: '/dashboard/category/edit/:id',
     component: CategoryEdit,
-    beforeEnter: (to, form, next) => {
-      axios.get('/api/auth').then(() => {
-        next()
-      }).catch(() => {
-        return next({ name: 'login' })
-      })
-    }
+    beforeEnter: isLogin
   },
   {
     name: 'categoryCreate',
     path: '/dashboard/category/create',
     component: CategoryCreate,
-    beforeEnter: (to, form, next) => {
-      axios.get('/api/auth').then(() => {
-        next()
-      }).catch(() => {
-        return next({ name: 'login' })
-      })
-    }
+    beforeEnter: isLogin
   },
   {
     name: 'posts',
     path: '/dashboard/posts',
     component: Posts,
-    beforeEnter: (to, form, next) => {
-      axios.get('/api/auth').then(() => {
-        next()
-      }).catch(() => {
-        return next({ name: 'login' })
-      })
-    }
+    beforeEnter: isLogin
   },
   {
     name: 'postEdit',
     path: '/dashboard/post/edit/:id',
     component: PostEdit,
-    beforeEnter: (to, form, next) => {
-      axios.get('/api/auth').then(() => {
-        next()
-      }).catch(() => {
-        return next({ name: 'login' })
-      })
-    }
+    beforeEnter: isLogin
   },
   {
     name: 'postCreate',
     path: '/dashboard/post/create',
     component: PostCreate,
-    beforeEnter: (to, form, next) => {
-      axios.get('/api/auth').then(() => {
-        next()
-      }).catch(() => {
-        return next({ name: 'login' })
-      })
-    }
+    beforeEnter: isLogin
   },
   {
     name: 'register',
     path: '/dashboard/register',
-    component: Register
+    component: Register,
+    beforeEnter: isLogout
   },
   {
     name: 'login',
     path: '/dashboard/login',
-    component: Login
+    component: Login,
+    beforeEnter: isLogout
   }
 ]
 
