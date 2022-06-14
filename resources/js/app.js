@@ -62,32 +62,74 @@ const routes = [
   {
     name: 'categories',
     path: '/dashboard/categories',
-    component: Categories
+    component: Categories,
+    beforeEnter: (to, form, next) => {
+      axios.get('/api/auth').then(() => {
+        next()
+      }).catch(() => {
+        return next({ name: 'login' })
+      })
+    }
   },
   {
     name: 'categoryEdit',
     path: '/dashboard/category/edit/:id',
-    component: CategoryEdit
+    component: CategoryEdit,
+    beforeEnter: (to, form, next) => {
+      axios.get('/api/auth').then(() => {
+        next()
+      }).catch(() => {
+        return next({ name: 'login' })
+      })
+    }
   },
   {
     name: 'categoryCreate',
     path: '/dashboard/category/create',
-    component: CategoryCreate
+    component: CategoryCreate,
+    beforeEnter: (to, form, next) => {
+      axios.get('/api/auth').then(() => {
+        next()
+      }).catch(() => {
+        return next({ name: 'login' })
+      })
+    }
   },
   {
     name: 'posts',
     path: '/dashboard/posts',
-    component: Posts
+    component: Posts,
+    beforeEnter: (to, form, next) => {
+      axios.get('/api/auth').then(() => {
+        next()
+      }).catch(() => {
+        return next({ name: 'login' })
+      })
+    }
   },
   {
     name: 'postEdit',
     path: '/dashboard/post/edit/:id',
-    component: PostEdit
+    component: PostEdit,
+    beforeEnter: (to, form, next) => {
+      axios.get('/api/auth').then(() => {
+        next()
+      }).catch(() => {
+        return next({ name: 'login' })
+      })
+    }
   },
   {
     name: 'postCreate',
     path: '/dashboard/post/create',
-    component: PostCreate
+    component: PostCreate,
+    beforeEnter: (to, form, next) => {
+      axios.get('/api/auth').then(() => {
+        next()
+      }).catch(() => {
+        return next({ name: 'login' })
+      })
+    }
   },
   {
     name: 'register',

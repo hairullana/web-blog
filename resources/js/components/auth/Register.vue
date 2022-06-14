@@ -55,6 +55,11 @@ export default{
       errors: []
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next( async vm => {
+        document.title = 'Register | HL Blog'
+    })
+  },
   methods: {
     Register(){
       axios.post('/api/register', this.form).then(res => {

@@ -35,6 +35,11 @@ export default{
       }
     }
   },
+  beforeRouteEnter (to, from, next) {
+    next( async vm => {
+        document.title = 'Login | HL Blog'
+    })
+  },
   methods: {
     Login(){
       axios.post('/api/login', this.form).then(res => {
