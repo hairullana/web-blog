@@ -27,7 +27,7 @@ class PostController extends Controller
       "title" => "Home",
       "posts" => $posts->paginate(4),
       "categories" => Category::latest()->get(),
-      "popularPost" => Post::all()->random(Post::all()->count() == 6 ? 6 : Post::all()->count())
+      "popularPost" => Post::all()->random(Post::all()->count() >= 6 ? 6 : Post::all()->count())
     ]);
   }
 
@@ -37,7 +37,7 @@ class PostController extends Controller
       'title' => $post->title,
       'post' => $post,
       "categories" => Category::latest()->get(),
-      "popularPost" => Post::all()->random(Post::all()->count() == 6 ? 6 : Post::all()->count())
+      "popularPost" => Post::all()->random(Post::all()->count() >= 6 ? 6 : Post::all()->count())
     ]);
   }
 
@@ -50,7 +50,7 @@ class PostController extends Controller
       'title' => 'Categories',
       'posts' => $posts,
       "categories" => Category::latest()->get(),
-      "popularPost" => Post::all()->random(Post::all()->count() == 6 ? 6 : Post::all()->count())
+      "popularPost" => Post::all()->random(Post::all()->count() >= 6 ? 6 : Post::all()->count())
     ]);
   }
 }
