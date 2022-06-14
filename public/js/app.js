@@ -5373,6 +5373,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -5384,6 +5385,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
+      user: null,
       posts: [],
       categories: [],
       postsPerCategory: []
@@ -5414,6 +5416,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mounted: function mounted() {
     var _this = this;
 
+    this.axios.get('/api/user').then(function (res) {
+      _this.user = res.data;
+    });
     this.axios.get('/api/posts').then(function (res) {
       _this.posts = res.data.data;
     });
@@ -5423,6 +5428,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.axios.get('/api/category/percentage').then(function (res) {
       _this.postsPerCategory = res.data.data;
     });
+  },
+  methods: {
+    Logout: function Logout() {
+      var _this2 = this;
+
+      axios.post('/api/logout').then(function () {
+        _this2.$router.push({
+          name: 'login'
+        });
+      });
+    }
   }
 });
 
@@ -5480,11 +5496,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post('/api/login', this.form).then(function (res) {
-        _this.$toasted.show('Login successfully', {
-          type: 'success',
-          theme: "bubble",
-          position: "top-right",
-          duration: 3000
+        _this.$router.push({
+          name: 'dashboard'
         });
       })["catch"](function (err) {
         _this.$toasted.show('Login failed! User or password is wrong!', {
@@ -6672,7 +6685,16 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].filter('formatDate', function (value
 var routes = [{
   name: 'dashboard',
   path: '/dashboard/overview',
-  component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _components_Dashboard_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
+  beforeEnter: function beforeEnter(to, form, next) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().get('/api/auth').then(function () {
+      next();
+    })["catch"](function () {
+      return next({
+        name: 'login'
+      });
+    });
+  }
 }, {
   name: 'categories',
   path: '/dashboard/categories',
@@ -52251,7 +52273,32 @@ var render = function () {
               _c("Navbar"),
               _vm._v(" "),
               _c("div", { staticClass: "container-fluid" }, [
-                _vm._m(0),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-sm-flex align-items-center justify-content-between mb-4",
+                  },
+                  [
+                    _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
+                      _vm._v("Dashboard"),
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "h3",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: {
+                          click: function ($event) {
+                            $event.preventDefault()
+                            return _vm.Logout.apply(null, arguments)
+                          },
+                        },
+                      },
+                      [_vm._v("Logout")]
+                    ),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-xl-3 col-md-6 mb-4" }, [
@@ -52289,7 +52336,7 @@ var render = function () {
                                 ),
                               ]),
                               _vm._v(" "),
-                              _vm._m(1),
+                              _vm._m(0),
                             ]
                           ),
                         ]),
@@ -52336,7 +52383,7 @@ var render = function () {
                                 ),
                               ]),
                               _vm._v(" "),
-                              _vm._m(2),
+                              _vm._m(1),
                             ]
                           ),
                         ]),
@@ -52348,7 +52395,7 @@ var render = function () {
                 _c("div", { staticClass: "row" }, [
                   _c("div", { staticClass: "col-12 mb-4" }, [
                     _c("div", { staticClass: "card shadow mb-4" }, [
-                      _vm._m(3),
+                      _vm._m(2),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -52413,23 +52460,6 @@ var render = function () {
   )
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "d-sm-flex align-items-center justify-content-between mb-4",
-      },
-      [
-        _c("h1", { staticClass: "h3 mb-0 text-gray-800" }, [
-          _vm._v("Dashboard"),
-        ]),
-      ]
-    )
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

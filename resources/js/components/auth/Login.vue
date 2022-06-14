@@ -38,12 +38,7 @@ export default{
   methods: {
     Login(){
       axios.post('/api/login', this.form).then(res => {
-        this.$toasted.show('Login successfully', { 
-          type: 'success',
-          theme: "bubble", 
-          position: "top-right", 
-          duration : 3000
-        })
+        this.$router.push({name: 'dashboard' })
       }).catch(err => {
         this.$toasted.show('Login failed! User or password is wrong!', { 
           type: 'error',

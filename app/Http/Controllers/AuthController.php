@@ -36,6 +36,11 @@ class AuthController extends Controller
         throw ValidationException::withMessages(['Login failed! User or password is wrong!']);
     }
 
+    public function logout()
+    {
+        Auth::logout();
+    }
+
     public function register(Request $request)
     {
         $request->validate([

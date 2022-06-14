@@ -7,6 +7,7 @@
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+              <h3 class="btn btn-danger" @click.prevent="Logout">Logout</h3>
           </div>
 
           <div class="row">
@@ -88,6 +89,7 @@
     },
     data(){
       return {
+        user: null,
         posts: [],
         categories: [],
         postsPerCategory: []
@@ -99,6 +101,9 @@
       })
     },
     mounted(){
+      this.axios.get('/api/user').then(res => {
+        this.user = res.data
+      })
       this.axios.get('/api/posts').then(res => {
         this.posts = res.data.data
       })
@@ -108,6 +113,13 @@
       this.axios.get('/api/category/percentage').then(res => {
         this.postsPerCategory = res.data.data
       })
+    },
+    methods: {
+      Logout() {
+        axios.post('/api/logout').then(() => {
+          this.$router.push({ name: 'login' })
+        })
+      }
     }
   }
 </script>

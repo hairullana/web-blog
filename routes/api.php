@@ -21,10 +21,14 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
   return $request->user();
 });
+Route::middleware('auth:sanctum')->get('/auth', function () {
+  return true;
+});
 
 // Auth API
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
 
 // Posts API
 Route::get('/posts', [DashboardPostController::class, 'index']);

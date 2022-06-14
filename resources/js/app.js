@@ -50,7 +50,14 @@ const routes = [
   {
     name: 'dashboard',
     path: '/dashboard/overview',
-    component: Dashboard
+    component: Dashboard,
+    beforeEnter: (to, form, next) => {
+      axios.get('/api/auth').then(() => {
+        next()
+      }).catch(() => {
+        return next({ name: 'login' })
+      })
+    }
   },
   {
     name: 'categories',
