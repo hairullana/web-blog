@@ -68,7 +68,9 @@ export default{
           theme: "bubble", 
           position: "top-right", 
           duration : 3000
-        })
+        }).then(
+          this.$router.push({name: 'dashboard' })
+        )
       }).catch(err => {
         this.$toasted.show(err.response.data.message, { 
           type: 'error',
