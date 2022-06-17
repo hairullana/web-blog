@@ -52968,7 +52968,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center mt-5" }, [
+  return _c("div", { staticClass: "d-flex justify-content-center mt-5" }, [
     _c("div", { staticClass: "col-md-4" }, [
       _c(
         "ul",
@@ -53026,7 +53026,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("main", { staticClass: "form-signin" }, [
-        _c("h1", { staticClass: "text-center h3 mb-3 fw-normal my-3" }, [
+        _c("h1", { staticClass: "text-center h3 mb-3 fw-normal my-4" }, [
           _vm._v("Please login"),
         ]),
         _vm._v(" "),
@@ -53109,7 +53109,7 @@ var render = function () {
             _c(
               "button",
               {
-                staticClass: "w-100 btn btn-lg btn-primary",
+                staticClass: "w-100 btn btn-lg btn-primary mt-3",
                 attrs: { type: "submit", name: "login" },
               },
               [_vm._v("Login")]
@@ -53156,7 +53156,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center mt-5" }, [
+  return _c("div", { staticClass: "d-flex justify-content-center mt-5" }, [
     _c("div", { staticClass: "col-lg-4" }, [
       _c(
         "ul",
@@ -53214,7 +53214,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("main", { staticClass: "form-registration" }, [
-        _c("h1", { staticClass: "text-center h3 mb-3 fw-normal my-3" }, [
+        _c("h1", { staticClass: "text-center h3 mb-3 fw-normal my-4" }, [
           _vm._v("Registration Form"),
         ]),
         _vm._v(" "),

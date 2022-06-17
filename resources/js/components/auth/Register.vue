@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-center mt-5">
+  <div class="d-flex justify-content-center mt-5">
     <div class="col-lg-4">
       <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
         <li class="nav-item" role="presentation">
@@ -13,7 +13,7 @@
       </ul>
 
       <main class="form-registration">
-        <h1 class="text-center h3 mb-3 fw-normal my-3">Registration Form</h1>
+        <h1 class="text-center h3 mb-3 fw-normal my-4">Registration Form</h1>
         <form @submit.prevent="Register">
           <div class="form-floating">
             <label for="name">Full name</label>

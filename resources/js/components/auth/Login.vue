@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-center mt-5">
+  <div class="d-flex justify-content-center mt-5">
     <div class="col-md-4">
       <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
         <li class="nav-item" role="presentation">
@@ -13,7 +13,7 @@
       </ul>
 
       <main class="form-signin">
-        <h1 class="text-center h3 mb-3 fw-normal my-3">Please login</h1>
+        <h1 class="text-center h3 mb-3 fw-normal my-4">Please login</h1>
 
         <form @submit.prevent="Login">
           <div class="form-floating">
@@ -25,7 +25,7 @@
             <input type="password" class="form-control" id="password" v-model="form.password" placeholder="Password" required>
           </div>
       
-          <button class="w-100 btn btn-lg btn-primary" type="submit" name="login">Login</button>
+          <button class="w-100 btn btn-lg btn-primary mt-3" type="submit" name="login">Login</button>
         </form>
 
         <div class="d-block text-center mt-3">
