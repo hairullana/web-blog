@@ -54,7 +54,7 @@ php artisan storage:link
 php artisan serve
 ```
 
-### 9. Combine Vue Component & Other Javascript Files (optional)
+### 9. Combine Vue Component & Other Javascript Files (optional if you want to update VueJS)
 ```bash
 npm run watch
 ```
