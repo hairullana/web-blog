@@ -35,7 +35,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
-                    <select v-model="category_id" id="category" class="form-select">
+                    <select v-model="category_id" id="category" class="form-control">
                       <option 
                         v-for="category in categories" 
                         v-bind:value="category.id"
@@ -103,14 +103,16 @@
         this.user = res.data
 
         this.axios.get(`/api/post/${this.$route.params.id}`).then(res => {
-          this.$router.push({name: 'posts'}, () => {
-            this.$toasted.show(`You don't have permission to access this page!`, { 
-              type: 'error',
-              theme: "bubble", 
-              position: "top-right", 
-              duration : 3000
+          if(this.user.id != res.data.data.user_id){
+            this.$router.push({name: 'posts'}, () => {
+              this.$toasted.show(`You don't have permission to access this page!`, { 
+                type: 'error',
+                theme: "bubble", 
+                position: "top-right", 
+                duration : 3000
+              })
             })
-          })
+          }
 
           this.id = res.data.data.id
           this.excerpt = res.data.data.excerpt
@@ -124,7 +126,7 @@
           this.axios.get(imageURL).then(res => {
             me.image = imageURL
           }).catch(err => {
-            me.image = "http://ngeewap.xtgem.com/files/hl.jpg"
+            me.image = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
           })
         })
       })

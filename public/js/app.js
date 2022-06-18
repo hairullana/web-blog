@@ -6520,16 +6520,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _this.user = res.data;
 
       _this.axios.get("/api/post/".concat(_this.$route.params.id)).then(function (res) {
-        _this.$router.push({
-          name: 'posts'
-        }, function () {
-          _this.$toasted.show("You don't have permission to access this page!", {
-            type: 'error',
-            theme: "bubble",
-            position: "top-right",
-            duration: 3000
+        if (_this.user.id != res.data.data.user_id) {
+          _this.$router.push({
+            name: 'posts'
+          }, function () {
+            _this.$toasted.show("You don't have permission to access this page!", {
+              type: 'error',
+              theme: "bubble",
+              position: "top-right",
+              duration: 3000
+            });
           });
-        });
+        }
 
         _this.id = res.data.data.id;
         _this.excerpt = res.data.data.excerpt;
@@ -6543,7 +6545,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this.axios.get(imageURL).then(function (res) {
           me.image = imageURL;
         })["catch"](function (err) {
-          me.image = "http://ngeewap.xtgem.com/files/hl.jpg";
+          me.image = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg";
         });
       });
     });
@@ -55080,7 +55082,7 @@ var render = function () {
                                     expression: "category_id",
                                   },
                                 ],
-                                staticClass: "form-select",
+                                staticClass: "form-control",
                                 attrs: { id: "category" },
                                 on: {
                                   change: function ($event) {
@@ -55219,7 +55221,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "col-lg-5 mt-auto" }, [
       _c("img", {
         staticClass: "img-fluid img-thumbnail",
-        attrs: { src: "http://ngeewap.xtgem.com/files/hl.jpg" },
+        attrs: {
+          src: "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg",
+        },
       }),
     ])
   },
@@ -55458,7 +55462,7 @@ var render = function () {
                                     expression: "category_id",
                                   },
                                 ],
-                                staticClass: "form-select",
+                                staticClass: "form-control",
                                 attrs: { id: "category" },
                                 on: {
                                   change: function ($event) {
