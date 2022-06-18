@@ -53519,7 +53519,30 @@ var render = function () {
     [
       _c("ul", { staticClass: "navbar-nav ml-auto" }, [
         _c("li", { staticClass: "nav-item dropdown no-arrow" }, [
-          _vm._m(0),
+          _c(
+            "a",
+            {
+              staticClass: "nav-link dropdown-toggle",
+              attrs: {
+                href: "#",
+                id: "userDropdown",
+                "data-bs-toggle": "dropdown",
+                "aria-expanded": "false",
+              },
+            },
+            [
+              _c(
+                "span",
+                { staticClass: "mr-2 d-none d-lg-inline text-gray-600 small" },
+                [_vm._v(_vm._s(_vm.user.name))]
+              ),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "img-profile rounded-circle",
+                attrs: { src: "http://ngeewap.xtgem.com/files/hl.jpg" },
+              }),
+            ]
+          ),
           _vm._v(" "),
           _c(
             "div",
@@ -53529,11 +53552,11 @@ var render = function () {
               attrs: { "aria-labelledby": "userDropdown" },
             },
             [
+              _vm._m(0),
+              _vm._v(" "),
               _vm._m(1),
               _vm._v(" "),
               _vm._m(2),
-              _vm._v(" "),
-              _vm._m(3),
               _vm._v(" "),
               _c("div", { staticClass: "dropdown-divider" }),
               _vm._v(" "),
@@ -53569,35 +53592,6 @@ var render = function () {
   )
 }
 var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "nav-link dropdown-toggle",
-        attrs: {
-          href: "#",
-          id: "userDropdown",
-          "data-bs-toggle": "dropdown",
-          "aria-expanded": "false",
-        },
-      },
-      [
-        _c(
-          "span",
-          { staticClass: "mr-2 d-none d-lg-inline text-gray-600 small" },
-          [_vm._v("Hairul Lana")]
-        ),
-        _vm._v(" "),
-        _c("img", {
-          staticClass: "img-profile rounded-circle",
-          attrs: { src: "http://ngeewap.xtgem.com/files/hl.jpg" },
-        }),
-      ]
-    )
-  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

@@ -3,7 +3,7 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-          <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hairul Lana</span>
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.name }}</span>
           <img class="img-profile rounded-circle" src="http://ngeewap.xtgem.com/files/hl.jpg">
         </a>
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
