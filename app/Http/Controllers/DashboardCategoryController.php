@@ -19,9 +19,9 @@ class DashboardCategoryController extends Controller
         ], 200);
     }
 
-    public function categoryPercentage()
+    public function categoryPercentage($userId)
     {
-        $category = Post::all()->groupBy('category.name');
+        $category = Post::where('user_id', $userId)->get()->groupBy('category.name');
 
         return response()->json([
             'message' => 'Percentage of Category',

@@ -31,7 +31,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
 // Posts API
-Route::get('/posts', [DashboardPostController::class, 'index']);
+Route::get('/posts/{user:id}', [DashboardPostController::class, 'index']);
 Route::get('/post/{id}', [DashboardPostController::class, 'show']);
 Route::post('/post/store', [DashboardPostController::class, 'store']);
 Route::post('/post/update/{id}', [DashboardPostController::class, 'update']);
@@ -39,7 +39,7 @@ Route::delete('/post/{id}', [DashboardPostController::class, 'destroy']);
 
 // Categories API
 Route::get('/categories', [DashboardCategoryController::class, 'index'])->name('categories');
-Route::get('/category/percentage', [DashboardCategoryController::class, 'categoryPercentage'])->name('category.percentage');
+Route::get('/category/percentage/{user:id}', [DashboardCategoryController::class, 'categoryPercentage'])->name('category.percentage');
 Route::get('/category/{category:id}', [DashboardCategoryController::class, 'show']);
 Route::post('/category/update/{category:id}', [DashboardCategoryController::class, 'update']);
 Route::post('/category/store', [DashboardCategoryController::class, 'store']);
