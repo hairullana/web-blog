@@ -6487,7 +6487,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       body: '',
       categories: [],
       image: '',
-      errors: {}
+      errors: {},
+      users: null
     };
   },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
@@ -6515,20 +6516,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    this.axios.get("/api/post/".concat(this.$route.params.id)).then(function (res) {
-      _this.id = res.data.data.id;
-      _this.excerpt = res.data.data.excerpt;
-      _this.title = res.data.data.title;
-      _this.slug = res.data.data.slug;
-      _this.category_id = res.data.data.category_id;
-      _this.body = res.data.data.body;
-      var me = _this;
-      var imageURL = "/storage/images/posts/" + res.data.data.id + ".jpg";
+    this.axios.get('/api/user').then(function (res) {
+      _this.user = res.data;
 
-      _this.axios.get(imageURL).then(function (res) {
-        me.image = imageURL;
-      })["catch"](function (err) {
-        me.image = "http://ngeewap.xtgem.com/files/hl.jpg";
+      _this.axios.get("/api/post/".concat(_this.$route.params.id)).then(function (res) {
+        _this.$router.push({
+          name: 'posts'
+        }, function () {
+          _this.$toasted.show("You don't have permission to access this page!", {
+            type: 'error',
+            theme: "bubble",
+            position: "top-right",
+            duration: 3000
+          });
+        });
+
+        _this.id = res.data.data.id;
+        _this.excerpt = res.data.data.excerpt;
+        _this.title = res.data.data.title;
+        _this.slug = res.data.data.slug;
+        _this.category_id = res.data.data.category_id;
+        _this.body = res.data.data.body;
+        var me = _this;
+        var imageURL = "/storage/images/posts/" + res.data.data.id + ".jpg";
+
+        _this.axios.get(imageURL).then(function (res) {
+          me.image = imageURL;
+        })["catch"](function (err) {
+          me.image = "http://ngeewap.xtgem.com/files/hl.jpg";
+        });
       });
     });
     this.axios.get("/api/categories").then(function (res) {
