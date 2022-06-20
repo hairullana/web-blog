@@ -2,10 +2,10 @@
 Web Blog is a blog website that created with Laravel 8 and VueJS 2. Single Page Application (SPA) using Vue JS only on admin dashboard. Laravel is used to display published posts.
 
 # Dashboard (VueJS)
-![Web capture_30-5-2022_171211_127 0 0 1](https://user-images.githubusercontent.com/56705867/170962072-ffb3bae8-58ea-4297-ab84-be7a8326107f.jpeg)
+![image](https://user-images.githubusercontent.com/56705867/174574008-5e617b4a-de81-4d91-ad35-2dcea1d4e6f7.png)
 
 # List of Posts (Laravel Blade)
-![Web capture_30-5-2022_171143_127 0 0 1](https://user-images.githubusercontent.com/56705867/170962089-a04da9cc-2bf7-4402-81e7-da92fa2f196e.jpeg)
+![image](https://user-images.githubusercontent.com/56705867/174574133-85352560-46c1-49b4-8c53-f8414672f35b.png)
 
 # INSTALLING
 
@@ -22,6 +22,11 @@ cd web-blog
 ### 3. Create and `Setup` .env file (DB)
 ```bash
 cp .env.example .env
+```
+
+### 3.1. Add this code to .env (Auth)
+```bash
+SANCTUM_STATEFUL_DOMAINS=localhost:8000
 ```
 
 ### 4. Generate key
