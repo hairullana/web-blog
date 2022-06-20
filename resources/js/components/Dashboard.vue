@@ -88,9 +88,10 @@
     },
     data(){
       return {
-        posts: [],
         categories: [],
-        postsPerCategory: []
+        posts: [],
+        postsPerCategory: [],
+        user: null
       }
     },
     beforeRouteEnter (to, from, next) {
@@ -99,14 +100,18 @@
       })
     },
     mounted(){
-      this.axios.get('/api/posts').then(res => {
-        this.posts = res.data.data
-      })
-      this.axios.get('/api/categories').then(res => {
-        this.categories = res.data.data
-      })
-      this.axios.get('/api/category/percentage').then(res => {
-        this.postsPerCategory = res.data.data
+      this.axios.get('/api/user').then(res => {
+        this.user = res.data
+
+        this.axios.get('/api/posts/' + this.user.id).then(res => {
+          this.posts = res.data.data
+        })
+        this.axios.get('/api/categories').then(res => {
+          this.categories = res.data.data
+        })
+        this.axios.get('/api/category/percentage/' + this.user.id).then(res => {
+          this.postsPerCategory = res.data.data
+        })
       })
     }
   }

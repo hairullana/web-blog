@@ -14,25 +14,13 @@ use Illuminate\Support\Facades\Storage;
 
 class DashboardPostController extends Controller
 {
-  public function index()
+  public function index($userId)
   {
-    $title = '';
-
-    if (request('category')) {
-      $category = Category::firstWhere('slug', request('category'));
-      $title = ' in ' . $category->name;
-    }
-
-    if (request('author')) {
-      $author = User::firstWhere('username', request('author'));
-      $title = ' by ' . $author->name;
-    }
-
     // return json for API
     return response()->json([
       'success' => true,
       'message' => 'List Data Post',
-      'data'    => Post::latest()->get()
+      'data'    => Post::where('user_id', $userId)->latest()->get()
     ], 200);
   }
 
@@ -153,11 +141,5 @@ class DashboardPostController extends Controller
       'success' => false,
       'message' => 'Post Not Found',
     ], 404);
-  }
-
-  public function checkSlug(Request $request)
-  {
-    $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
-    return response()->json(['slug' => $slug]);
   }
 }

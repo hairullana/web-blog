@@ -35,7 +35,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
-                    <select v-model="category_id" id="category" class="form-select">
+                    <select v-model="category_id" id="category" class="form-control">
                       <option 
                         v-for="category in categories" 
                         v-bind:value="category.id"
@@ -89,7 +89,8 @@
         body: '',
         categories: [],
         image: '',
-        errors: {}
+        errors: {},
+        users: null
       }
     },
     beforeRouteEnter (to, from, next) {
@@ -98,20 +99,35 @@
       })
     },
     created(){
-      this.axios.get(`/api/post/${this.$route.params.id}`).then(res => {
-        this.id = res.data.data.id
-        this.excerpt = res.data.data.excerpt
-        this.title = res.data.data.title
-        this.slug = res.data.data.slug
-        this.category_id = res.data.data.category_id
-        this.body = res.data.data.body
-        
-        let me = this
-        let imageURL = "/storage/images/posts/" + res.data.data.id + ".jpg"
-        this.axios.get(imageURL).then(res => {
-          me.image = imageURL
-        }).catch(err => {
-          me.image = "http://ngeewap.xtgem.com/files/hl.jpg"
+      this.axios.get('/api/user').then(res => {
+        this.user = res.data
+
+        this.axios.get(`/api/post/${this.$route.params.id}`).then(res => {
+          if(this.user.id != res.data.data.user_id){
+            this.$router.push({name: 'posts'}, () => {
+              this.$toasted.show(`You don't have permission to access this page!`, { 
+                type: 'error',
+                theme: "bubble", 
+                position: "top-right", 
+                duration : 3000
+              })
+            })
+          }
+
+          this.id = res.data.data.id
+          this.excerpt = res.data.data.excerpt
+          this.title = res.data.data.title
+          this.slug = res.data.data.slug
+          this.category_id = res.data.data.category_id
+          this.body = res.data.data.body
+          
+          let me = this
+          let imageURL = "/storage/images/posts/" + res.data.data.id + ".jpg"
+          this.axios.get(imageURL).then(res => {
+            me.image = imageURL
+          }).catch(err => {
+            me.image = "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+          })
         })
       })
       

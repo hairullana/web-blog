@@ -37,7 +37,7 @@
                         <td>{{ category.slug }}</td>
                         <td>
                           <router-link :to="'/dashboard/category/edit/' + category.id" class="text-dark badge btn-warning">Edit</router-link>
-                          <button @click.prevent="CategoryDelete(category.id, index)" class="text-dark badge btn-danger border-0">Delete</button>
+                          <button disabled @click.prevent="CategoryDelete(category.id, index)" class="text-dark badge btn-danger border-0">Delete</button>
                         </td>
                       </tr>
                     </tbody>

@@ -73,7 +73,8 @@
     data(){
       return {
         posts: [],
-        pageOfPosts: []
+        pageOfPosts: [],
+        user: null
       }
     },
     beforeRouteEnter (to, from, next) {
@@ -82,8 +83,12 @@
       })
     },
     mounted(){
-      this.axios.get('/api/posts').then(res => {
-        this.posts = res.data.data
+      this.axios.get('/api/user').then(res => {
+        this.user = res.data
+        
+        this.axios.get('/api/posts/' + this.user.id).then(res => {
+          this.posts = res.data.data
+        })
       })
     },
     methods: {

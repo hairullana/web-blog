@@ -12,7 +12,7 @@
             <form @submit.prevent="PostStore">
               <div class="row">
                 <div class="col-lg-5 mt-auto">
-                  <img src="http://ngeewap.xtgem.com/files/hl.jpg" class="img-fluid img-thumbnail">
+                  <img src="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" class="img-fluid img-thumbnail">
                 </div>
                 <div class="col-lg-7">
                   <div class="mb-3">
@@ -32,7 +32,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
-                    <select v-model="category_id" id="category" class="form-select">
+                    <select v-model="category_id" id="category" class="form-control">
                       <option 
                         v-for="category in categories" 
                         v-bind:value="category.id"
