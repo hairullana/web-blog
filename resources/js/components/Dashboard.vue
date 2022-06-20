@@ -20,7 +20,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{ posts.length }}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      <i class="fas fa-book fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
@@ -36,7 +36,7 @@
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{ categories.length }}</div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                      <i class="fas fa-pie-chart fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
