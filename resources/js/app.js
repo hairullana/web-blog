@@ -37,6 +37,7 @@ import Login from './components/auth/Login.vue'
 import PostEdit from './components/posts/Edit.vue'
 import PostCreate from './components/posts/Create.vue'
 import Register from './components/auth/Register.vue'
+import Profile from './components/profile/Index.vue'
 
 import moment from 'moment'
 import Vue from 'vue'
@@ -116,6 +117,12 @@ const routes = [
     path: '/dashboard/login',
     component: Login,
     beforeEnter: isLogout
+  },
+  {
+    name: 'profile',
+    path: '/dashboard/profile',
+    component: Profile,
+    beforeEnter: isLogin
   }
 ]
 

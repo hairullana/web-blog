@@ -7,7 +7,7 @@
           <img class="img-profile rounded-circle" src="http://ngeewap.xtgem.com/files/hl.jpg">
         </a>
         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="#"><i class="text-muted fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile</a>
+          <router-link class="dropdown-item" :to="{name: 'profile'}"><i class="text-muted fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>Profile</router-link>
           <a class="dropdown-item" href="#"><i class="text-muted fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>Settings</a>
           <a class="dropdown-item" href="#"><i class="text-muted fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>Activity Log</a>
           <div class="dropdown-divider"></div>
