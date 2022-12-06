@@ -56,7 +56,7 @@
                       </div>
                       <div class="card-body">
                         <div v-for="(data, index) in postsPerCategory">
-                          <h4 class="small font-weight-bold">{{ data[0].category.name }}<span
+                          <h4 class="small font-weight-bold">{{ data[0].category.name }} ({{ data.length }} posts)<span
                                   class="float-right">{{ Math.floor(Object.keys(data).length / posts.length * 100) }}%</span></h4>
                           <div class="progress mb-4">
                               <div class="progress-bar bg-primary" role="progressbar" :style="{'width':`${Math.floor(Object.keys(data).length / posts.length * 100)}%`}" aria-valuemin="0" aria-valuemax="100"></div>

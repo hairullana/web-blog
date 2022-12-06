@@ -16,11 +16,15 @@ class DashboardPostController extends Controller
 {
   public function index($userId)
   {
+    $user = User::find($userId);
+
+    if($user->is_admin) $posts = Post::all();
+    else $posts = Post::where('user_id', $userId)->latest()->get();
     // return json for API
     return response()->json([
       'success' => true,
       'message' => 'List Data Post',
-      'data'    => Post::where('user_id', $userId)->latest()->get()
+      'data'    => $posts
     ], 200);
   }
 

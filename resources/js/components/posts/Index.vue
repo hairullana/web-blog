@@ -24,6 +24,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
                         <th scope="col">Category</th>
+                        <th v-if="user.is_admin">Author</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
@@ -35,6 +36,7 @@
                         <td>{{ post.id }}</td>
                         <td><a v-bind:href="'/post/' + post.slug" target="_blank" style="text-decoration:none;">{{ post.title }}</a></td>
                         <td>{{ post.category.name }}</td>
+                        <td v-if="user.is_admin">{{ post.author.name }}</td>
                         <td>
                           <router-link :to="'/dashboard/post/edit/' + post.id" class="text-dark badge btn-warning">Edit</router-link>
                           <button @click.prevent="PostDelete(post.id, index)" class="text-dark badge btn-danger border-0">Delete</button>

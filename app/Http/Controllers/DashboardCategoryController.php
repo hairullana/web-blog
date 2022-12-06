@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use App\Http\Controllers\DashboardPostController;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Illuminate\Support\Js;
 
 class DashboardCategoryController extends Controller
 {
@@ -21,7 +23,10 @@ class DashboardCategoryController extends Controller
 
     public function categoryPercentage($userId)
     {
-        $category = Post::where('user_id', $userId)->get()->groupBy('category.name');
+        $user = User::find($userId);
+
+        if($user->is_admin) $category = Post::get()->groupBy('category.name');
+        else $category = Post::where('user_id', $userId)->get()->groupBy('category.name');
 
         return response()->json([
             'message' => 'Percentage of Category',
