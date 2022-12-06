@@ -18,7 +18,7 @@ class DashboardPostController extends Controller
   {
     $user = User::find($userId);
 
-    if($user->is_admin) $posts = Post::all();
+    if($user->is_admin) $posts = Post::latest()->get();
     else $posts = Post::where('user_id', $userId)->latest()->get();
     // return json for API
     return response()->json([

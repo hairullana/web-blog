@@ -56,7 +56,7 @@
                   {{ this.errors.body[0] }}
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary">Create Post</button>
+              <button type="submit" class="btn btn-primary">Update Post</button>
             </form>
           </div>
         </div>

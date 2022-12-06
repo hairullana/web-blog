@@ -77,7 +77,6 @@
     },
     data(){
       return {
-        user_id: 1,
         excerpt: '',
         title: '',
         slug: '',
@@ -118,7 +117,7 @@
           }
         }
         let data = new FormData()
-        data.append('user_id', this.user_id)
+        data.append('user_id', this.user.id)
         data.append('excerpt', this.title)
         data.append('title', this.title)
         data.append('slug', this.slug)
