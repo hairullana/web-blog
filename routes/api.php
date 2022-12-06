@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardCategoryController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardPostController;
+use App\Http\Controllers\DashboardCategoryController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -23,6 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::middleware('auth:sanctum')->get('/auth', function () {
   return true;
+});
+Route::middleware('auth:sanctum')->get('/is-admin', function () {
+  return response()->json(Auth::user()->is_admin == 1 ? true : false);
 });
 
 // Auth API

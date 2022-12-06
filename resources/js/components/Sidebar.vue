@@ -31,7 +31,7 @@
         Admin
       </div>
       <li class="nav-item">
-        <router-link class="nav-link collapsed" to="https://google.com">
+        <router-link class="nav-link collapsed" :to="{ name: 'users' }">
           <i class="fas fa-fw fa-user"></i>
           <span>Users</span>
         </router-link>

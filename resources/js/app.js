@@ -38,6 +38,7 @@ import PostEdit from './components/posts/Edit.vue'
 import PostCreate from './components/posts/Create.vue'
 import Register from './components/auth/Register.vue'
 import Profile from './components/profile/Index.vue'
+import User from './components/users/Index.vue'
 
 import moment from 'moment'
 import Vue from 'vue'
@@ -60,6 +61,20 @@ function isLogout(to, form, next) {
     return next({ name: 'dashboard' })
   }).catch(() => {
     next()
+  })
+}
+
+function isAdmin(to, form, next) {
+  axios.get('/api/is-admin').then(response => {
+    if(response.data) {
+      return next()
+    } else {
+      axios.get('/api/auth').then(() => {
+        next({ name: 'dashboard' })
+      }).catch(() => {
+        return next({ name: 'login' })
+      })
+    }
   })
 }
 
@@ -123,6 +138,12 @@ const routes = [
     path: '/dashboard/profile',
     component: Profile,
     beforeEnter: isLogin
+  },
+  {
+    name: 'users',
+    path: '/dashboard/users',
+    component: User,
+    beforeEnter: isAdmin
   }
 ]
 
