@@ -65,7 +65,7 @@
       return {
         posts: [],
         pageOfPosts: [],
-        user: null
+        user: {}
       }
     },
     beforeRouteEnter (to, from, next) {
