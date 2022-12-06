@@ -53,15 +53,8 @@
 
 <script>
 export default{
-  data() {
-    return {
-      user: {}
-    }
-  },
-  mounted(){
-    this.axios.get('/api/user').then(res => {
-      this.user = res.data
-    })
-  }
+  props: [
+    'user'
+  ]
 }
 </script>

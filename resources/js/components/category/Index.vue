@@ -1,9 +1,9 @@
 <template>
   <div id="wrapper">
-    <Sidebar />
+    <Sidebar :user="user" />
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
-        <Navbar />
+        <Navbar :user="user" />
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800"><router-link class="path-link" :to="{ name: 'dashboard' }">Dashboard</router-link> / Categories</h1>
@@ -68,18 +68,22 @@
     data(){
       return {
         categories: [],
-        pageOfPosts: []
+        pageOfPosts: [],
+        user: {}
       }
     },
     beforeRouteEnter (to, from, next) {
       next( async vm => {
-          document.title = 'Categories | HL Blog'
+          document.title = 'Categories | HL Blog';
       })
     },
     mounted(){
       this.axios.get('/api/categories').then(res => {
-        this.categories = res.data.data
-      })
+        this.categories = res.data.data;
+      });
+      this.axios.get('/api/user').then(res => {
+        this.user = res.data;
+      });
     },
     methods: {
       CategoryDelete(id, index){

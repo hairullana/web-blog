@@ -1,9 +1,9 @@
 <template>
   <div id="wrapper">
-    <Sidebar />
+    <Sidebar :user="user" />
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
-        <Navbar />
+        <Navbar :user="user" />
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800"><router-link class="path-link" :to="{ name: 'dashboard' }">Dashboard</router-link> / Posts</h1>

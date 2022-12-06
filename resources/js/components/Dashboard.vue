@@ -1,9 +1,9 @@
 <template>
   <div id="wrapper">
-    <Sidebar />
+    <Sidebar :user="user" />
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
-        <Navbar />
+        <Navbar :user="user" />
         <div class="container-fluid">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
               <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
@@ -101,16 +101,16 @@
     },
     mounted(){
       this.axios.get('/api/user').then(res => {
-        this.user = res.data
+        this.user = res.data;
 
         this.axios.get('/api/posts/' + this.user.id).then(res => {
-          this.posts = res.data.data
+          this.posts = res.data.data;
         })
         this.axios.get('/api/categories').then(res => {
-          this.categories = res.data.data
+          this.categories = res.data.data;
         })
         this.axios.get('/api/category/percentage/' + this.user.id).then(res => {
-          this.postsPerCategory = res.data.data
+          this.postsPerCategory = res.data.data;
         })
       })
     }

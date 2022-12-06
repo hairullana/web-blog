@@ -21,22 +21,15 @@
 <script>
 
 export default {
-  data(){
-    return {
-      user: {}
-    }
-  },
-  mounted() {
-    this.axios.get('/api/user').then(res => {
-      this.user = res.data
-    })
-  },
   methods: {
     Logout() {
       axios.post('/api/logout').then(() => {
         this.$router.push({ name: 'login' })
       })
     }
-  }
+  },
+  props: [
+    'user'
+  ]
 }
 </script>
