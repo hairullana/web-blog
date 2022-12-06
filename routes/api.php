@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\DashboardCategoryController;
+use App\Http\Controllers\UserController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -48,3 +49,6 @@ Route::get('/category/{category:id}', [DashboardCategoryController::class, 'show
 Route::post('/category/update/{category:id}', [DashboardCategoryController::class, 'update']);
 Route::post('/category/store', [DashboardCategoryController::class, 'store']);
 Route::delete('/category/{category:id}', [DashboardCategoryController::class, 'destroy']);
+
+// User API
+Route::get('/users', [UserController::class, 'index'])->name('users');
