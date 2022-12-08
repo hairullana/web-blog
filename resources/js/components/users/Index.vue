@@ -95,7 +95,7 @@
       UserDelete(id, index){
         this.$swal({
           title: 'Are you sure?',
-          text: "to delete this user with his/her posts?",
+          text: "to delete this user with his/her users?",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -103,12 +103,20 @@
         }).then((result) => {
           if (result.isConfirmed) {
             this.axios.delete(`/api/users/${id}`).then(res => {
-              this.posts.splice(index, 1)
-              this.$swal(
-                'Deleted!',
-                'Your post has been deleted.',
-                'success'
-              )
+              this.users.splice(index, 1)
+              if(res.data.status) {
+                this.$swal(
+                  'Deleted!',
+                  res.data.message,
+                  'success'
+                );
+              } else {
+                this.$swal(
+                  'Deleted!',
+                  res.data.message,
+                  'success'
+                );
+              }
             }).catch(err => {
               this.$toasted.show('System error', { 
                 type: 'error',

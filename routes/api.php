@@ -52,3 +52,4 @@ Route::delete('/category/{category:id}', [DashboardCategoryController::class, 'd
 
 // User API
 Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.delete');
