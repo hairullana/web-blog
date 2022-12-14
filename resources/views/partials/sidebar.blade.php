@@ -30,9 +30,9 @@
         <h3 class="mb-0">Popular Post</h3>
     </div>
     @foreach ($popularPost as $item)
-    <div class="d-flex rounded overflow-hidden mb-3">
+    <div class="d-flex rounded overflow-hidden mb-3 w-100 bg-light">
         <img class="img-fluid" src="{{ file_exists(public_path('storage/images/posts/' . $item->id . '.jpg')) ? url('storage/images/posts/' . $item->id . '.jpg') : 'https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg' }}" style="width: 100px; height: 100px; object-fit: cover;">
-        <a href="/post/{{ $item->slug }}" class="text-decoration-none h6 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">{{ $item->title }}</a>
+        <a href="/post/{{ $item->slug }}" class="text-decoration-none h6 fw-semi-bold d-flex align-items-center px-3 mb-0">{{ $item->title }}</a>
     </div>
     @endforeach
 </div>

@@ -81,6 +81,12 @@ function isAdmin(to, form, next) {
 const routes = [
   {
     name: 'dashboard',
+    path: '/dashboard',
+    component: Dashboard,
+    beforeEnter: isLogin
+  },
+  {
+    name: 'dashboard',
     path: '/dashboard/overview',
     component: Dashboard,
     beforeEnter: isLogin
